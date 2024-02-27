@@ -1,0 +1,520 @@
+@namespace(uri="www.unican.es/istr/pasys", prefix="pasys")
+package pasys;
+
+class ComputationalSystem {
+	op void deployAndLaunch();
+	op void cleanDeployment();
+	attr String[1] name;
+	attr String[1] date;
+	attr String authors;
+	attr String targetPlatformName;
+	attr String doc;
+	!ordered !resolve val SystemElement[*]#owner ownedElements;
+	val StringToStringMap[*] authenticationFiles;
+}
+
+abstract class NamedElement {
+	attr String[1] name;
+	attr String[1] ~id;
+}
+
+abstract class SystemElement extends NamedElement {
+	ref ComputationalSystem[1]#ownedElements owner;
+}
+
+abstract class PlatformResource extends SystemElement {
+}
+
+abstract class ProcessingNode extends PlatformResource {
+	op void prepareForDeployment() throws ConfigurationException;
+	op void deployAndLaunch() throws LaunchException, DeploymentException;
+	op void bringBackConfiguration();
+	op void bringBackDeployment();
+	op void abortLaunching();
+	op void addLaunchingScript(DeploymentFileDescriptor[1] script);
+	op void addConfigFile(DeploymentFileDescriptor[1] configFile);
+	attr String[1] ip;
+	attr String os;
+	attr int concurrencyLevel = 1;
+	attr int memorySize;
+	attr double[1] speedFactor = "1.0";
+	attr Properties configData;
+	attr String[1] userName;
+	ref Network[*] connectedTo;
+	ref DeploymentFileDescriptor[*] launchingScripts;
+	ref DeploymentFileDescriptor[*] configFiles;
+	ref ArtifactDescriptor[*] codeFiles;
+	val NodeHostedMeter[*]#owner ownedMeters;
+}
+
+class PhysicalProcessingNode extends ProcessingNode {
+}
+
+abstract class VirtualProcessingNode extends ProcessingNode {
+	attr String[1] externalIP;
+}
+
+class AWSVirtualProcessingNode extends VirtualProcessingNode {
+	attr String vpc;
+	attr String subNet;
+	attr String[1] keyPair;
+	attr String securityGroup;
+	attr String AMI;
+	attr String instanceType;
+}
+
+abstract class ProcessingResourceCluster extends PlatformResource {
+}
+
+class ProcessingNodeCluster extends ProcessingResourceCluster {
+	ref ProcessingNode[+] nodes;
+}
+
+class OrchestrationCluster extends ProcessingResourceCluster {
+}
+
+class KubernetesCluster extends OrchestrationCluster {
+	attr String apiVersion;
+}
+
+class SwarmCluster extends OrchestrationCluster {
+}
+
+class Network extends PlatformResource {
+	attr double[1] bandwith;
+}
+
+abstract class PlatformService extends PlatformResource, DeployableComponent {
+	ref ProcessingResourceCluster[1] host;
+}
+
+abstract class SerializationService extends PlatformService {
+}
+
+abstract class DistributionService extends PlatformService {
+}
+
+abstract class CommunicationService extends PlatformService {
+}
+
+abstract class SchedulingService extends PlatformService {
+	ref Workflow[*]#scheduler workflows;
+}
+
+abstract class SecurityService extends PlatformService {
+}
+
+abstract class PersistenceService extends PlatformService {
+	attr String[1] logging;
+	attr String[1] passwd;
+	attr int[1] port = 9098;
+}
+
+abstract class MonitoringService extends PlatformService {
+	ref Meter[*]#monitoringServer monitorizedMeters;
+}
+
+class AVROService extends SerializationService {
+}
+
+class ZookeeperService extends DistributionService {
+	id attr int[1] serverId;
+	attr int[1] clientPort = 2181;
+	attr long[1] tickTime = "2000";
+	attr boolean[1] leaderServers = true;
+	attr int[1] peerPort = 2888;
+	attr int[1] leaderPort = 3888;
+	attr int[1] initLimit = 5;
+	attr int[1] syncLimit = 3;
+}
+
+class KafkaService extends CommunicationService {
+	id attr int[1] commId;
+	attr int[1] clientPort = 9092;
+	ref ZookeeperService[1] zookeeperConnect;
+	attr int[1] zookeeperConnectionTimeout = 6000;
+	attr String listeners = "”PLAINTEXT”";
+	attr String advertisedListeners = "PLAINTEXT";
+	attr boolean[1] autoCreateTopicEnable = false;
+	attr boolean[1] deleteTopicEnable = false;
+	attr int[1] numPartitions = 4;
+	attr int[1] numRecoveryThreadsPerDataDir = 1;
+	attr int[1] logFlushIntervalMessages = 10000;
+	attr int[1] logFlushInterval = 1000;
+	attr int[1] numNetworkThreads = 3;
+	attr int[1] numIOThreads = 8;
+	attr int[1] socketSendBufferBytes = 102400;
+	attr int[1] socketReceiveBufferBytes = 102400;
+	attr int[1] socketRequestMaxBytes = 104857600;
+}
+
+class NodeScheduler extends SchedulingService {
+}
+
+class SparkService extends SchedulingService {
+	ref SchedulableSet[1] load;
+	attr int[1] driverCores = 1;
+	attr String driverMaxResultSize = "1g";
+	attr long[1] driverMemory = "1000000000";
+	attr String localDir = "/home/apache/spark/localDir";
+	ref ProcessingResourceCluster[1] master;
+	attr int[1] windowSize;
+	attr long[1] executorMemory = "1000000000";
+	attr String extraListener;
+	attr boolean[1] logConf = false;
+	attr String submitDeployMode;
+	attr String[1] logCallerContext;
+	attr boolean[1] driverSuperviser = false;
+}
+
+class StormService extends SchedulingService {
+	ref ZookeeperService[1] zookeeperConnect;
+	attr String localDir = "storm-local";
+	val StormNimbus[1]#owner nimbus;
+	val StormSupervisor[1]#owner supervisor;
+	val StormUI#owner ui;
+}
+
+class StormUI extends DeployableComponent, NamedElement {
+	attr int[1] uiPort = 8080;
+	ref StormService[1]#ui owner;
+	ref ProcessingResourceCluster host;
+}
+
+class StormNimbus extends DeployableComponent, NamedElement {
+	ref StormService[1]#nimbus owner;
+	ref ProcessingResourceCluster host;
+}
+
+class StormSupervisor extends DeployableComponent, NamedElement {
+	attr String[*] supervisorSlotPorts;
+	ref StormService#supervisor owner;
+	ref ProcessingResourceCluster host;
+}
+
+class Neo4JService extends PersistenceService {
+}
+
+class MemSQLService extends PersistenceService {
+}
+
+class CassandraService extends PersistenceService {
+	attr int[1] numTokens = 256;
+	ref ProcessingNodeCluster seeds;
+	attr String seedProviderClass;
+	attr String endpointSnitch = "SimpleSnitch";
+	attr String[1] dataFileDir;
+	attr int[1] storagePort = 7000;
+	attr boolean[1] autoBootstrap = false;
+	val FileDescriptor[*] cqlSchemas;
+	val DataCenter[+] dataCenters;
+	attr int[1] sslStoragePort = 7001;
+	attr int[1] rpcPort = 9160;
+}
+
+class DataCenter extends NamedElement {
+	val Rack[+] racks;
+}
+
+class Rack extends NamedElement {
+	ref ProcessingNodeCluster[1] nodes;
+}
+
+class PrometheusService extends MonitoringService {
+	val ExporterData[*] exportersData;
+}
+
+class ExporterData {
+	attr String[1] name;
+	attr String[1] artifact;
+}
+
+abstract class StreamData extends DeployableComponent {
+	attr long[1] retention_ms;
+	attr int[1] retention_bytes;
+	attr boolean[1] cleanupPolicy = false;
+	attr int[1] numPartitions;
+	attr int[1] numReplication;
+	val StreamRateMeter[*]#owner ownedMeters;
+	val StreamDataPartition[*] assignedPartition;
+	attr int[1] messageSize;
+	attr String schemaFile;
+}
+
+class StreamDataPartition {
+	attr String key;
+	ref ProcessingNode[1] host;
+}
+
+abstract class WorkflowStreamData extends NamedElement, StreamData {
+	attr boolean[1] isSingleUse;
+	ref Workflow[1]#ownedStreamData owner;
+}
+
+class FlowStreamData extends WorkflowStreamData {
+	ref StreamData[1] source;
+	ref StreamData[1] predecessor;
+	ref CommunicationService holder;
+	attr boolean[1] isImplemented;
+}
+
+class KafkaFlowStreamData extends FlowStreamData {
+}
+
+class DerivedStreamData extends WorkflowStreamData {
+	attr String[1] pattern;
+	ref StreamData[+] inputs;
+}
+
+class WorkloadStreamData extends SystemElement, StreamData {
+	ref CommunicationService[1] holder;
+}
+
+class KafkaWorkloadStreamData extends WorkloadStreamData {
+}
+
+class Workflow extends SystemElement, DeployableComponent {
+	val WorkflowStreamData[*]#owner ownedStreamData;
+	val Task[*]#owner ownedTasks;
+	ref Task[1] rootTask;
+	val TaskExecutor[*]#owner ownedTaskExecutors;
+	ref SchedulingService[1]#workflows scheduler;
+	val WorkflowLatencyMeter[*]#owner ownedMeters;
+}
+
+class SchedulableSet extends SystemElement {
+	ref Workflow[+] workflows;
+}
+
+class Task extends NamedElement {
+	ref Workflow[1]#ownedTasks owner;
+	attr String implementingClassName;
+	ref StreamData returnedStreamData;
+	ref StreamData[1] triggerStreamData;
+	ref StreamData[*] inputStreamData;
+}
+
+class TaskExecutor extends NamedElement, DeployableComponent {
+	ref Workflow[1]#ownedTaskExecutors owner;
+	ref Task[+] executedTasks;
+	val TaskProcessingAmountMeter[*]#owner ownedMeters;
+}
+
+abstract class Metric extends SystemElement {
+}
+
+class ProcessingNodeUtilization extends Metric {
+	ref ProcessingNode[1] target;
+	ref NodeResourceMeter[1]#uMetric meter;
+}
+
+class ProcessingNodeMemory extends Metric {
+	ref ProcessingNode[1] target;
+	ref NodeResourceMeter[1]#mMetric meter;
+}
+
+class NetworkUtilization extends Metric {
+	ref Network[1] target;
+	ref CommunicationMeter[1]#metric meter;
+}
+
+class WorkflowLatency extends Metric {
+	ref Workflow[1] target;
+	ref WorkflowLatencyMeter[1]#metric meter;
+}
+
+class TaskProcessingAmount extends Metric {
+	ref Task[1] target;
+	ref TaskProcessingAmountMeter[1]#metric meter;
+	attr int[1] histogramBuckectNum = 11;
+	attr long[1] expectedMaxTPA;
+	attr long[1] expectedMinTPA;
+	attr boolean[1] linearBucketDistribution = true;
+}
+
+class StreamDataRate extends Metric {
+	ref StreamData[1] target;
+	ref StreamRateMeter[1]#metric meter;
+}
+
+abstract class Meter extends NamedElement, DeployableComponent {
+	ref MonitoringService#monitorizedMeters monitoringServer;
+}
+
+class PrometheusMeter extends Meter {
+	op String getPrometheusServerConfiguration();
+	attr int[1] monitoringPort;
+	attr long[1] monitoringTime;
+}
+
+abstract class NodeHostedMeter extends PrometheusMeter {
+	ref ProcessingNode[1]#ownedMeters owner;
+}
+
+class NodeResourceMeter extends NodeHostedMeter {
+	ref ProcessingNodeUtilization#meter uMetric;
+	ref ProcessingNodeMemory#meter mMetric;
+}
+
+class CommunicationMeter extends NodeHostedMeter {
+	ref NetworkUtilization[1]#meter metric;
+}
+
+class StreamRateMeter extends PrometheusMeter {
+	ref StreamData[1]#ownedMeters owner;
+	ref StreamDataRate[1]#meter metric;
+}
+
+class WorkflowLatencyMeter extends PrometheusMeter {
+	ref Workflow[1]#ownedMeters owner;
+	ref WorkflowLatency#meter metric;
+}
+
+class TaskProcessingAmountMeter extends PrometheusMeter {
+	ref TaskExecutor[1]#ownedMeters owner;
+	ref TaskProcessingAmount[1]#meter metric;
+}
+
+abstract class DeployableComponent {
+	op void configureDeployment() throws ConfigurationException;
+	val DeploymentConfiguration[1] deploymentConfig;
+}
+
+abstract class DeploymentConfiguration {
+}
+
+abstract class PlatformServiceDeploymentConf extends DeploymentConfiguration {
+}
+
+class OrchestratorDeploymentConf extends PlatformServiceDeploymentConf {
+	attr String[1] image;
+	attr String imageTag;
+	attr String imagePullPolicy;
+	attr int[1] replicas = 1;
+	attr String command;
+	attr String args;
+	attr String restartPolicy;
+	attr Properties env;
+	val Volume[*] volumes;
+	val Port[*] ports;
+	val DeploymentConstraints constraints;
+}
+
+class NodeDeploymentConf extends PlatformServiceDeploymentConf {
+	attr String[*] arguments;
+	attr String artifactLocator;
+	attr String artifactName;
+	attr String configFolderPath;
+	attr String scriptFolderPath;
+	attr String dataFolderPath;
+	attr String logFolderPath;
+	attr String codeFolderPath;
+	attr boolean[1] isRunning;
+}
+
+class Volume {
+	attr String[1] source;
+	attr String[1] target;
+	attr VolumeType type;
+	attr VolumeAccessMode accessMode;
+}
+
+enum VolumeType {
+	VOLUME = 0;
+	BIND = 1;
+	TMPFS = 2;
+	NPIPE = 3;
+}
+
+enum VolumeAccessMode {
+	READWRITEONCE = 0;
+	READONLYMANY = 1;
+	READWRITEMANY = 2;
+	READWRITEONCEPOD = 3;
+}
+
+class Port {
+	attr String[1] target;
+	attr String[1] published;
+}
+
+class SwarmPort extends Port {
+	attr Protocol[1] protocol;
+	attr PortMode[1] mode;
+}
+
+enum PortMode {
+	HOST = 0;
+	INGRESS = 1;
+}
+
+enum Protocol {
+	TCP = 0;
+	UDP = 1;
+}
+
+class KubernetesPort extends Port {
+	attr String name;
+	attr boolean[1] internal = false;
+}
+
+class DeploymentConstraints {
+	attr Properties labels;
+	attr Properties resources;
+}
+
+datatype Properties : java.util.Properties;
+
+abstract interface Exception : java.lang.Exception {
+}
+
+abstract interface ConfigurationException extends Exception {
+}
+
+abstract interface DeploymentException extends Exception {
+}
+
+abstract interface LaunchException extends Exception {
+}
+
+class StringToStringMap : java.util.Map$Entry {
+	attr String[1] key;
+	attr String[1] value;
+}
+
+class FileDescriptor {
+	attr String[1] filePath;
+	attr String[1] fileName;
+}
+
+class DeploymentFileDescriptor extends FileDescriptor {
+	attr String[1] fileContent;
+	attr DeployableComponentType elementType;
+	ref ProcessingNode owner;
+}
+
+class ArtifactDescriptor extends FileDescriptor {
+	attr String[1] localPath;
+}
+
+enum DeployableComponentType {
+	PROMETHEUS_SERVICE = 0;
+	ZOOKEEPER_SERVICE = 1;
+	KAFKA_SERVICE = 2;
+	CASSANDRA_SERVICE_SEED = 3;
+	CASSANDRA_SERVICE = 4;
+	STORM_NIMBUS = 5;
+	STORM_SUPERVISOR = 6;
+	STORM_UI = 7;
+	SPARK_SERVICE = 8;
+	KAFKA_WORKLOAD_STREAM = 9;
+	KAFKA_FLOW_STREAM = 10;
+	AVRO_SERVICE = 11;
+	NODE_RESOURCE_METER = 12;
+	TASK_EXECUTOR = 13;
+	TASK_AMOUNT_METER = 14;
+	DOCKER_STACK = 15;
+	CASSANDRA_SCHEMA = 16;
+	WORKFLOW = 17;
+}
+
