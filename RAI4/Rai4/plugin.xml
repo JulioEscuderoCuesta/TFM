@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+
+
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated pasys -->
+      <package
+            uri="www.unican.es/istr/pasys"
+            class="es.unican.istr.pasys.pasys.PasysPackage"
+            genModel="model/pasys.genmodel"/>
+   </extension>
+
+</plugin>

@@ -1,0 +1,602 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="pasys" nsURI="www.unican.es/istr/pasys" nsPrefix="pasys">
+  <eClassifiers xsi:type="ecore:EClass" name="ComputationalSystem">
+    <eOperations name="deployAndLaunch"/>
+    <eOperations name="cleanDeployment"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="date" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="authors" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="targetPlatformName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="doc" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedElements" ordered="false"
+        upperBound="-1" eType="#//SystemElement" containment="true" resolveProxies="false"
+        eOpposite="#//SystemElement/owner"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="authenticationFiles" upperBound="-1"
+        eType="#//StringToStringMap" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="NamedElement" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SystemElement" abstract="true" eSuperTypes="#//NamedElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="owner" lowerBound="1" eType="#//ComputationalSystem"
+        eOpposite="#//ComputationalSystem/ownedElements"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PlatformResource" abstract="true" eSuperTypes="#//SystemElement"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ProcessingNode" abstract="true" eSuperTypes="#//PlatformResource">
+    <eOperations name="prepareForDeployment" eExceptions="#//ConfigurationException"/>
+    <eOperations name="deployAndLaunch" eExceptions="#//LaunchException #//DeploymentException"/>
+    <eOperations name="bringBackConfiguration"/>
+    <eOperations name="bringBackDeployment"/>
+    <eOperations name="abortLaunching"/>
+    <eOperations name="addLaunchingScript">
+      <eParameters name="script" lowerBound="1" eType="#//DeploymentFileDescriptor"/>
+    </eOperations>
+    <eOperations name="addConfigFile">
+      <eParameters name="configFile" lowerBound="1" eType="#//DeploymentFileDescriptor"/>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ip" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="os" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="concurrencyLevel" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
+        defaultValueLiteral="1"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="memorySize" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="speedFactor" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble" defaultValueLiteral="1.0"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="configData" eType="#//Properties"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="userName" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="connectedTo" upperBound="-1"
+        eType="#//Network"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="launchingScripts" upperBound="-1"
+        eType="#//DeploymentFileDescriptor" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="configFiles" upperBound="-1"
+        eType="#//DeploymentFileDescriptor" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="codeFiles" upperBound="-1"
+        eType="#//ArtifactDescriptor" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedMeters" upperBound="-1"
+        eType="#//NodeHostedMeter" containment="true" eOpposite="#//NodeHostedMeter/owner"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PhysicalProcessingNode" eSuperTypes="#//ProcessingNode"/>
+  <eClassifiers xsi:type="ecore:EClass" name="VirtualProcessingNode" abstract="true"
+      eSuperTypes="#//ProcessingNode">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="externalIP" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AWSVirtualProcessingNode" eSuperTypes="#//VirtualProcessingNode">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="vpc" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="subNet" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="keyPair" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="securityGroup" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="AMI" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="instanceType" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ProcessingResourceCluster" abstract="true"
+      eSuperTypes="#//PlatformResource"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ProcessingNodeCluster" eSuperTypes="#//ProcessingResourceCluster">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="nodes" lowerBound="1" upperBound="-1"
+        eType="#//ProcessingNode"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="OrchestrationCluster" eSuperTypes="#//ProcessingResourceCluster"/>
+  <eClassifiers xsi:type="ecore:EClass" name="KubernetesCluster" eSuperTypes="#//OrchestrationCluster">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="apiVersion" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="kubeConfigPath" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SwarmCluster" eSuperTypes="#//OrchestrationCluster">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ip" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="port" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="user" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="NomadCluster" eSuperTypes="#//OrchestrationCluster">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ip" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="port" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Network" eSuperTypes="#//PlatformResource">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="bandwith" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PlatformService" abstract="true" eSuperTypes="#//PlatformResource #//DeployableComponent">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="host" lowerBound="1" eType="#//ProcessingResourceCluster"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SerializationService" abstract="true"
+      eSuperTypes="#//PlatformService"/>
+  <eClassifiers xsi:type="ecore:EClass" name="DistributionService" abstract="true"
+      eSuperTypes="#//PlatformService"/>
+  <eClassifiers xsi:type="ecore:EClass" name="CommunicationService" abstract="true"
+      eSuperTypes="#//PlatformService"/>
+  <eClassifiers xsi:type="ecore:EClass" name="SchedulingService" abstract="true" eSuperTypes="#//PlatformService">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="workflows" upperBound="-1"
+        eType="#//Workflow" eOpposite="#//Workflow/scheduler"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SecurityService" abstract="true" eSuperTypes="#//PlatformService"/>
+  <eClassifiers xsi:type="ecore:EClass" name="PersistenceService" abstract="true"
+      eSuperTypes="#//PlatformService">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="logging" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="passwd" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="port" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
+        defaultValueLiteral="9098"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MonitoringService" abstract="true" eSuperTypes="#//PlatformService">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="monitorizedMeters" upperBound="-1"
+        eType="#//Meter" eOpposite="#//Meter/monitoringServer"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AVROService" eSuperTypes="#//SerializationService"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ZookeeperService" eSuperTypes="#//DistributionService">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="serverId" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" iD="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="clientPort" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString" defaultValueLiteral="2181"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="tickTime" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong" defaultValueLiteral="2000"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="leaderServers" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean" defaultValueLiteral="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="peerPort" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString" defaultValueLiteral="2888"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="leaderPort" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString" defaultValueLiteral="3888"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="initLimit" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" defaultValueLiteral="5"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="syncLimit" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" defaultValueLiteral="3"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="KafkaService" eSuperTypes="#//CommunicationService">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="commId" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" iD="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="clientPort" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString" defaultValueLiteral="9092"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="zookeeperConnect" lowerBound="1"
+        eType="#//ZookeeperService"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="zookeeperConnectionTimeout"
+        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
+        defaultValueLiteral="6000"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="listeners" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="”PLAINTEXT”"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="advertisedListeners" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="PLAINTEXT"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="autoCreateTopicEnable"
+        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        defaultValueLiteral="false"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="deleteTopicEnable" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean" defaultValueLiteral="false"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="numPartitions" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" defaultValueLiteral="4"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="numRecoveryThreadsPerDataDir"
+        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
+        defaultValueLiteral="1"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="logFlushIntervalMessages"
+        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
+        defaultValueLiteral="10000"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="logFlushInterval" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" defaultValueLiteral="1000"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="numNetworkThreads" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" defaultValueLiteral="3"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="numIOThreads" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" defaultValueLiteral="8"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="socketSendBufferBytes"
+        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
+        defaultValueLiteral="102400"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="socketReceiveBufferBytes"
+        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
+        defaultValueLiteral="102400"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="socketRequestMaxBytes"
+        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
+        defaultValueLiteral="104857600"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="NodeScheduler" eSuperTypes="#//SchedulingService"/>
+  <eClassifiers xsi:type="ecore:EClass" name="SparkService" eSuperTypes="#//SchedulingService">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="load" lowerBound="1" eType="#//SchedulableSet"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="driverCores" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" defaultValueLiteral="1"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="driverMaxResultSize" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="1g"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="driverMemory" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong" defaultValueLiteral="1000000000"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="localDir" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="/home/apache/spark/localDir"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="master" lowerBound="1"
+        eType="#//ProcessingResourceCluster"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="windowSize" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="executorMemory" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong" defaultValueLiteral="1000000000"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="extraListener" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="logConf" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean" defaultValueLiteral="false"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="submitDeployMode" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="logCallerContext" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="driverSuperviser" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean" defaultValueLiteral="false"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="StormService" eSuperTypes="#//SchedulingService">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="zookeeperConnect" lowerBound="1"
+        eType="#//ZookeeperService"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="localDir" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="storm-local"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="nimbus" lowerBound="1"
+        eType="#//StormNimbus" containment="true" eOpposite="#//StormNimbus/owner"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="supervisor" lowerBound="1"
+        eType="#//StormSupervisor" containment="true" eOpposite="#//StormSupervisor/owner"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ui" eType="#//StormUI"
+        containment="true" eOpposite="#//StormUI/owner"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="StormUI" eSuperTypes="#//DeployableComponent #//NamedElement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="uiPort" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString" defaultValueLiteral="8080"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="owner" lowerBound="1" eType="#//StormService"
+        eOpposite="#//StormService/ui"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="host" eType="#//ProcessingResourceCluster"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="StormNimbus" eSuperTypes="#//DeployableComponent #//NamedElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="owner" lowerBound="1" eType="#//StormService"
+        eOpposite="#//StormService/nimbus"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="host" eType="#//ProcessingResourceCluster"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="StormSupervisor" eSuperTypes="#//DeployableComponent #//NamedElement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="supervisorSlotPorts" upperBound="-1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="owner" eType="#//StormService"
+        eOpposite="#//StormService/supervisor"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="host" eType="#//ProcessingResourceCluster"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Neo4JService" eSuperTypes="#//PersistenceService"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MemSQLService" eSuperTypes="#//PersistenceService"/>
+  <eClassifiers xsi:type="ecore:EClass" name="CassandraService" eSuperTypes="#//PersistenceService">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="numTokens" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" defaultValueLiteral="256"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="seeds" eType="#//ProcessingNodeCluster"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="seedProviderClass" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="endpointSnitch" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="SimpleSnitch"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="dataFileDir" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="storagePort" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString" defaultValueLiteral="7000"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="autoBootstrap" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean" defaultValueLiteral="false"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="cqlSchemas" upperBound="-1"
+        eType="#//FileDescriptor" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="dataCenters" lowerBound="1"
+        upperBound="-1" eType="#//DataCenter" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="sslStoragePort" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString" defaultValueLiteral="7001"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="rpcPort" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString" defaultValueLiteral="9160"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DataCenter" eSuperTypes="#//NamedElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="racks" lowerBound="1" upperBound="-1"
+        eType="#//Rack" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Rack" eSuperTypes="#//NamedElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="nodes" lowerBound="1" eType="#//ProcessingNodeCluster"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PrometheusService" eSuperTypes="#//MonitoringService">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="exportersData" upperBound="-1"
+        eType="#//ExporterData" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ExporterData">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="artifact" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="StreamData" abstract="true" eSuperTypes="#//DeployableComponent">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="retention_ms" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="retention_bytes" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="cleanupPolicy" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean" defaultValueLiteral="false"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="numPartitions" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="numReplication" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedMeters" upperBound="-1"
+        eType="#//StreamRateMeter" containment="true" eOpposite="#//StreamRateMeter/owner"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="assignedPartition" upperBound="-1"
+        eType="#//StreamDataPartition" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="messageSize" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="schemaFile" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="StreamDataPartition">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="key" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="host" lowerBound="1" eType="#//ProcessingNode"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="WorkflowStreamData" abstract="true"
+      eSuperTypes="#//NamedElement #//StreamData">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isSingleUse" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="owner" lowerBound="1" eType="#//Workflow"
+        eOpposite="#//Workflow/ownedStreamData"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FlowStreamData" eSuperTypes="#//WorkflowStreamData">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="source" lowerBound="1"
+        eType="#//StreamData"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="predecessor" lowerBound="1"
+        eType="#//StreamData"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="holder" eType="#//CommunicationService"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isImplemented" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="KafkaFlowStreamData" eSuperTypes="#//FlowStreamData"/>
+  <eClassifiers xsi:type="ecore:EClass" name="DerivedStreamData" eSuperTypes="#//WorkflowStreamData">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="pattern" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="inputs" lowerBound="1"
+        upperBound="-1" eType="#//StreamData"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="WorkloadStreamData" eSuperTypes="#//SystemElement #//StreamData">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="holder" lowerBound="1"
+        eType="#//CommunicationService"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="KafkaWorkloadStreamData" eSuperTypes="#//WorkloadStreamData"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Workflow" eSuperTypes="#//SystemElement #//DeployableComponent">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedStreamData" upperBound="-1"
+        eType="#//WorkflowStreamData" containment="true" eOpposite="#//WorkflowStreamData/owner"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedTasks" upperBound="-1"
+        eType="#//Task" containment="true" eOpposite="#//Task/owner"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="rootTask" lowerBound="1"
+        eType="#//Task"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedTaskExecutors" upperBound="-1"
+        eType="#//TaskExecutor" containment="true" eOpposite="#//TaskExecutor/owner"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="scheduler" lowerBound="1"
+        eType="#//SchedulingService" eOpposite="#//SchedulingService/workflows"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedMeters" upperBound="-1"
+        eType="#//WorkflowLatencyMeter" containment="true" eOpposite="#//WorkflowLatencyMeter/owner"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SchedulableSet" eSuperTypes="#//SystemElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="workflows" lowerBound="1"
+        upperBound="-1" eType="#//Workflow"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Task" eSuperTypes="#//NamedElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="owner" lowerBound="1" eType="#//Workflow"
+        eOpposite="#//Workflow/ownedTasks"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="implementingClassName"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="returnedStreamData" eType="#//StreamData"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="triggerStreamData" lowerBound="1"
+        eType="#//StreamData"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="inputStreamData" upperBound="-1"
+        eType="#//StreamData"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TaskExecutor" eSuperTypes="#//NamedElement #//DeployableComponent">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="owner" lowerBound="1" eType="#//Workflow"
+        eOpposite="#//Workflow/ownedTaskExecutors"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="executedTasks" lowerBound="1"
+        upperBound="-1" eType="#//Task"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedMeters" upperBound="-1"
+        eType="#//TaskProcessingAmountMeter" containment="true" eOpposite="#//TaskProcessingAmountMeter/owner"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Metric" abstract="true" eSuperTypes="#//SystemElement"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ProcessingNodeUtilization" eSuperTypes="#//Metric">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="target" lowerBound="1"
+        eType="#//ProcessingNode"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ProcessingNodeMemory" eSuperTypes="#//Metric">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="target" lowerBound="1"
+        eType="#//ProcessingNode"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="NetworkUtilization" eSuperTypes="#//Metric">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="target" lowerBound="1"
+        eType="#//Network"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="WorkflowLatency" eSuperTypes="#//Metric">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="target" lowerBound="1"
+        eType="#//Workflow"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TaskProcessingAmount" eSuperTypes="#//Metric">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="target" lowerBound="1"
+        eType="#//Task"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="histogramBuckectNum" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" defaultValueLiteral="11"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="expectedMaxTPA" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="expectedMinTPA" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="linearBucketDistribution"
+        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        defaultValueLiteral="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="StreamDataRate" eSuperTypes="#//Metric">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="target" lowerBound="1"
+        eType="#//StreamData"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Meter" abstract="true" eSuperTypes="#//NamedElement #//DeployableComponent">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="monitoringServer" eType="#//MonitoringService"
+        eOpposite="#//MonitoringService/monitorizedMeters"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PrometheusMeter" eSuperTypes="#//Meter">
+    <eOperations name="getPrometheusServerConfiguration" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="monitoringPort" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="monitoringTime" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="NodeHostedMeter" abstract="true" eSuperTypes="#//PrometheusMeter">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="owner" lowerBound="1" eType="#//ProcessingNode"
+        eOpposite="#//ProcessingNode/ownedMeters"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="NodeResourceMeter" eSuperTypes="#//NodeHostedMeter">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="uMetric" eType="#//ProcessingNodeUtilization"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="mMetric" eType="#//ProcessingNodeMemory"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CommunicationMeter" eSuperTypes="#//NodeHostedMeter">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="metric" lowerBound="1"
+        eType="#//NetworkUtilization"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="StreamRateMeter" eSuperTypes="#//PrometheusMeter">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="owner" lowerBound="1" eType="#//StreamData"
+        eOpposite="#//StreamData/ownedMeters"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="metric" lowerBound="1"
+        eType="#//StreamDataRate"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="WorkflowLatencyMeter" eSuperTypes="#//PrometheusMeter">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="owner" lowerBound="1" eType="#//Workflow"
+        eOpposite="#//Workflow/ownedMeters"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="metric" eType="#//WorkflowLatency"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TaskProcessingAmountMeter" eSuperTypes="#//PrometheusMeter">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="owner" lowerBound="1" eType="#//TaskExecutor"
+        eOpposite="#//TaskExecutor/ownedMeters"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="metric" lowerBound="1"
+        eType="#//TaskProcessingAmount"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DeployableComponent" abstract="true">
+    <eOperations name="configureDeployment" eExceptions="#//ConfigurationException"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="deploymentConfig" lowerBound="1"
+        eType="#//DeploymentConfiguration" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DeploymentConfiguration" abstract="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="PlatformServiceDeploymentConf" abstract="true"
+      eSuperTypes="#//DeploymentConfiguration"/>
+  <eClassifiers xsi:type="ecore:EClass" name="OrchestratorDeploymentConf" abstract="true"
+      eSuperTypes="#//PlatformServiceDeploymentConf">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="image" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="imageTag" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="imagePullPolicy" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="replicas" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" defaultValueLiteral="1"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="command" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="args" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="restartPolicy" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="env" eType="#//Properties"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="volumes" upperBound="-1"
+        eType="#//Volume" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ports" upperBound="-1"
+        eType="#//Port" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="constraints" eType="#//DeploymentConstraints"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="NodeDeploymentConf" eSuperTypes="#//PlatformServiceDeploymentConf">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="arguments" upperBound="-1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="artifactLocator" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="artifactName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="configFolderPath" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="scriptFolderPath" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="dataFolderPath" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="logFolderPath" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="codeFolderPath" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isRunning" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="KubernetesDeploymentConf" eSuperTypes="#//OrchestratorDeploymentConf">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="externalIP" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="serviceType" eType="#//ServiceType"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SwarmDeploymentConf" eSuperTypes="#//OrchestratorDeploymentConf">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="network" upperBound="-1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="NomadDeploymentConf" eSuperTypes="#//OrchestratorDeploymentConf">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="region" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="dataCenter" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="priority" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="driver" eType="#//NomadDriver"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Volume">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="source" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="target" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="#//VolumeType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="accessMode" eType="#//VolumeAccessMode"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Port">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="target" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="published" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="VolumeAccessMode">
+    <eLiterals name="READWRITEONCE"/>
+    <eLiterals name="READONLYMANY" value="1"/>
+    <eLiterals name="READWRITEMANY" value="2"/>
+    <eLiterals name="READWRITEONCEPOD" value="3"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="VolumeType">
+    <eLiterals name="VOLUME"/>
+    <eLiterals name="BIND" value="1"/>
+    <eLiterals name="TMPFS" value="2"/>
+    <eLiterals name="NPIPE" value="3"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="NomadDriver">
+    <eLiterals name="JAVA"/>
+    <eLiterals name="DOCKER"/>
+    <eLiterals name="QEMU"/>
+    <eLiterals name="PODMAN" literal="PODMAN"/>
+    <eLiterals name="EXEC"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="PortMode">
+    <eLiterals name="HOST"/>
+    <eLiterals name="INGRESS" value="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="ServiceType">
+    <eLiterals name="LOAD_BALANCER"/>
+    <eLiterals name="CLUSTER_IP"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="Protocol">
+    <eLiterals name="TCP"/>
+    <eLiterals name="UDP" value="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DeploymentConstraints">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="labels" eType="#//Properties"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="resources" eType="#//Properties"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="Properties" instanceClassName="java.util.Properties"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Exception" instanceClassName="java.lang.Exception"
+      abstract="true" interface="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ConfigurationException" abstract="true"
+      interface="true" eSuperTypes="#//Exception"/>
+  <eClassifiers xsi:type="ecore:EClass" name="DeploymentException" abstract="true"
+      interface="true" eSuperTypes="#//Exception"/>
+  <eClassifiers xsi:type="ecore:EClass" name="LaunchException" abstract="true" interface="true"
+      eSuperTypes="#//Exception"/>
+  <eClassifiers xsi:type="ecore:EClass" name="StringToStringMap" instanceClassName="java.util.Map$Entry">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="key" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FileDescriptor">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="filePath" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="fileName" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DeploymentFileDescriptor" eSuperTypes="#//FileDescriptor">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="fileContent" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="elementType" eType="#//DeployableComponentType"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="owner" eType="#//ProcessingNode"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ArtifactDescriptor" eSuperTypes="#//FileDescriptor">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="localPath" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="DeployableComponentType">
+    <eLiterals name="PROMETHEUS_SERVICE" literal="PROMETHEUS_SERVICE"/>
+    <eLiterals name="ZOOKEEPER_SERVICE" value="1" literal="ZOOKEEPER_SERVICE"/>
+    <eLiterals name="KAFKA_SERVICE" value="2" literal="KAFKA_SERVICE"/>
+    <eLiterals name="CASSANDRA_SERVICE_SEED" value="3" literal="CASSANDRA_SERVICE_SEED"/>
+    <eLiterals name="CASSANDRA_SERVICE" value="4" literal="CASSANDRA_SERVICE"/>
+    <eLiterals name="STORM_NIMBUS" value="5" literal="STORM_NIMBUS"/>
+    <eLiterals name="STORM_SUPERVISOR" value="6"/>
+    <eLiterals name="STORM_UI" value="7"/>
+    <eLiterals name="SPARK_SERVICE" value="8" literal="SPARK_SERVICE"/>
+    <eLiterals name="KAFKA_WORKLOAD_STREAM" value="9"/>
+    <eLiterals name="KAFKA_FLOW_STREAM" value="10"/>
+    <eLiterals name="AVRO_SERVICE" value="11" literal="AVRO_SERVICE"/>
+    <eLiterals name="NODE_RESOURCE_METER" value="12"/>
+    <eLiterals name="TASK_EXECUTOR" value="13"/>
+    <eLiterals name="TASK_AMOUNT_METER" value="14"/>
+    <eLiterals name="DOCKER_STACK" value="15"/>
+    <eLiterals name="CASSANDRA_SCHEMA" value="16"/>
+    <eLiterals name="WORKFLOW" value="17"/>
+  </eClassifiers>
+</ecore:EPackage>

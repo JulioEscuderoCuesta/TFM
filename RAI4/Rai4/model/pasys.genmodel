@@ -1,0 +1,439 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/Rai4/src" modelPluginID="Rai4" modelName="Pasys"
+    rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" importerID="org.eclipse.emf.importer.ecore"
+    complianceLevel="17.0" copyrightFields="false" operationReflection="true" importOrganizing="true">
+  <foreignModel>pasys.ecore</foreignModel>
+  <genPackages prefix="Pasys" basePackage="es.unican.istr.pasys" disposableProviderFactory="true"
+      ecorePackage="pasys.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="pasys.ecore#//VolumeAccessMode">
+      <genEnumLiterals ecoreEnumLiteral="pasys.ecore#//VolumeAccessMode/READWRITEONCE"/>
+      <genEnumLiterals ecoreEnumLiteral="pasys.ecore#//VolumeAccessMode/READONLYMANY"/>
+      <genEnumLiterals ecoreEnumLiteral="pasys.ecore#//VolumeAccessMode/READWRITEMANY"/>
+      <genEnumLiterals ecoreEnumLiteral="pasys.ecore#//VolumeAccessMode/READWRITEONCEPOD"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="pasys.ecore#//VolumeType">
+      <genEnumLiterals ecoreEnumLiteral="pasys.ecore#//VolumeType/VOLUME"/>
+      <genEnumLiterals ecoreEnumLiteral="pasys.ecore#//VolumeType/BIND"/>
+      <genEnumLiterals ecoreEnumLiteral="pasys.ecore#//VolumeType/TMPFS"/>
+      <genEnumLiterals ecoreEnumLiteral="pasys.ecore#//VolumeType/NPIPE"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="pasys.ecore#//NomadDriver">
+      <genEnumLiterals ecoreEnumLiteral="pasys.ecore#//NomadDriver/JAVA"/>
+      <genEnumLiterals ecoreEnumLiteral="pasys.ecore#//NomadDriver/DOCKER"/>
+      <genEnumLiterals ecoreEnumLiteral="pasys.ecore#//NomadDriver/QEMU"/>
+      <genEnumLiterals ecoreEnumLiteral="pasys.ecore#//NomadDriver/PODMAN"/>
+      <genEnumLiterals ecoreEnumLiteral="pasys.ecore#//NomadDriver/EXEC"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="pasys.ecore#//PortMode">
+      <genEnumLiterals ecoreEnumLiteral="pasys.ecore#//PortMode/HOST"/>
+      <genEnumLiterals ecoreEnumLiteral="pasys.ecore#//PortMode/INGRESS"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="pasys.ecore#//ServiceType">
+      <genEnumLiterals ecoreEnumLiteral="pasys.ecore#//ServiceType/LOAD_BALANCER"/>
+      <genEnumLiterals ecoreEnumLiteral="pasys.ecore#//ServiceType/CLUSTER_IP"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="pasys.ecore#//Protocol">
+      <genEnumLiterals ecoreEnumLiteral="pasys.ecore#//Protocol/TCP"/>
+      <genEnumLiterals ecoreEnumLiteral="pasys.ecore#//Protocol/UDP"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="pasys.ecore#//DeployableComponentType">
+      <genEnumLiterals ecoreEnumLiteral="pasys.ecore#//DeployableComponentType/PROMETHEUS_SERVICE"/>
+      <genEnumLiterals ecoreEnumLiteral="pasys.ecore#//DeployableComponentType/ZOOKEEPER_SERVICE"/>
+      <genEnumLiterals ecoreEnumLiteral="pasys.ecore#//DeployableComponentType/KAFKA_SERVICE"/>
+      <genEnumLiterals ecoreEnumLiteral="pasys.ecore#//DeployableComponentType/CASSANDRA_SERVICE_SEED"/>
+      <genEnumLiterals ecoreEnumLiteral="pasys.ecore#//DeployableComponentType/CASSANDRA_SERVICE"/>
+      <genEnumLiterals ecoreEnumLiteral="pasys.ecore#//DeployableComponentType/STORM_NIMBUS"/>
+      <genEnumLiterals ecoreEnumLiteral="pasys.ecore#//DeployableComponentType/STORM_SUPERVISOR"/>
+      <genEnumLiterals ecoreEnumLiteral="pasys.ecore#//DeployableComponentType/STORM_UI"/>
+      <genEnumLiterals ecoreEnumLiteral="pasys.ecore#//DeployableComponentType/SPARK_SERVICE"/>
+      <genEnumLiterals ecoreEnumLiteral="pasys.ecore#//DeployableComponentType/KAFKA_WORKLOAD_STREAM"/>
+      <genEnumLiterals ecoreEnumLiteral="pasys.ecore#//DeployableComponentType/KAFKA_FLOW_STREAM"/>
+      <genEnumLiterals ecoreEnumLiteral="pasys.ecore#//DeployableComponentType/AVRO_SERVICE"/>
+      <genEnumLiterals ecoreEnumLiteral="pasys.ecore#//DeployableComponentType/NODE_RESOURCE_METER"/>
+      <genEnumLiterals ecoreEnumLiteral="pasys.ecore#//DeployableComponentType/TASK_EXECUTOR"/>
+      <genEnumLiterals ecoreEnumLiteral="pasys.ecore#//DeployableComponentType/TASK_AMOUNT_METER"/>
+      <genEnumLiterals ecoreEnumLiteral="pasys.ecore#//DeployableComponentType/DOCKER_STACK"/>
+      <genEnumLiterals ecoreEnumLiteral="pasys.ecore#//DeployableComponentType/CASSANDRA_SCHEMA"/>
+      <genEnumLiterals ecoreEnumLiteral="pasys.ecore#//DeployableComponentType/WORKFLOW"/>
+    </genEnums>
+    <genDataTypes ecoreDataType="pasys.ecore#//Properties"/>
+    <genClasses ecoreClass="pasys.ecore#//ComputationalSystem">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pasys.ecore#//ComputationalSystem/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pasys.ecore#//ComputationalSystem/date"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pasys.ecore#//ComputationalSystem/authors"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pasys.ecore#//ComputationalSystem/targetPlatformName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pasys.ecore#//ComputationalSystem/doc"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pasys.ecore#//ComputationalSystem/ownedElements"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pasys.ecore#//ComputationalSystem/authenticationFiles"/>
+      <genOperations ecoreOperation="pasys.ecore#//ComputationalSystem/deployAndLaunch"/>
+      <genOperations ecoreOperation="pasys.ecore#//ComputationalSystem/cleanDeployment"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="pasys.ecore#//NamedElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pasys.ecore#//NamedElement/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pasys.ecore#//NamedElement/id"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="pasys.ecore#//SystemElement">
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference pasys.ecore#//SystemElement/owner"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="pasys.ecore#//PlatformResource"/>
+    <genClasses image="false" ecoreClass="pasys.ecore#//ProcessingNode">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pasys.ecore#//ProcessingNode/ip"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pasys.ecore#//ProcessingNode/os"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pasys.ecore#//ProcessingNode/concurrencyLevel"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pasys.ecore#//ProcessingNode/memorySize"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pasys.ecore#//ProcessingNode/speedFactor"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pasys.ecore#//ProcessingNode/configData"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pasys.ecore#//ProcessingNode/userName"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference pasys.ecore#//ProcessingNode/connectedTo"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pasys.ecore#//ProcessingNode/launchingScripts"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pasys.ecore#//ProcessingNode/configFiles"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pasys.ecore#//ProcessingNode/codeFiles"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pasys.ecore#//ProcessingNode/ownedMeters"/>
+      <genOperations ecoreOperation="pasys.ecore#//ProcessingNode/prepareForDeployment"/>
+      <genOperations ecoreOperation="pasys.ecore#//ProcessingNode/deployAndLaunch"/>
+      <genOperations ecoreOperation="pasys.ecore#//ProcessingNode/bringBackConfiguration"/>
+      <genOperations ecoreOperation="pasys.ecore#//ProcessingNode/bringBackDeployment"/>
+      <genOperations ecoreOperation="pasys.ecore#//ProcessingNode/abortLaunching"/>
+      <genOperations ecoreOperation="pasys.ecore#//ProcessingNode/addLaunchingScript">
+        <genParameters ecoreParameter="pasys.ecore#//ProcessingNode/addLaunchingScript/script"/>
+      </genOperations>
+      <genOperations ecoreOperation="pasys.ecore#//ProcessingNode/addConfigFile">
+        <genParameters ecoreParameter="pasys.ecore#//ProcessingNode/addConfigFile/configFile"/>
+      </genOperations>
+    </genClasses>
+    <genClasses ecoreClass="pasys.ecore#//PhysicalProcessingNode"/>
+    <genClasses image="false" ecoreClass="pasys.ecore#//VirtualProcessingNode">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pasys.ecore#//VirtualProcessingNode/externalIP"/>
+    </genClasses>
+    <genClasses ecoreClass="pasys.ecore#//AWSVirtualProcessingNode">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pasys.ecore#//AWSVirtualProcessingNode/vpc"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pasys.ecore#//AWSVirtualProcessingNode/subNet"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pasys.ecore#//AWSVirtualProcessingNode/keyPair"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pasys.ecore#//AWSVirtualProcessingNode/securityGroup"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pasys.ecore#//AWSVirtualProcessingNode/AMI"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pasys.ecore#//AWSVirtualProcessingNode/instanceType"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="pasys.ecore#//ProcessingResourceCluster"/>
+    <genClasses ecoreClass="pasys.ecore#//ProcessingNodeCluster">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference pasys.ecore#//ProcessingNodeCluster/nodes"/>
+    </genClasses>
+    <genClasses ecoreClass="pasys.ecore#//OrchestrationCluster"/>
+    <genClasses ecoreClass="pasys.ecore#//KubernetesCluster">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pasys.ecore#//KubernetesCluster/apiVersion"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pasys.ecore#//KubernetesCluster/kubeConfigPath"/>
+    </genClasses>
+    <genClasses ecoreClass="pasys.ecore#//SwarmCluster">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pasys.ecore#//SwarmCluster/ip"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pasys.ecore#//SwarmCluster/port"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pasys.ecore#//SwarmCluster/user"/>
+    </genClasses>
+    <genClasses ecoreClass="pasys.ecore#//NomadCluster">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pasys.ecore#//NomadCluster/ip"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pasys.ecore#//NomadCluster/port"/>
+    </genClasses>
+    <genClasses ecoreClass="pasys.ecore#//Network">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pasys.ecore#//Network/bandwith"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="pasys.ecore#//PlatformService">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference pasys.ecore#//PlatformService/host"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="pasys.ecore#//SerializationService"/>
+    <genClasses image="false" ecoreClass="pasys.ecore#//DistributionService"/>
+    <genClasses image="false" ecoreClass="pasys.ecore#//CommunicationService"/>
+    <genClasses image="false" ecoreClass="pasys.ecore#//SchedulingService">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference pasys.ecore#//SchedulingService/workflows"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="pasys.ecore#//SecurityService"/>
+    <genClasses image="false" ecoreClass="pasys.ecore#//PersistenceService">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pasys.ecore#//PersistenceService/logging"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pasys.ecore#//PersistenceService/passwd"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pasys.ecore#//PersistenceService/port"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="pasys.ecore#//MonitoringService">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference pasys.ecore#//MonitoringService/monitorizedMeters"/>
+    </genClasses>
+    <genClasses ecoreClass="pasys.ecore#//AVROService"/>
+    <genClasses ecoreClass="pasys.ecore#//ZookeeperService">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pasys.ecore#//ZookeeperService/serverId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pasys.ecore#//ZookeeperService/clientPort"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pasys.ecore#//ZookeeperService/tickTime"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pasys.ecore#//ZookeeperService/leaderServers"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pasys.ecore#//ZookeeperService/peerPort"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pasys.ecore#//ZookeeperService/leaderPort"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pasys.ecore#//ZookeeperService/initLimit"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pasys.ecore#//ZookeeperService/syncLimit"/>
+    </genClasses>
+    <genClasses ecoreClass="pasys.ecore#//KafkaService">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pasys.ecore#//KafkaService/commId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pasys.ecore#//KafkaService/clientPort"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference pasys.ecore#//KafkaService/zookeeperConnect"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pasys.ecore#//KafkaService/zookeeperConnectionTimeout"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pasys.ecore#//KafkaService/listeners"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pasys.ecore#//KafkaService/advertisedListeners"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pasys.ecore#//KafkaService/autoCreateTopicEnable"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pasys.ecore#//KafkaService/deleteTopicEnable"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pasys.ecore#//KafkaService/numPartitions"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pasys.ecore#//KafkaService/numRecoveryThreadsPerDataDir"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pasys.ecore#//KafkaService/logFlushIntervalMessages"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pasys.ecore#//KafkaService/logFlushInterval"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pasys.ecore#//KafkaService/numNetworkThreads"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pasys.ecore#//KafkaService/numIOThreads"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pasys.ecore#//KafkaService/socketSendBufferBytes"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pasys.ecore#//KafkaService/socketReceiveBufferBytes"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pasys.ecore#//KafkaService/socketRequestMaxBytes"/>
+    </genClasses>
+    <genClasses ecoreClass="pasys.ecore#//NodeScheduler"/>
+    <genClasses ecoreClass="pasys.ecore#//SparkService">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference pasys.ecore#//SparkService/load"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pasys.ecore#//SparkService/driverCores"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pasys.ecore#//SparkService/driverMaxResultSize"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pasys.ecore#//SparkService/driverMemory"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pasys.ecore#//SparkService/localDir"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference pasys.ecore#//SparkService/master"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pasys.ecore#//SparkService/windowSize"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pasys.ecore#//SparkService/executorMemory"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pasys.ecore#//SparkService/extraListener"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pasys.ecore#//SparkService/logConf"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pasys.ecore#//SparkService/submitDeployMode"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pasys.ecore#//SparkService/logCallerContext"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pasys.ecore#//SparkService/driverSuperviser"/>
+    </genClasses>
+    <genClasses ecoreClass="pasys.ecore#//StormService">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference pasys.ecore#//StormService/zookeeperConnect"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pasys.ecore#//StormService/localDir"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pasys.ecore#//StormService/nimbus"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pasys.ecore#//StormService/supervisor"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pasys.ecore#//StormService/ui"/>
+    </genClasses>
+    <genClasses ecoreClass="pasys.ecore#//StormUI">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pasys.ecore#//StormUI/uiPort"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference pasys.ecore#//StormUI/owner"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference pasys.ecore#//StormUI/host"/>
+    </genClasses>
+    <genClasses ecoreClass="pasys.ecore#//StormNimbus">
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference pasys.ecore#//StormNimbus/owner"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference pasys.ecore#//StormNimbus/host"/>
+    </genClasses>
+    <genClasses ecoreClass="pasys.ecore#//StormSupervisor">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pasys.ecore#//StormSupervisor/supervisorSlotPorts"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference pasys.ecore#//StormSupervisor/owner"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference pasys.ecore#//StormSupervisor/host"/>
+    </genClasses>
+    <genClasses ecoreClass="pasys.ecore#//Neo4JService"/>
+    <genClasses ecoreClass="pasys.ecore#//MemSQLService"/>
+    <genClasses ecoreClass="pasys.ecore#//CassandraService">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pasys.ecore#//CassandraService/numTokens"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference pasys.ecore#//CassandraService/seeds"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pasys.ecore#//CassandraService/seedProviderClass"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pasys.ecore#//CassandraService/endpointSnitch"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pasys.ecore#//CassandraService/dataFileDir"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pasys.ecore#//CassandraService/storagePort"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pasys.ecore#//CassandraService/autoBootstrap"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pasys.ecore#//CassandraService/cqlSchemas"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pasys.ecore#//CassandraService/dataCenters"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pasys.ecore#//CassandraService/sslStoragePort"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pasys.ecore#//CassandraService/rpcPort"/>
+    </genClasses>
+    <genClasses ecoreClass="pasys.ecore#//DataCenter">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pasys.ecore#//DataCenter/racks"/>
+    </genClasses>
+    <genClasses ecoreClass="pasys.ecore#//Rack">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference pasys.ecore#//Rack/nodes"/>
+    </genClasses>
+    <genClasses ecoreClass="pasys.ecore#//PrometheusService">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pasys.ecore#//PrometheusService/exportersData"/>
+    </genClasses>
+    <genClasses ecoreClass="pasys.ecore#//ExporterData">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pasys.ecore#//ExporterData/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pasys.ecore#//ExporterData/artifact"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="pasys.ecore#//StreamData">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pasys.ecore#//StreamData/retention_ms"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pasys.ecore#//StreamData/retention_bytes"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pasys.ecore#//StreamData/cleanupPolicy"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pasys.ecore#//StreamData/numPartitions"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pasys.ecore#//StreamData/numReplication"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pasys.ecore#//StreamData/ownedMeters"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pasys.ecore#//StreamData/assignedPartition"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pasys.ecore#//StreamData/messageSize"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pasys.ecore#//StreamData/schemaFile"/>
+    </genClasses>
+    <genClasses ecoreClass="pasys.ecore#//StreamDataPartition">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pasys.ecore#//StreamDataPartition/key"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference pasys.ecore#//StreamDataPartition/host"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="pasys.ecore#//WorkflowStreamData">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pasys.ecore#//WorkflowStreamData/isSingleUse"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference pasys.ecore#//WorkflowStreamData/owner"/>
+    </genClasses>
+    <genClasses ecoreClass="pasys.ecore#//FlowStreamData">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference pasys.ecore#//FlowStreamData/source"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference pasys.ecore#//FlowStreamData/predecessor"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference pasys.ecore#//FlowStreamData/holder"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pasys.ecore#//FlowStreamData/isImplemented"/>
+    </genClasses>
+    <genClasses ecoreClass="pasys.ecore#//KafkaFlowStreamData"/>
+    <genClasses ecoreClass="pasys.ecore#//DerivedStreamData">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pasys.ecore#//DerivedStreamData/pattern"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference pasys.ecore#//DerivedStreamData/inputs"/>
+    </genClasses>
+    <genClasses ecoreClass="pasys.ecore#//WorkloadStreamData">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference pasys.ecore#//WorkloadStreamData/holder"/>
+    </genClasses>
+    <genClasses ecoreClass="pasys.ecore#//KafkaWorkloadStreamData"/>
+    <genClasses ecoreClass="pasys.ecore#//Workflow">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pasys.ecore#//Workflow/ownedStreamData"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pasys.ecore#//Workflow/ownedTasks"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference pasys.ecore#//Workflow/rootTask"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pasys.ecore#//Workflow/ownedTaskExecutors"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference pasys.ecore#//Workflow/scheduler"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pasys.ecore#//Workflow/ownedMeters"/>
+    </genClasses>
+    <genClasses ecoreClass="pasys.ecore#//SchedulableSet">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference pasys.ecore#//SchedulableSet/workflows"/>
+    </genClasses>
+    <genClasses ecoreClass="pasys.ecore#//Task">
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference pasys.ecore#//Task/owner"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pasys.ecore#//Task/implementingClassName"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference pasys.ecore#//Task/returnedStreamData"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference pasys.ecore#//Task/triggerStreamData"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference pasys.ecore#//Task/inputStreamData"/>
+    </genClasses>
+    <genClasses ecoreClass="pasys.ecore#//TaskExecutor">
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference pasys.ecore#//TaskExecutor/owner"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference pasys.ecore#//TaskExecutor/executedTasks"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pasys.ecore#//TaskExecutor/ownedMeters"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="pasys.ecore#//Metric"/>
+    <genClasses ecoreClass="pasys.ecore#//ProcessingNodeUtilization">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference pasys.ecore#//ProcessingNodeUtilization/target"/>
+    </genClasses>
+    <genClasses ecoreClass="pasys.ecore#//ProcessingNodeMemory">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference pasys.ecore#//ProcessingNodeMemory/target"/>
+    </genClasses>
+    <genClasses ecoreClass="pasys.ecore#//NetworkUtilization">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference pasys.ecore#//NetworkUtilization/target"/>
+    </genClasses>
+    <genClasses ecoreClass="pasys.ecore#//WorkflowLatency">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference pasys.ecore#//WorkflowLatency/target"/>
+    </genClasses>
+    <genClasses ecoreClass="pasys.ecore#//TaskProcessingAmount">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference pasys.ecore#//TaskProcessingAmount/target"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pasys.ecore#//TaskProcessingAmount/histogramBuckectNum"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pasys.ecore#//TaskProcessingAmount/expectedMaxTPA"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pasys.ecore#//TaskProcessingAmount/expectedMinTPA"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pasys.ecore#//TaskProcessingAmount/linearBucketDistribution"/>
+    </genClasses>
+    <genClasses ecoreClass="pasys.ecore#//StreamDataRate">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference pasys.ecore#//StreamDataRate/target"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="pasys.ecore#//Meter">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference pasys.ecore#//Meter/monitoringServer"/>
+    </genClasses>
+    <genClasses ecoreClass="pasys.ecore#//PrometheusMeter">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pasys.ecore#//PrometheusMeter/monitoringPort"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pasys.ecore#//PrometheusMeter/monitoringTime"/>
+      <genOperations ecoreOperation="pasys.ecore#//PrometheusMeter/getPrometheusServerConfiguration"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="pasys.ecore#//NodeHostedMeter">
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference pasys.ecore#//NodeHostedMeter/owner"/>
+    </genClasses>
+    <genClasses ecoreClass="pasys.ecore#//NodeResourceMeter">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference pasys.ecore#//NodeResourceMeter/uMetric"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference pasys.ecore#//NodeResourceMeter/mMetric"/>
+    </genClasses>
+    <genClasses ecoreClass="pasys.ecore#//CommunicationMeter">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference pasys.ecore#//CommunicationMeter/metric"/>
+    </genClasses>
+    <genClasses ecoreClass="pasys.ecore#//StreamRateMeter">
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference pasys.ecore#//StreamRateMeter/owner"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference pasys.ecore#//StreamRateMeter/metric"/>
+    </genClasses>
+    <genClasses ecoreClass="pasys.ecore#//WorkflowLatencyMeter">
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference pasys.ecore#//WorkflowLatencyMeter/owner"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference pasys.ecore#//WorkflowLatencyMeter/metric"/>
+    </genClasses>
+    <genClasses ecoreClass="pasys.ecore#//TaskProcessingAmountMeter">
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference pasys.ecore#//TaskProcessingAmountMeter/owner"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference pasys.ecore#//TaskProcessingAmountMeter/metric"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="pasys.ecore#//DeployableComponent">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pasys.ecore#//DeployableComponent/deploymentConfig"/>
+      <genOperations ecoreOperation="pasys.ecore#//DeployableComponent/configureDeployment"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="pasys.ecore#//DeploymentConfiguration"/>
+    <genClasses image="false" ecoreClass="pasys.ecore#//PlatformServiceDeploymentConf"/>
+    <genClasses image="false" ecoreClass="pasys.ecore#//OrchestratorDeploymentConf">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pasys.ecore#//OrchestratorDeploymentConf/image"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pasys.ecore#//OrchestratorDeploymentConf/imageTag"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pasys.ecore#//OrchestratorDeploymentConf/imagePullPolicy"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pasys.ecore#//OrchestratorDeploymentConf/replicas"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pasys.ecore#//OrchestratorDeploymentConf/command"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pasys.ecore#//OrchestratorDeploymentConf/args"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pasys.ecore#//OrchestratorDeploymentConf/restartPolicy"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pasys.ecore#//OrchestratorDeploymentConf/env"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pasys.ecore#//OrchestratorDeploymentConf/volumes"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pasys.ecore#//OrchestratorDeploymentConf/ports"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pasys.ecore#//OrchestratorDeploymentConf/constraints"/>
+    </genClasses>
+    <genClasses ecoreClass="pasys.ecore#//NodeDeploymentConf">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pasys.ecore#//NodeDeploymentConf/arguments"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pasys.ecore#//NodeDeploymentConf/artifactLocator"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pasys.ecore#//NodeDeploymentConf/artifactName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pasys.ecore#//NodeDeploymentConf/configFolderPath"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pasys.ecore#//NodeDeploymentConf/scriptFolderPath"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pasys.ecore#//NodeDeploymentConf/dataFolderPath"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pasys.ecore#//NodeDeploymentConf/logFolderPath"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pasys.ecore#//NodeDeploymentConf/codeFolderPath"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pasys.ecore#//NodeDeploymentConf/isRunning"/>
+    </genClasses>
+    <genClasses ecoreClass="pasys.ecore#//KubernetesDeploymentConf">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pasys.ecore#//KubernetesDeploymentConf/externalIP"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pasys.ecore#//KubernetesDeploymentConf/serviceType"/>
+    </genClasses>
+    <genClasses ecoreClass="pasys.ecore#//SwarmDeploymentConf">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pasys.ecore#//SwarmDeploymentConf/network"/>
+    </genClasses>
+    <genClasses ecoreClass="pasys.ecore#//NomadDeploymentConf">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pasys.ecore#//NomadDeploymentConf/region"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pasys.ecore#//NomadDeploymentConf/dataCenter"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pasys.ecore#//NomadDeploymentConf/priority"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pasys.ecore#//NomadDeploymentConf/driver"/>
+    </genClasses>
+    <genClasses ecoreClass="pasys.ecore#//Volume">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pasys.ecore#//Volume/source"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pasys.ecore#//Volume/target"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pasys.ecore#//Volume/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pasys.ecore#//Volume/accessMode"/>
+    </genClasses>
+    <genClasses ecoreClass="pasys.ecore#//Port">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pasys.ecore#//Port/target"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pasys.ecore#//Port/published"/>
+    </genClasses>
+    <genClasses ecoreClass="pasys.ecore#//DeploymentConstraints">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pasys.ecore#//DeploymentConstraints/labels"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pasys.ecore#//DeploymentConstraints/resources"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="pasys.ecore#//Exception"/>
+    <genClasses image="false" ecoreClass="pasys.ecore#//ConfigurationException"/>
+    <genClasses image="false" ecoreClass="pasys.ecore#//DeploymentException"/>
+    <genClasses image="false" ecoreClass="pasys.ecore#//LaunchException"/>
+    <genClasses ecoreClass="pasys.ecore#//StringToStringMap">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pasys.ecore#//StringToStringMap/key"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pasys.ecore#//StringToStringMap/value"/>
+    </genClasses>
+    <genClasses ecoreClass="pasys.ecore#//FileDescriptor">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pasys.ecore#//FileDescriptor/filePath"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pasys.ecore#//FileDescriptor/fileName"/>
+    </genClasses>
+    <genClasses ecoreClass="pasys.ecore#//DeploymentFileDescriptor">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pasys.ecore#//DeploymentFileDescriptor/fileContent"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pasys.ecore#//DeploymentFileDescriptor/elementType"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference pasys.ecore#//DeploymentFileDescriptor/owner"/>
+    </genClasses>
+    <genClasses ecoreClass="pasys.ecore#//ArtifactDescriptor">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pasys.ecore#//ArtifactDescriptor/localPath"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

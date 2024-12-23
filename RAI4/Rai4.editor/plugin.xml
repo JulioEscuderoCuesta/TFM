@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated pasys -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="es.unican.istr.pasys.pasys.presentation.PasysModelWizardID"
+            name="%_UI_PasysModelWizard_label"
+            class="es.unican.istr.pasys.pasys.presentation.PasysModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/PasysModelFile.gif">
+         <description>%_UI_PasysModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated pasys -->
+      <editor
+            id="es.unican.istr.pasys.pasys.presentation.PasysEditorID"
+            name="%_UI_PasysEditor_label"
+            icon="icons/full/obj16/PasysModelFile.gif"
+            extensions="pasys"
+            class="es.unican.istr.pasys.pasys.presentation.PasysEditor"
+            contributorClass="es.unican.istr.pasys.pasys.presentation.PasysActionBarContributor">
+      </editor>
+   </extension>
+
+</plugin>

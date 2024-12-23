@@ -1,0 +1,1030 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.3/notation" xmlns:pasys="www.unican.es/istr/pasys" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
+  <viewpoint:DAnalysis uid="_xgJcQJbCEe-T98T5xGCmTw" selectedViews="_x4MI0JbCEe-T98T5xGCmTw" version="15.2.0.202303281325">
+    <semanticResources>PollutionHybridKubernetes.xmi</semanticResources>
+    <ownedViews xmi:type="viewpoint:DView" uid="_x4MI0JbCEe-T98T5xGCmTw">
+      <viewpoint xmi:type="description:Viewpoint" href="platform:/resource/Rai4.design/description/Rai4.odesign#//@ownedViewpoints[name='Rai4']"/>
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_z_U0cJbCEe-T98T5xGCmTw" name="PollutionHybridKubernetes diagram" repPath="#_z_SYMJbCEe-T98T5xGCmTw" changeId="1730294942621">
+        <description xmi:type="description_1:DiagramDescription" href="platform:/resource/Rai4.design/description/Rai4.odesign#//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Rai4%20diagram']"/>
+        <target xmi:type="pasys:ComputationalSystem" href="PollutionHybridKubernetes.xmi#/"/>
+      </ownedRepresentationDescriptors>
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_71iiwJbCEe-T98T5xGCmTw" name="Zookeeper Service:  PollutionZkpr" repPath="#_71h7sJbCEe-T98T5xGCmTw" changeId="1730294946090">
+        <description xmi:type="description_1:DiagramDescription" href="platform:/resource/Rai4.design/description/Rai4.odesign#//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Zookeeper%20Service%20Diagram']"/>
+        <target xmi:type="pasys:ZookeeperService" href="PollutionHybridKubernetes.xmi#//@ownedElements.7"/>
+      </ownedRepresentationDescriptors>
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_8nouEpbCEe-T98T5xGCmTw" name="Storm Service:PollutionStorm" repPath="#_8nouEJbCEe-T98T5xGCmTw" changeId="1730294951708">
+        <description xmi:type="description_1:DiagramDescription" href="platform:/resource/Rai4.design/description/Rai4.odesign#//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Storm%20Service%20Diagram']"/>
+        <target xmi:type="pasys:StormService" href="PollutionHybridKubernetes.xmi#//@ownedElements.9"/>
+      </ownedRepresentationDescriptors>
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_9SVQ4ZbCEe-T98T5xGCmTw" name="Cassandra Service: PollutionCassandra" repPath="#_9SUp0JbCEe-T98T5xGCmTw" changeId="1730294956501">
+        <description xmi:type="description_1:DiagramDescription" href="platform:/resource/Rai4.design/description/Rai4.odesign#//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Cassandra%20Service%20Diagram']"/>
+        <target xmi:type="pasys:CassandraService" href="PollutionHybridKubernetes.xmi#//@ownedElements.12"/>
+      </ownedRepresentationDescriptors>
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_9-AEEJbCEe-T98T5xGCmTw" name="Stream Data: Pollution" repPath="#_99_dAJbCEe-T98T5xGCmTw" changeId="1730294960314">
+        <description xmi:type="description_1:DiagramDescription" href="platform:/resource/Rai4.design/description/Rai4.odesign#//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Stream%20Data%20Diagram']"/>
+        <target xmi:type="pasys:KafkaWorkloadStreamData" href="PollutionHybridKubernetes.xmi#//@ownedElements.10"/>
+      </ownedRepresentationDescriptors>
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_-1P1IJbCEe-T98T5xGCmTw" name="Kafka Service: PollutionKafka" repPath="#_-1POEJbCEe-T98T5xGCmTw" changeId="1730294966438">
+        <description xmi:type="description_1:DiagramDescription" href="platform:/resource/Rai4.design/description/Rai4.odesign#//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Kafka%20Service%20Diagram']"/>
+        <target xmi:type="pasys:KafkaService" href="PollutionHybridKubernetes.xmi#1"/>
+      </ownedRepresentationDescriptors>
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_j-7dgJbDEe-T98T5xGCmTw" name="Workflow of PollutionProcess" repPath="#_j-62cJbDEe-T98T5xGCmTw" changeId="1730295215527">
+        <description xmi:type="description_1:DiagramDescription" href="platform:/resource/Rai4.design/description/Rai4.odesign#//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Workflow%20Diagram']"/>
+        <target xmi:type="pasys:Workflow" href="PollutionHybridKubernetes.xmi#//@ownedElements.11"/>
+      </ownedRepresentationDescriptors>
+    </ownedViews>
+  </viewpoint:DAnalysis>
+  <diagram:DSemanticDiagram uid="_z_SYMJbCEe-T98T5xGCmTw">
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_z_VbgJbCEe-T98T5xGCmTw" source="GMF_DIAGRAMS">
+      <data xmi:type="notation:Diagram" xmi:id="_z_VbgZbCEe-T98T5xGCmTw" type="Sirius" element="_z_SYMJbCEe-T98T5xGCmTw" measurementUnit="Pixel">
+        <children xmi:type="notation:Node" xmi:id="_z_qysJbCEe-T98T5xGCmTw" type="2001" element="_z_X3wJbCEe-T98T5xGCmTw">
+          <children xmi:type="notation:Node" xmi:id="_z_qys5bCEe-T98T5xGCmTw" type="5002">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_z_qytJbCEe-T98T5xGCmTw" y="5"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_z_t2B5bCEe-T98T5xGCmTw" type="3003" element="_z_X3wZbCEe-T98T5xGCmTw">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_z_t2CJbCEe-T98T5xGCmTw" fontName="Segoe UI"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_z_t2CZbCEe-T98T5xGCmTw"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_z_qysZbCEe-T98T5xGCmTw" fontName="Segoe UI" fontHeight="10" bold="true"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_z_qyspbCEe-T98T5xGCmTw" x="1638" y="318" width="240" height="100"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_z_rZwJbCEe-T98T5xGCmTw" type="2001" element="_z_Ye0ZbCEe-T98T5xGCmTw">
+          <children xmi:type="notation:Node" xmi:id="_z_rZw5bCEe-T98T5xGCmTw" type="5002">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_z_rZxJbCEe-T98T5xGCmTw" y="5"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_z_t2CpbCEe-T98T5xGCmTw" type="3003" element="_z_Ye0pbCEe-T98T5xGCmTw">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_z_t2C5bCEe-T98T5xGCmTw" fontName="Segoe UI"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_z_t2DJbCEe-T98T5xGCmTw"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_z_rZwZbCEe-T98T5xGCmTw" fontName="Segoe UI" fontHeight="10" bold="true"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_z_rZwpbCEe-T98T5xGCmTw" x="-54" y="570" width="240" height="100"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_z_rZxZbCEe-T98T5xGCmTw" type="2001" element="_z_Ye1JbCEe-T98T5xGCmTw">
+          <children xmi:type="notation:Node" xmi:id="_z_rZyJbCEe-T98T5xGCmTw" type="5002">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_z_rZyZbCEe-T98T5xGCmTw" y="5"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_z_udEJbCEe-T98T5xGCmTw" type="3003" element="_z_ZF4JbCEe-T98T5xGCmTw">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_z_udEZbCEe-T98T5xGCmTw" fontName="Segoe UI"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_z_udEpbCEe-T98T5xGCmTw"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_z_rZxpbCEe-T98T5xGCmTw" fontName="Segoe UI" fontHeight="10" bold="true"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_z_rZx5bCEe-T98T5xGCmTw" x="-48" y="816" width="240" height="100"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_z_rZypbCEe-T98T5xGCmTw" type="2001" element="_z_ZF4pbCEe-T98T5xGCmTw">
+          <children xmi:type="notation:Node" xmi:id="_z_sA0JbCEe-T98T5xGCmTw" type="5002">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_z_sA0ZbCEe-T98T5xGCmTw" y="5"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_z_udE5bCEe-T98T5xGCmTw" type="3003" element="_z_ZF45bCEe-T98T5xGCmTw">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_z_udFJbCEe-T98T5xGCmTw" fontName="Segoe UI"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_z_udFZbCEe-T98T5xGCmTw"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_z_rZy5bCEe-T98T5xGCmTw" fontName="Segoe UI" fontHeight="10" bold="true"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_z_rZzJbCEe-T98T5xGCmTw" x="324" y="768" width="240" height="100"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_z_sA0pbCEe-T98T5xGCmTw" type="2001" element="_z_Zs8JbCEe-T98T5xGCmTw">
+          <children xmi:type="notation:Node" xmi:id="_z_sA1ZbCEe-T98T5xGCmTw" type="5002">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_z_sA1pbCEe-T98T5xGCmTw" y="5"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_z_udFpbCEe-T98T5xGCmTw" type="3003" element="_z_Zs8ZbCEe-T98T5xGCmTw">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_z_udF5bCEe-T98T5xGCmTw" fontName="Segoe UI"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_z_udGJbCEe-T98T5xGCmTw"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_z_sA05bCEe-T98T5xGCmTw" fontName="Segoe UI" fontHeight="10" bold="true"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_z_sA1JbCEe-T98T5xGCmTw" x="618" width="240" height="100"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_z_sA15bCEe-T98T5xGCmTw" type="2001" element="_z_Zs85bCEe-T98T5xGCmTw">
+          <children xmi:type="notation:Node" xmi:id="_z_sA2pbCEe-T98T5xGCmTw" type="5002">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_z_sA25bCEe-T98T5xGCmTw" y="5"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_z_udGZbCEe-T98T5xGCmTw" type="3003" element="_z_Zs9JbCEe-T98T5xGCmTw">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_z_udGpbCEe-T98T5xGCmTw" fontName="Segoe UI"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_z_udG5bCEe-T98T5xGCmTw"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_z_sA2JbCEe-T98T5xGCmTw" fontName="Segoe UI" fontHeight="10" bold="true"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_z_sA2ZbCEe-T98T5xGCmTw" x="1638" width="240" height="100"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_z_sn4JbCEe-T98T5xGCmTw" type="2001" element="_z_aUAZbCEe-T98T5xGCmTw">
+          <children xmi:type="notation:Node" xmi:id="_z_sn45bCEe-T98T5xGCmTw" type="5002">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_z_sn5JbCEe-T98T5xGCmTw" y="5"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_z_udHJbCEe-T98T5xGCmTw" type="3003" element="_z_aUApbCEe-T98T5xGCmTw">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_z_udHZbCEe-T98T5xGCmTw" fontName="Segoe UI"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_z_udHpbCEe-T98T5xGCmTw"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_z_sn4ZbCEe-T98T5xGCmTw" fontName="Segoe UI" fontHeight="10" bold="true"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_z_sn4pbCEe-T98T5xGCmTw" x="1068" width="240" height="100"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_z_sn5ZbCEe-T98T5xGCmTw" type="2001" element="_z_aUBJbCEe-T98T5xGCmTw">
+          <children xmi:type="notation:Node" xmi:id="_z_sn6JbCEe-T98T5xGCmTw" type="5002">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_z_sn6ZbCEe-T98T5xGCmTw" y="5"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_z_vEIJbCEe-T98T5xGCmTw" type="3003" element="_z_aUBZbCEe-T98T5xGCmTw">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_z_vEIZbCEe-T98T5xGCmTw" fontName="Segoe UI"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_z_vEIpbCEe-T98T5xGCmTw"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_z_sn5pbCEe-T98T5xGCmTw" fontName="Segoe UI" fontHeight="10" bold="true"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_z_sn55bCEe-T98T5xGCmTw" x="468" y="162" width="240" height="100"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_z_sn6pbCEe-T98T5xGCmTw" type="2001" element="_z_aUB5bCEe-T98T5xGCmTw">
+          <children xmi:type="notation:Node" xmi:id="_z_sn7ZbCEe-T98T5xGCmTw" type="5002">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_z_sn7pbCEe-T98T5xGCmTw" y="5"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_z_vrMJbCEe-T98T5xGCmTw" type="3003" element="_z_aUCJbCEe-T98T5xGCmTw">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_z_vrMZbCEe-T98T5xGCmTw" fontName="Segoe UI"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_z_vrMpbCEe-T98T5xGCmTw"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_z_sn65bCEe-T98T5xGCmTw" fontName="Segoe UI" fontHeight="10" bold="true"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_z_sn7JbCEe-T98T5xGCmTw" x="1368" y="162" width="240" height="100"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_z_sn75bCEe-T98T5xGCmTw" type="2001" element="_z_a7EJbCEe-T98T5xGCmTw">
+          <children xmi:type="notation:Node" xmi:id="_z_tO8JbCEe-T98T5xGCmTw" type="5002">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_z_tO8ZbCEe-T98T5xGCmTw" y="5"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_z_vrM5bCEe-T98T5xGCmTw" type="3003" element="_z_a7EZbCEe-T98T5xGCmTw">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_z_vrNJbCEe-T98T5xGCmTw" fontName="Segoe UI"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_z_vrNZbCEe-T98T5xGCmTw"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_z_sn8JbCEe-T98T5xGCmTw" fontName="Segoe UI" fontHeight="10" bold="true"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_z_sn8ZbCEe-T98T5xGCmTw" x="1638" y="162" width="240" height="100"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_z_tO8pbCEe-T98T5xGCmTw" type="2001" element="_z_a7E5bCEe-T98T5xGCmTw">
+          <children xmi:type="notation:Node" xmi:id="_z_tO9ZbCEe-T98T5xGCmTw" type="5002">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_z_tO9pbCEe-T98T5xGCmTw" y="5"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_z_vrNpbCEe-T98T5xGCmTw" type="3003" element="_z_a7FJbCEe-T98T5xGCmTw">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_z_vrN5bCEe-T98T5xGCmTw" fontName="Segoe UI"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_z_vrOJbCEe-T98T5xGCmTw"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_z_tO85bCEe-T98T5xGCmTw" fontName="Segoe UI" fontHeight="10" bold="true"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_z_tO9JbCEe-T98T5xGCmTw" x="768" y="162" width="240" height="100"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_z_tO95bCEe-T98T5xGCmTw" type="2001" element="_z_a7FpbCEe-T98T5xGCmTw">
+          <children xmi:type="notation:Node" xmi:id="_z_tO-pbCEe-T98T5xGCmTw" type="5002">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_z_tO-5bCEe-T98T5xGCmTw" y="5"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_z_wSQJbCEe-T98T5xGCmTw" type="3003" element="_z_a7F5bCEe-T98T5xGCmTw">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_z_wSQZbCEe-T98T5xGCmTw" fontName="Segoe UI"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_z_wSQpbCEe-T98T5xGCmTw"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_z_tO-JbCEe-T98T5xGCmTw" fontName="Segoe UI" fontHeight="10" bold="true"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_z_tO-ZbCEe-T98T5xGCmTw" x="912" y="498" width="240" height="100"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_z_tO_JbCEe-T98T5xGCmTw" type="2001" element="_z_biIZbCEe-T98T5xGCmTw">
+          <children xmi:type="notation:Node" xmi:id="_z_t2AJbCEe-T98T5xGCmTw" type="5002">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_z_t2AZbCEe-T98T5xGCmTw" y="5"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_z_wSQ5bCEe-T98T5xGCmTw" type="3003" element="_z_biIpbCEe-T98T5xGCmTw">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_z_wSRJbCEe-T98T5xGCmTw" fontName="Segoe UI"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_z_wSRZbCEe-T98T5xGCmTw"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_z_tO_ZbCEe-T98T5xGCmTw" fontName="Segoe UI" fontHeight="10" bold="true"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_z_tO_pbCEe-T98T5xGCmTw" x="1068" y="162" width="240" height="100"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_z_t2ApbCEe-T98T5xGCmTw" type="2001" element="_z_biJJbCEe-T98T5xGCmTw">
+          <children xmi:type="notation:Node" xmi:id="_z_t2BZbCEe-T98T5xGCmTw" type="5002">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_z_t2BpbCEe-T98T5xGCmTw" y="5"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_z_w5UJbCEe-T98T5xGCmTw" type="3003" element="_z_biJZbCEe-T98T5xGCmTw">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_z_w5UZbCEe-T98T5xGCmTw" fontName="Segoe UI"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_z_w5UpbCEe-T98T5xGCmTw"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_z_t2A5bCEe-T98T5xGCmTw" fontName="Segoe UI" fontHeight="10" bold="true"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_z_t2BJbCEe-T98T5xGCmTw" x="342" y="444" width="240" height="100"/>
+        </children>
+        <styles xmi:type="notation:DiagramStyle" xmi:id="_z_VbgpbCEe-T98T5xGCmTw"/>
+        <edges xmi:type="notation:Edge" xmi:id="_z_w5U5bCEe-T98T5xGCmTw" type="4001" element="_z_jd8JbCEe-T98T5xGCmTw" source="_z_qysJbCEe-T98T5xGCmTw" target="_z_sn75bCEe-T98T5xGCmTw">
+          <children xmi:type="notation:Node" xmi:id="_z_xgYJbCEe-T98T5xGCmTw" type="6001">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_z_xgYZbCEe-T98T5xGCmTw" y="-10"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_z_xgYpbCEe-T98T5xGCmTw" type="6002">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_z_xgY5bCEe-T98T5xGCmTw" y="10"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_z_xgZJbCEe-T98T5xGCmTw" type="6003">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_z_xgZZbCEe-T98T5xGCmTw" y="10"/>
+          </children>
+          <styles xmi:type="notation:ConnectorStyle" xmi:id="_z_w5VJbCEe-T98T5xGCmTw"/>
+          <styles xmi:type="notation:FontStyle" xmi:id="_z_w5VZbCEe-T98T5xGCmTw" fontName="Segoe UI" fontHeight="12"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_z_w5VpbCEe-T98T5xGCmTw" points="[0, 0, 0, 60]$[0, -60, 0, 0]"/>
+          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_z_xgZpbCEe-T98T5xGCmTw" id="(0.5,0.0)"/>
+          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_z_xgZ5bCEe-T98T5xGCmTw" id="(0.5,1.0)"/>
+        </edges>
+        <edges xmi:type="notation:Edge" xmi:id="_z_yHcJbCEe-T98T5xGCmTw" type="4001" element="_z_ksEJbCEe-T98T5xGCmTw" source="_z_qysJbCEe-T98T5xGCmTw" target="_z_sn75bCEe-T98T5xGCmTw">
+          <children xmi:type="notation:Node" xmi:id="_z_yHdJbCEe-T98T5xGCmTw" type="6001">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_z_yHdZbCEe-T98T5xGCmTw" y="-10"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_z_yHdpbCEe-T98T5xGCmTw" type="6002">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_z_yHd5bCEe-T98T5xGCmTw" y="10"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_z_yHeJbCEe-T98T5xGCmTw" type="6003">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_z_yHeZbCEe-T98T5xGCmTw" y="10"/>
+          </children>
+          <styles xmi:type="notation:ConnectorStyle" xmi:id="_z_yHcZbCEe-T98T5xGCmTw"/>
+          <styles xmi:type="notation:FontStyle" xmi:id="_z_yHcpbCEe-T98T5xGCmTw" fontName="Segoe UI" fontHeight="12"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_z_yHc5bCEe-T98T5xGCmTw" points="[0, 0, 0, 60]$[0, -60, 0, 0]"/>
+          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_z_yHepbCEe-T98T5xGCmTw" id="(0.5,0.0)"/>
+          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_z_yHe5bCEe-T98T5xGCmTw" id="(0.5,1.0)"/>
+        </edges>
+        <edges xmi:type="notation:Edge" xmi:id="_z_yugJbCEe-T98T5xGCmTw" type="4001" element="_z_ksFZbCEe-T98T5xGCmTw" source="_z_rZwJbCEe-T98T5xGCmTw" target="_z_rZypbCEe-T98T5xGCmTw">
+          <children xmi:type="notation:Node" xmi:id="_z_yuhJbCEe-T98T5xGCmTw" type="6001">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_z_yuhZbCEe-T98T5xGCmTw" x="-6" y="-8"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_z_yuhpbCEe-T98T5xGCmTw" type="6002">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_z_yuh5bCEe-T98T5xGCmTw" x="11" y="8"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_z_yuiJbCEe-T98T5xGCmTw" type="6003">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_z_yuiZbCEe-T98T5xGCmTw" x="-190" y="-4"/>
+          </children>
+          <styles xmi:type="notation:ConnectorStyle" xmi:id="_z_yugZbCEe-T98T5xGCmTw"/>
+          <styles xmi:type="notation:FontStyle" xmi:id="_z_yugpbCEe-T98T5xGCmTw" fontName="Segoe UI" fontHeight="12"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_z_yug5bCEe-T98T5xGCmTw" points="[120, 94, -258, -204]$[378, 298, 0, 0]"/>
+          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_z_zVkJbCEe-T98T5xGCmTw" id="(0.5,0.0)"/>
+          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_z_zVkZbCEe-T98T5xGCmTw" id="(0.5,1.0)"/>
+        </edges>
+        <edges xmi:type="notation:Edge" xmi:id="_z_zVkpbCEe-T98T5xGCmTw" type="4001" element="_z_lTIpbCEe-T98T5xGCmTw" source="_z_tO95bCEe-T98T5xGCmTw" target="_z_tO8pbCEe-T98T5xGCmTw">
+          <children xmi:type="notation:Node" xmi:id="_z_zVlpbCEe-T98T5xGCmTw" type="6001">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_z_zVl5bCEe-T98T5xGCmTw" x="9" y="-5"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_z_zVmJbCEe-T98T5xGCmTw" type="6002">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_z_zVmZbCEe-T98T5xGCmTw" y="4"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_z_zVmpbCEe-T98T5xGCmTw" type="6003">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_z_zVm5bCEe-T98T5xGCmTw" x="2" y="3"/>
+          </children>
+          <styles xmi:type="notation:ConnectorStyle" xmi:id="_z_zVk5bCEe-T98T5xGCmTw"/>
+          <styles xmi:type="notation:FontStyle" xmi:id="_z_zVlJbCEe-T98T5xGCmTw" fontName="Segoe UI" fontHeight="12"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_z_zVlZbCEe-T98T5xGCmTw" points="[0, 0, 144, 236]$[-144, -236, 0, 0]"/>
+          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_z_zVnJbCEe-T98T5xGCmTw" id="(0.5,0.0)"/>
+          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_z_zVnZbCEe-T98T5xGCmTw" id="(0.5,1.0)"/>
+        </edges>
+        <edges xmi:type="notation:Edge" xmi:id="_z_zVnpbCEe-T98T5xGCmTw" type="4001" element="_z_lTJ5bCEe-T98T5xGCmTw" source="_z_t2ApbCEe-T98T5xGCmTw" target="_z_rZypbCEe-T98T5xGCmTw">
+          <children xmi:type="notation:Node" xmi:id="_z_z8oJbCEe-T98T5xGCmTw" type="6001">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_z_z8oZbCEe-T98T5xGCmTw" x="-6" y="3"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_z_z8opbCEe-T98T5xGCmTw" type="6002">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_z_z8o5bCEe-T98T5xGCmTw" x="19" y="-5"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_z_z8pJbCEe-T98T5xGCmTw" type="6003">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_z_z8pZbCEe-T98T5xGCmTw" x="37" y="-1"/>
+          </children>
+          <styles xmi:type="notation:ConnectorStyle" xmi:id="_z_zVn5bCEe-T98T5xGCmTw"/>
+          <styles xmi:type="notation:FontStyle" xmi:id="_z_zVoJbCEe-T98T5xGCmTw" fontName="Segoe UI" fontHeight="12"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_z_zVoZbCEe-T98T5xGCmTw" points="[-5, 100, 13, -324]$[-18, 424, 0, 0]"/>
+          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_z_z8ppbCEe-T98T5xGCmTw" id="(0.5,0.0)"/>
+          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_z_z8p5bCEe-T98T5xGCmTw" id="(0.5,1.0)"/>
+        </edges>
+        <edges xmi:type="notation:Edge" xmi:id="_z_z8qJbCEe-T98T5xGCmTw" type="4001" element="_z_nIUJbCEe-T98T5xGCmTw" source="_z_sn5ZbCEe-T98T5xGCmTw" target="_z_sA0pbCEe-T98T5xGCmTw">
+          <children xmi:type="notation:Node" xmi:id="_z_z8rJbCEe-T98T5xGCmTw" type="6001">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_z_z8rZbCEe-T98T5xGCmTw" y="-10"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_z_z8rpbCEe-T98T5xGCmTw" type="6002">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_z_z8r5bCEe-T98T5xGCmTw" y="10"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_z_0jsJbCEe-T98T5xGCmTw" type="6003">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_z_0jsZbCEe-T98T5xGCmTw" y="10"/>
+          </children>
+          <styles xmi:type="notation:ConnectorStyle" xmi:id="_z_z8qZbCEe-T98T5xGCmTw"/>
+          <styles xmi:type="notation:FontStyle" xmi:id="_z_z8qpbCEe-T98T5xGCmTw" fontName="Segoe UI" fontHeight="12"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_z_z8q5bCEe-T98T5xGCmTw" points="[0, 0, -150, 60]$[150, -60, 0, 0]"/>
+          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_z_0jspbCEe-T98T5xGCmTw" id="(0.5,0.0)"/>
+          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_z_0js5bCEe-T98T5xGCmTw" id="(0.5,1.0)"/>
+        </edges>
+        <edges xmi:type="notation:Edge" xmi:id="_z_0jtJbCEe-T98T5xGCmTw" type="4001" element="_z_nIVZbCEe-T98T5xGCmTw" source="_z_sn6pbCEe-T98T5xGCmTw" target="_z_sn4JbCEe-T98T5xGCmTw">
+          <children xmi:type="notation:Node" xmi:id="_z_0juJbCEe-T98T5xGCmTw" type="6001">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_z_0juZbCEe-T98T5xGCmTw" y="-10"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_z_0jupbCEe-T98T5xGCmTw" type="6002">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_z_0ju5bCEe-T98T5xGCmTw" y="10"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_z_1KwJbCEe-T98T5xGCmTw" type="6003">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_z_1KwZbCEe-T98T5xGCmTw" y="10"/>
+          </children>
+          <styles xmi:type="notation:ConnectorStyle" xmi:id="_z_0jtZbCEe-T98T5xGCmTw"/>
+          <styles xmi:type="notation:FontStyle" xmi:id="_z_0jtpbCEe-T98T5xGCmTw" fontName="Segoe UI" fontHeight="12"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_z_0jt5bCEe-T98T5xGCmTw" points="[0, 0, 300, 60]$[-300, -60, 0, 0]"/>
+          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_z_1KwpbCEe-T98T5xGCmTw" id="(0.5,0.0)"/>
+          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_z_1Kw5bCEe-T98T5xGCmTw" id="(0.5,1.0)"/>
+        </edges>
+        <edges xmi:type="notation:Edge" xmi:id="_z_1KxJbCEe-T98T5xGCmTw" type="4001" element="_z_nvYpbCEe-T98T5xGCmTw" source="_z_sn75bCEe-T98T5xGCmTw" target="_z_sA15bCEe-T98T5xGCmTw">
+          <children xmi:type="notation:Node" xmi:id="_z_1KyJbCEe-T98T5xGCmTw" type="6001">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_z_1KyZbCEe-T98T5xGCmTw" y="-10"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_z_1KypbCEe-T98T5xGCmTw" type="6002">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_z_1Ky5bCEe-T98T5xGCmTw" y="10"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_z_1KzJbCEe-T98T5xGCmTw" type="6003">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_z_1KzZbCEe-T98T5xGCmTw" y="10"/>
+          </children>
+          <styles xmi:type="notation:ConnectorStyle" xmi:id="_z_1KxZbCEe-T98T5xGCmTw"/>
+          <styles xmi:type="notation:FontStyle" xmi:id="_z_1KxpbCEe-T98T5xGCmTw" fontName="Segoe UI" fontHeight="12"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_z_1Kx5bCEe-T98T5xGCmTw" points="[0, 0, 0, 60]$[0, -60, 0, 0]"/>
+          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_z_1x0JbCEe-T98T5xGCmTw" id="(0.5,0.0)"/>
+          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_z_1x0ZbCEe-T98T5xGCmTw" id="(0.5,1.0)"/>
+        </edges>
+        <edges xmi:type="notation:Edge" xmi:id="_z_1x0pbCEe-T98T5xGCmTw" type="4001" element="_z_nvZ5bCEe-T98T5xGCmTw" source="_z_tO8pbCEe-T98T5xGCmTw" target="_z_sA0pbCEe-T98T5xGCmTw">
+          <children xmi:type="notation:Node" xmi:id="_z_1x1pbCEe-T98T5xGCmTw" type="6001">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_z_1x15bCEe-T98T5xGCmTw" y="-10"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_z_1x2JbCEe-T98T5xGCmTw" type="6002">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_z_1x2ZbCEe-T98T5xGCmTw" y="10"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_z_1x2pbCEe-T98T5xGCmTw" type="6003">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_z_1x25bCEe-T98T5xGCmTw" y="10"/>
+          </children>
+          <styles xmi:type="notation:ConnectorStyle" xmi:id="_z_1x05bCEe-T98T5xGCmTw"/>
+          <styles xmi:type="notation:FontStyle" xmi:id="_z_1x1JbCEe-T98T5xGCmTw" fontName="Segoe UI" fontHeight="12"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_z_1x1ZbCEe-T98T5xGCmTw" points="[0, 0, 150, 60]$[-150, -60, 0, 0]"/>
+          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_z_2Y4JbCEe-T98T5xGCmTw" id="(0.5,0.0)"/>
+          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_z_2Y4ZbCEe-T98T5xGCmTw" id="(0.5,1.0)"/>
+        </edges>
+        <edges xmi:type="notation:Edge" xmi:id="_z_2Y4pbCEe-T98T5xGCmTw" type="4001" element="_z_nvbJbCEe-T98T5xGCmTw" source="_z_tO8pbCEe-T98T5xGCmTw" target="_z_sn4JbCEe-T98T5xGCmTw">
+          <children xmi:type="notation:Node" xmi:id="_z_2Y5pbCEe-T98T5xGCmTw" type="6001">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_z_2Y55bCEe-T98T5xGCmTw" y="-10"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_z_2Y6JbCEe-T98T5xGCmTw" type="6002">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_z_2Y6ZbCEe-T98T5xGCmTw" y="10"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_z_2Y6pbCEe-T98T5xGCmTw" type="6003">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_z_2Y65bCEe-T98T5xGCmTw" y="10"/>
+          </children>
+          <styles xmi:type="notation:ConnectorStyle" xmi:id="_z_2Y45bCEe-T98T5xGCmTw"/>
+          <styles xmi:type="notation:FontStyle" xmi:id="_z_2Y5JbCEe-T98T5xGCmTw" fontName="Segoe UI" fontHeight="12"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_z_2Y5ZbCEe-T98T5xGCmTw" points="[0, 0, -300, 60]$[300, -60, 0, 0]"/>
+          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_z_2Y7JbCEe-T98T5xGCmTw" id="(0.5,0.0)"/>
+          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_z_2Y7ZbCEe-T98T5xGCmTw" id="(0.5,1.0)"/>
+        </edges>
+        <edges xmi:type="notation:Edge" xmi:id="_z_2Y7pbCEe-T98T5xGCmTw" type="4001" element="_z_oWcpbCEe-T98T5xGCmTw" source="_z_tO95bCEe-T98T5xGCmTw" target="_z_tO_JbCEe-T98T5xGCmTw">
+          <children xmi:type="notation:Node" xmi:id="_z_2_85bCEe-T98T5xGCmTw" type="6001">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_z_2_9JbCEe-T98T5xGCmTw" x="10" y="-12"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_z_2_9ZbCEe-T98T5xGCmTw" type="6002">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_z_2_9pbCEe-T98T5xGCmTw" x="-6" y="3"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_z_2_95bCEe-T98T5xGCmTw" type="6003">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_z_2_-JbCEe-T98T5xGCmTw" x="-8" y="3"/>
+          </children>
+          <styles xmi:type="notation:ConnectorStyle" xmi:id="_z_2_8JbCEe-T98T5xGCmTw"/>
+          <styles xmi:type="notation:FontStyle" xmi:id="_z_2_8ZbCEe-T98T5xGCmTw" fontName="Segoe UI" fontHeight="12"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_z_2_8pbCEe-T98T5xGCmTw" points="[0, 0, -156, 236]$[156, -236, 0, 0]"/>
+          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_z_2_-ZbCEe-T98T5xGCmTw" id="(0.5,0.0)"/>
+          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_z_2_-pbCEe-T98T5xGCmTw" id="(0.5,1.0)"/>
+        </edges>
+        <edges xmi:type="notation:Edge" xmi:id="_z_2_-5bCEe-T98T5xGCmTw" type="4001" element="_z_o9gJbCEe-T98T5xGCmTw" source="_z_rZwJbCEe-T98T5xGCmTw" target="_z_t2ApbCEe-T98T5xGCmTw">
+          <children xmi:type="notation:Node" xmi:id="_z_2__5bCEe-T98T5xGCmTw" type="6001">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_z_3AAJbCEe-T98T5xGCmTw" x="-55" y="-7"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_z_3AAZbCEe-T98T5xGCmTw" type="6002">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_z_3AApbCEe-T98T5xGCmTw" x="4" y="3"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_z_3AA5bCEe-T98T5xGCmTw" type="6003">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_z_3ABJbCEe-T98T5xGCmTw" x="22" y="2"/>
+          </children>
+          <styles xmi:type="notation:ConnectorStyle" xmi:id="_z_2__JbCEe-T98T5xGCmTw"/>
+          <styles xmi:type="notation:FontStyle" xmi:id="_z_2__ZbCEe-T98T5xGCmTw" fontName="Segoe UI" fontHeight="12"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_z_2__pbCEe-T98T5xGCmTw" points="[0, 0, -396, 26]$[396, -26, 0, 0]"/>
+          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_z_3ABZbCEe-T98T5xGCmTw" id="(0.5,0.0)"/>
+          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_z_3ABpbCEe-T98T5xGCmTw" id="(0.5,1.0)"/>
+        </edges>
+        <edges xmi:type="notation:Edge" xmi:id="_z_3nAJbCEe-T98T5xGCmTw" type="4001" element="_z_o9hZbCEe-T98T5xGCmTw" source="_z_tO95bCEe-T98T5xGCmTw" target="_z_t2ApbCEe-T98T5xGCmTw">
+          <children xmi:type="notation:Node" xmi:id="_z_3nBJbCEe-T98T5xGCmTw" type="6001">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_z_3nBZbCEe-T98T5xGCmTw" x="82" y="-5"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_z_3nBpbCEe-T98T5xGCmTw" type="6002">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_z_3nB5bCEe-T98T5xGCmTw" x="-36" y="11"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_z_3nCJbCEe-T98T5xGCmTw" type="6003">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_z_3nCZbCEe-T98T5xGCmTw" x="-75" y="13"/>
+          </children>
+          <styles xmi:type="notation:ConnectorStyle" xmi:id="_z_3nAZbCEe-T98T5xGCmTw"/>
+          <styles xmi:type="notation:FontStyle" xmi:id="_z_3nApbCEe-T98T5xGCmTw" fontName="Segoe UI" fontHeight="12"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_z_3nA5bCEe-T98T5xGCmTw" points="[-120, 9, 450, -37]$[-570, 46, 0, 0]"/>
+          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_z_3nCpbCEe-T98T5xGCmTw" id="(0.5,0.0)"/>
+          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_z_3nC5bCEe-T98T5xGCmTw" id="(0.5,1.0)"/>
+        </edges>
+        <edges xmi:type="notation:Edge" xmi:id="_z_3nDJbCEe-T98T5xGCmTw" type="4001" element="_z_pkkJbCEe-T98T5xGCmTw" source="_z_tO_JbCEe-T98T5xGCmTw" target="_z_tO95bCEe-T98T5xGCmTw">
+          <children xmi:type="notation:Node" xmi:id="_z_3nEJbCEe-T98T5xGCmTw" type="6001">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_z_3nEZbCEe-T98T5xGCmTw" x="-43" y="-1"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_z_3nEpbCEe-T98T5xGCmTw" type="6002">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_z_3nE5bCEe-T98T5xGCmTw" x="-15" y="-2"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_z_3nFJbCEe-T98T5xGCmTw" type="6003">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_z_3nFZbCEe-T98T5xGCmTw" x="-33" y="6"/>
+          </children>
+          <styles xmi:type="notation:ConnectorStyle" xmi:id="_z_3nDZbCEe-T98T5xGCmTw"/>
+          <styles xmi:type="notation:FontStyle" xmi:id="_z_3nDpbCEe-T98T5xGCmTw" fontName="Segoe UI" fontHeight="12"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_z_3nD5bCEe-T98T5xGCmTw" points="[-120, -1, 36, -237]$[-153, 13, 3, -223]$[-156, 236, 0, 0]"/>
+          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_z_3nFpbCEe-T98T5xGCmTw" id="(0.5,1.0)"/>
+          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_z_3nF5bCEe-T98T5xGCmTw" id="(0.5,0.0)"/>
+        </edges>
+        <edges xmi:type="notation:Edge" xmi:id="_z_3nGJbCEe-T98T5xGCmTw" type="4001" element="_z_pklZbCEe-T98T5xGCmTw" source="_z_rZxZbCEe-T98T5xGCmTw" target="_z_rZwJbCEe-T98T5xGCmTw">
+          <children xmi:type="notation:Node" xmi:id="_z_4OEJbCEe-T98T5xGCmTw" type="6001">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_z_4OEZbCEe-T98T5xGCmTw" x="-6" y="-10"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_z_4OEpbCEe-T98T5xGCmTw" type="6002">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_z_4OE5bCEe-T98T5xGCmTw" x="3" y="4"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_z_4OFJbCEe-T98T5xGCmTw" type="6003">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_z_4OFZbCEe-T98T5xGCmTw" x="3" y="4"/>
+          </children>
+          <styles xmi:type="notation:ConnectorStyle" xmi:id="_z_3nGZbCEe-T98T5xGCmTw"/>
+          <styles xmi:type="notation:FontStyle" xmi:id="_z_3nGpbCEe-T98T5xGCmTw" fontName="Segoe UI" fontHeight="12"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_z_3nG5bCEe-T98T5xGCmTw" points="[0, 0, 6, 146]$[-6, -146, 0, 0]"/>
+          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_z_4OFpbCEe-T98T5xGCmTw" id="(0.5,0.0)"/>
+          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_z_4OF5bCEe-T98T5xGCmTw" id="(0.5,1.0)"/>
+        </edges>
+      </data>
+    </ownedAnnotationEntries>
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_z_qLoJbCEe-T98T5xGCmTw" source="DANNOTATION_CUSTOMIZATION_KEY">
+      <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_z_qLoZbCEe-T98T5xGCmTw"/>
+    </ownedAnnotationEntries>
+    <ownedDiagramElements xmi:type="diagram:DNode" uid="_z_X3wJbCEe-T98T5xGCmTw" name="PollutionCassandra" outgoingEdges="_z_jd8JbCEe-T98T5xGCmTw _z_ksEJbCEe-T98T5xGCmTw" width="24" height="10" resizeKind="NSEW">
+      <target xmi:type="pasys:CassandraService" href="PollutionHybridKubernetes.xmi#//@ownedElements.12"/>
+      <semanticElements xmi:type="pasys:CassandraService" href="PollutionHybridKubernetes.xmi#//@ownedElements.12"/>
+      <ownedStyle xmi:type="diagram:Square" uid="_z_X3wZbCEe-T98T5xGCmTw" labelSize="10" iconPath="/Rai4.design/icons/cassandra_service_icon.png" borderColor="255,255,255" labelPosition="node" width="24" height="10" color="255,255,255">
+        <labelFormat>bold</labelFormat>
+        <description xmi:type="style:SquareDescription" href="platform:/resource/Rai4.design/description/Rai4.odesign#//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Rai4%20diagram']/@defaultLayer/@nodeMappings[name='Cassandra%20Service']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/Rai4.design/description/Rai4.odesign#//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Rai4%20diagram']/@defaultLayer/@nodeMappings[name='Cassandra%20Service']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNode" uid="_z_Ye0ZbCEe-T98T5xGCmTw" name="PollutionKafka" outgoingEdges="_z_ksFZbCEe-T98T5xGCmTw _z_o9gJbCEe-T98T5xGCmTw" incomingEdges="_z_pklZbCEe-T98T5xGCmTw" width="24" height="10" resizeKind="NSEW">
+      <target xmi:type="pasys:KafkaService" href="PollutionHybridKubernetes.xmi#1"/>
+      <semanticElements xmi:type="pasys:KafkaService" href="PollutionHybridKubernetes.xmi#1"/>
+      <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+      <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+      <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+      <ownedStyle xmi:type="diagram:Square" uid="_z_Ye0pbCEe-T98T5xGCmTw" labelSize="10" iconPath="/Rai4.design/icons/apache_kafka_image.png" borderColor="255,255,255" labelPosition="node" width="24" height="10" color="255,255,255">
+        <labelFormat>bold</labelFormat>
+        <description xmi:type="style:SquareDescription" href="platform:/resource/Rai4.design/description/Rai4.odesign#//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Rai4%20diagram']/@defaultLayer/@nodeMappings[name='Kafka%20Service']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/Rai4.design/description/Rai4.odesign#//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Rai4%20diagram']/@defaultLayer/@nodeMappings[name='Kafka%20Service']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNode" uid="_z_Ye1JbCEe-T98T5xGCmTw" name="Pollution" outgoingEdges="_z_pklZbCEe-T98T5xGCmTw" width="24" height="10" resizeKind="NSEW">
+      <target xmi:type="pasys:KafkaWorkloadStreamData" href="PollutionHybridKubernetes.xmi#//@ownedElements.10"/>
+      <semanticElements xmi:type="pasys:KafkaWorkloadStreamData" href="PollutionHybridKubernetes.xmi#//@ownedElements.10"/>
+      <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+      <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+      <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+      <ownedStyle xmi:type="diagram:Square" uid="_z_ZF4JbCEe-T98T5xGCmTw" labelSize="10" iconPath="/Rai4.design/icons/kafka_workflow_stream_data_image.png" borderColor="255,255,255" labelPosition="node" width="24" height="10" color="255,255,255">
+        <labelFormat>bold</labelFormat>
+        <description xmi:type="style:SquareDescription" href="platform:/resource/Rai4.design/description/Rai4.odesign#//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Rai4%20diagram']/@defaultLayer/@nodeMappings[name='Kafka%20Workload%20Stream%20Data']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/Rai4.design/description/Rai4.odesign#//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Rai4%20diagram']/@defaultLayer/@nodeMappings[name='Kafka%20Workload%20Stream%20Data']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNode" uid="_z_ZF4pbCEe-T98T5xGCmTw" name="KubernetesCluster" incomingEdges="_z_ksFZbCEe-T98T5xGCmTw _z_lTJ5bCEe-T98T5xGCmTw" width="24" height="10" resizeKind="NSEW">
+      <target xmi:type="pasys:KubernetesCluster" href="PollutionHybridKubernetes.xmi#//@ownedElements.13"/>
+      <semanticElements xmi:type="pasys:KubernetesCluster" href="PollutionHybridKubernetes.xmi#//@ownedElements.13"/>
+      <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+      <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+      <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+      <ownedStyle xmi:type="diagram:Square" uid="_z_ZF45bCEe-T98T5xGCmTw" labelSize="10" iconPath="/Rai4.design/icons/kubernetes_cluster_image.png" borderColor="255,255,255" labelPosition="node" width="24" height="10" color="255,255,255">
+        <labelFormat>bold</labelFormat>
+        <description xmi:type="style:SquareDescription" href="platform:/resource/Rai4.design/description/Rai4.odesign#//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Rai4%20diagram']/@defaultLayer/@nodeMappings[name='Kubernetes%20Cluster']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/Rai4.design/description/Rai4.odesign#//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Rai4%20diagram']/@defaultLayer/@nodeMappings[name='Kubernetes%20Cluster']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNode" uid="_z_Zs8JbCEe-T98T5xGCmTw" name="NimbusNode" incomingEdges="_z_nIUJbCEe-T98T5xGCmTw _z_nvZ5bCEe-T98T5xGCmTw" width="24" height="10" resizeKind="NSEW">
+      <target xmi:type="pasys:PhysicalProcessingNode" href="PollutionHybridKubernetes.xmi#//@ownedElements.0"/>
+      <semanticElements xmi:type="pasys:PhysicalProcessingNode" href="PollutionHybridKubernetes.xmi#//@ownedElements.0"/>
+      <ownedStyle xmi:type="diagram:Square" uid="_z_Zs8ZbCEe-T98T5xGCmTw" labelSize="10" iconPath="/Rai4.design/icons/nodo_image.png" borderColor="255,255,255" labelPosition="node" width="24" height="10" color="255,255,255">
+        <labelFormat>bold</labelFormat>
+        <description xmi:type="style:SquareDescription" href="platform:/resource/Rai4.design/description/Rai4.odesign#//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Rai4%20diagram']/@defaultLayer/@nodeMappings[name='Physical%20Processing%20Node']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/Rai4.design/description/Rai4.odesign#//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Rai4%20diagram']/@defaultLayer/@nodeMappings[name='Physical%20Processing%20Node']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNode" uid="_z_Zs85bCEe-T98T5xGCmTw" name="CassandraNode" incomingEdges="_z_nvYpbCEe-T98T5xGCmTw" width="24" height="10" resizeKind="NSEW">
+      <target xmi:type="pasys:PhysicalProcessingNode" href="PollutionHybridKubernetes.xmi#//@ownedElements.1"/>
+      <semanticElements xmi:type="pasys:PhysicalProcessingNode" href="PollutionHybridKubernetes.xmi#//@ownedElements.1"/>
+      <ownedStyle xmi:type="diagram:Square" uid="_z_Zs9JbCEe-T98T5xGCmTw" labelSize="10" iconPath="/Rai4.design/icons/nodo_image.png" borderColor="255,255,255" labelPosition="node" width="24" height="10" color="255,255,255">
+        <labelFormat>bold</labelFormat>
+        <description xmi:type="style:SquareDescription" href="platform:/resource/Rai4.design/description/Rai4.odesign#//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Rai4%20diagram']/@defaultLayer/@nodeMappings[name='Physical%20Processing%20Node']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/Rai4.design/description/Rai4.odesign#//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Rai4%20diagram']/@defaultLayer/@nodeMappings[name='Physical%20Processing%20Node']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNode" uid="_z_aUAZbCEe-T98T5xGCmTw" name="SupervisorNode" incomingEdges="_z_nIVZbCEe-T98T5xGCmTw _z_nvbJbCEe-T98T5xGCmTw" width="24" height="10" resizeKind="NSEW">
+      <target xmi:type="pasys:PhysicalProcessingNode" href="PollutionHybridKubernetes.xmi#//@ownedElements.2"/>
+      <semanticElements xmi:type="pasys:PhysicalProcessingNode" href="PollutionHybridKubernetes.xmi#//@ownedElements.2"/>
+      <ownedStyle xmi:type="diagram:Square" uid="_z_aUApbCEe-T98T5xGCmTw" labelSize="10" iconPath="/Rai4.design/icons/nodo_image.png" borderColor="255,255,255" labelPosition="node" width="24" height="10" color="255,255,255">
+        <labelFormat>bold</labelFormat>
+        <description xmi:type="style:SquareDescription" href="platform:/resource/Rai4.design/description/Rai4.odesign#//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Rai4%20diagram']/@defaultLayer/@nodeMappings[name='Physical%20Processing%20Node']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/Rai4.design/description/Rai4.odesign#//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Rai4%20diagram']/@defaultLayer/@nodeMappings[name='Physical%20Processing%20Node']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNode" uid="_z_aUBJbCEe-T98T5xGCmTw" name="NimbusCluster" outgoingEdges="_z_nIUJbCEe-T98T5xGCmTw" width="24" height="10" resizeKind="NSEW">
+      <target xmi:type="pasys:ProcessingNodeCluster" href="PollutionHybridKubernetes.xmi#//@ownedElements.3"/>
+      <semanticElements xmi:type="pasys:ProcessingNodeCluster" href="PollutionHybridKubernetes.xmi#//@ownedElements.3"/>
+      <ownedStyle xmi:type="diagram:Square" uid="_z_aUBZbCEe-T98T5xGCmTw" labelSize="10" iconPath="/Rai4.design/icons/processing_node_cluster_image.png" borderColor="255,255,255" labelPosition="node" width="24" height="10" color="255,255,255">
+        <labelFormat>bold</labelFormat>
+        <description xmi:type="style:SquareDescription" href="platform:/resource/Rai4.design/description/Rai4.odesign#//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Rai4%20diagram']/@defaultLayer/@nodeMappings[name='Processing%20Node%20Cluster']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/Rai4.design/description/Rai4.odesign#//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Rai4%20diagram']/@defaultLayer/@nodeMappings[name='Processing%20Node%20Cluster']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNode" uid="_z_aUB5bCEe-T98T5xGCmTw" name="SupervisorCluster" outgoingEdges="_z_nIVZbCEe-T98T5xGCmTw" width="24" height="10" resizeKind="NSEW">
+      <target xmi:type="pasys:ProcessingNodeCluster" href="PollutionHybridKubernetes.xmi#//@ownedElements.4"/>
+      <semanticElements xmi:type="pasys:ProcessingNodeCluster" href="PollutionHybridKubernetes.xmi#//@ownedElements.4"/>
+      <ownedStyle xmi:type="diagram:Square" uid="_z_aUCJbCEe-T98T5xGCmTw" labelSize="10" iconPath="/Rai4.design/icons/processing_node_cluster_image.png" borderColor="255,255,255" labelPosition="node" width="24" height="10" color="255,255,255">
+        <labelFormat>bold</labelFormat>
+        <description xmi:type="style:SquareDescription" href="platform:/resource/Rai4.design/description/Rai4.odesign#//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Rai4%20diagram']/@defaultLayer/@nodeMappings[name='Processing%20Node%20Cluster']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/Rai4.design/description/Rai4.odesign#//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Rai4%20diagram']/@defaultLayer/@nodeMappings[name='Processing%20Node%20Cluster']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNode" uid="_z_a7EJbCEe-T98T5xGCmTw" name="CassandraCluster" outgoingEdges="_z_nvYpbCEe-T98T5xGCmTw" incomingEdges="_z_jd8JbCEe-T98T5xGCmTw _z_ksEJbCEe-T98T5xGCmTw" width="24" height="10" resizeKind="NSEW">
+      <target xmi:type="pasys:ProcessingNodeCluster" href="PollutionHybridKubernetes.xmi#//@ownedElements.5"/>
+      <semanticElements xmi:type="pasys:ProcessingNodeCluster" href="PollutionHybridKubernetes.xmi#//@ownedElements.5"/>
+      <ownedStyle xmi:type="diagram:Square" uid="_z_a7EZbCEe-T98T5xGCmTw" labelSize="10" iconPath="/Rai4.design/icons/processing_node_cluster_image.png" borderColor="255,255,255" labelPosition="node" width="24" height="10" color="255,255,255">
+        <labelFormat>bold</labelFormat>
+        <description xmi:type="style:SquareDescription" href="platform:/resource/Rai4.design/description/Rai4.odesign#//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Rai4%20diagram']/@defaultLayer/@nodeMappings[name='Processing%20Node%20Cluster']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/Rai4.design/description/Rai4.odesign#//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Rai4%20diagram']/@defaultLayer/@nodeMappings[name='Processing%20Node%20Cluster']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNode" uid="_z_a7E5bCEe-T98T5xGCmTw" name="StormCluster" outgoingEdges="_z_nvZ5bCEe-T98T5xGCmTw _z_nvbJbCEe-T98T5xGCmTw" incomingEdges="_z_lTIpbCEe-T98T5xGCmTw" width="24" height="10" resizeKind="NSEW">
+      <target xmi:type="pasys:ProcessingNodeCluster" href="PollutionHybridKubernetes.xmi#//@ownedElements.6"/>
+      <semanticElements xmi:type="pasys:ProcessingNodeCluster" href="PollutionHybridKubernetes.xmi#//@ownedElements.6"/>
+      <ownedStyle xmi:type="diagram:Square" uid="_z_a7FJbCEe-T98T5xGCmTw" labelSize="10" iconPath="/Rai4.design/icons/processing_node_cluster_image.png" borderColor="255,255,255" labelPosition="node" width="24" height="10" color="255,255,255">
+        <labelFormat>bold</labelFormat>
+        <description xmi:type="style:SquareDescription" href="platform:/resource/Rai4.design/description/Rai4.odesign#//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Rai4%20diagram']/@defaultLayer/@nodeMappings[name='Processing%20Node%20Cluster']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/Rai4.design/description/Rai4.odesign#//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Rai4%20diagram']/@defaultLayer/@nodeMappings[name='Processing%20Node%20Cluster']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNode" uid="_z_a7FpbCEe-T98T5xGCmTw" name="PollutionStorm" outgoingEdges="_z_lTIpbCEe-T98T5xGCmTw _z_oWcpbCEe-T98T5xGCmTw _z_o9hZbCEe-T98T5xGCmTw" incomingEdges="_z_pkkJbCEe-T98T5xGCmTw" width="24" height="10" resizeKind="NSEW">
+      <target xmi:type="pasys:StormService" href="PollutionHybridKubernetes.xmi#//@ownedElements.9"/>
+      <semanticElements xmi:type="pasys:StormService" href="PollutionHybridKubernetes.xmi#//@ownedElements.9"/>
+      <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+      <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+      <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+      <ownedStyle xmi:type="diagram:Square" uid="_z_a7F5bCEe-T98T5xGCmTw" labelSize="10" iconPath="/Rai4.design/icons/apache_storm_image.png" borderColor="255,255,255" labelPosition="node" width="24" height="10" color="255,255,255">
+        <labelFormat>bold</labelFormat>
+        <description xmi:type="style:SquareDescription" href="platform:/resource/Rai4.design/description/Rai4.odesign#//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Rai4%20diagram']/@defaultLayer/@nodeMappings[name='Storm%20Service']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/Rai4.design/description/Rai4.odesign#//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Rai4%20diagram']/@defaultLayer/@nodeMappings[name='Storm%20Service']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNode" uid="_z_biIZbCEe-T98T5xGCmTw" name="PollutionProcess" outgoingEdges="_z_pkkJbCEe-T98T5xGCmTw" incomingEdges="_z_oWcpbCEe-T98T5xGCmTw" width="24" height="10" resizeKind="NSEW">
+      <target xmi:type="pasys:Workflow" href="PollutionHybridKubernetes.xmi#//@ownedElements.11"/>
+      <semanticElements xmi:type="pasys:Workflow" href="PollutionHybridKubernetes.xmi#//@ownedElements.11"/>
+      <ownedStyle xmi:type="diagram:Square" uid="_z_biIpbCEe-T98T5xGCmTw" labelSize="10" iconPath="/Rai4.design/icons/workflow_image.png" borderColor="255,255,255" labelPosition="node" width="24" height="10" color="255,255,255">
+        <labelFormat>bold</labelFormat>
+        <description xmi:type="style:SquareDescription" href="platform:/resource/Rai4.design/description/Rai4.odesign#//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Rai4%20diagram']/@defaultLayer/@nodeMappings[name='Workflow']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/Rai4.design/description/Rai4.odesign#//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Rai4%20diagram']/@defaultLayer/@nodeMappings[name='Workflow']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNode" uid="_z_biJJbCEe-T98T5xGCmTw" name="PollutionZkpr" outgoingEdges="_z_lTJ5bCEe-T98T5xGCmTw" incomingEdges="_z_o9gJbCEe-T98T5xGCmTw _z_o9hZbCEe-T98T5xGCmTw" width="24" height="10" resizeKind="NSEW">
+      <target xmi:type="pasys:ZookeeperService" href="PollutionHybridKubernetes.xmi#//@ownedElements.7"/>
+      <semanticElements xmi:type="pasys:ZookeeperService" href="PollutionHybridKubernetes.xmi#//@ownedElements.7"/>
+      <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+      <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+      <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+      <ownedStyle xmi:type="diagram:Square" uid="_z_biJZbCEe-T98T5xGCmTw" labelSize="10" iconPath="/Rai4.design/icons/apache_zookeeper_image.png" borderColor="255,255,255" labelPosition="node" width="24" height="10" color="255,255,255">
+        <labelFormat>bold</labelFormat>
+        <description xmi:type="style:SquareDescription" href="platform:/resource/Rai4.design/description/Rai4.odesign#//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Rai4%20diagram']/@defaultLayer/@nodeMappings[name='Zookeeper%20Service']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/Rai4.design/description/Rai4.odesign#//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Rai4%20diagram']/@defaultLayer/@nodeMappings[name='Zookeeper%20Service']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_z_jd8JbCEe-T98T5xGCmTw" sourceNode="_z_X3wJbCEe-T98T5xGCmTw" targetNode="_z_a7EJbCEe-T98T5xGCmTw">
+      <target xmi:type="pasys:CassandraService" href="PollutionHybridKubernetes.xmi#//@ownedElements.12"/>
+      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_z_kFAJbCEe-T98T5xGCmTw" size="2">
+        <description xmi:type="style:EdgeStyleDescription" href="platform:/resource/Rai4.design/description/Rai4.odesign#//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Rai4%20diagram']/@defaultLayer/@edgeMappings[name='CassandraService_ProcessingNodeCluster']/@style"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_z_kFAZbCEe-T98T5xGCmTw" labelSize="12"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/resource/Rai4.design/description/Rai4.odesign#//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Rai4%20diagram']/@defaultLayer/@edgeMappings[name='CassandraService_ProcessingNodeCluster']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_z_ksEJbCEe-T98T5xGCmTw" sourceNode="_z_X3wJbCEe-T98T5xGCmTw" targetNode="_z_a7EJbCEe-T98T5xGCmTw">
+      <target xmi:type="pasys:CassandraService" href="PollutionHybridKubernetes.xmi#//@ownedElements.12"/>
+      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_z_ksEZbCEe-T98T5xGCmTw" size="2">
+        <description xmi:type="style:EdgeStyleDescription" href="platform:/resource/Rai4.design/description/Rai4.odesign#//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Rai4%20diagram']/@defaultLayer/@edgeMappings[name='PlatformService_ProcessingResourceCluster']/@style"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_z_ksEpbCEe-T98T5xGCmTw" labelSize="12"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/resource/Rai4.design/description/Rai4.odesign#//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Rai4%20diagram']/@defaultLayer/@edgeMappings[name='PlatformService_ProcessingResourceCluster']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_z_ksFZbCEe-T98T5xGCmTw" sourceNode="_z_Ye0ZbCEe-T98T5xGCmTw" targetNode="_z_ZF4pbCEe-T98T5xGCmTw">
+      <target xmi:type="pasys:KafkaService" href="PollutionHybridKubernetes.xmi#1"/>
+      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_z_ksFpbCEe-T98T5xGCmTw" size="2">
+        <description xmi:type="style:EdgeStyleDescription" href="platform:/resource/Rai4.design/description/Rai4.odesign#//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Rai4%20diagram']/@defaultLayer/@edgeMappings[name='PlatformService_ProcessingResourceCluster']/@style"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_z_ksF5bCEe-T98T5xGCmTw" labelSize="12"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/resource/Rai4.design/description/Rai4.odesign#//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Rai4%20diagram']/@defaultLayer/@edgeMappings[name='PlatformService_ProcessingResourceCluster']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_z_lTIpbCEe-T98T5xGCmTw" sourceNode="_z_a7FpbCEe-T98T5xGCmTw" targetNode="_z_a7E5bCEe-T98T5xGCmTw">
+      <target xmi:type="pasys:StormService" href="PollutionHybridKubernetes.xmi#//@ownedElements.9"/>
+      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_z_lTI5bCEe-T98T5xGCmTw" size="2">
+        <description xmi:type="style:EdgeStyleDescription" href="platform:/resource/Rai4.design/description/Rai4.odesign#//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Rai4%20diagram']/@defaultLayer/@edgeMappings[name='PlatformService_ProcessingResourceCluster']/@style"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_z_lTJJbCEe-T98T5xGCmTw" labelSize="12"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/resource/Rai4.design/description/Rai4.odesign#//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Rai4%20diagram']/@defaultLayer/@edgeMappings[name='PlatformService_ProcessingResourceCluster']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_z_lTJ5bCEe-T98T5xGCmTw" sourceNode="_z_biJJbCEe-T98T5xGCmTw" targetNode="_z_ZF4pbCEe-T98T5xGCmTw">
+      <target xmi:type="pasys:ZookeeperService" href="PollutionHybridKubernetes.xmi#//@ownedElements.7"/>
+      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_z_lTKJbCEe-T98T5xGCmTw" size="2">
+        <description xmi:type="style:EdgeStyleDescription" href="platform:/resource/Rai4.design/description/Rai4.odesign#//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Rai4%20diagram']/@defaultLayer/@edgeMappings[name='PlatformService_ProcessingResourceCluster']/@style"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_z_lTKZbCEe-T98T5xGCmTw" labelSize="12"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/resource/Rai4.design/description/Rai4.odesign#//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Rai4%20diagram']/@defaultLayer/@edgeMappings[name='PlatformService_ProcessingResourceCluster']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_z_nIUJbCEe-T98T5xGCmTw" sourceNode="_z_aUBJbCEe-T98T5xGCmTw" targetNode="_z_Zs8JbCEe-T98T5xGCmTw">
+      <target xmi:type="pasys:ProcessingNodeCluster" href="PollutionHybridKubernetes.xmi#//@ownedElements.3"/>
+      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_z_nIUZbCEe-T98T5xGCmTw" size="2">
+        <description xmi:type="style:EdgeStyleDescription" href="platform:/resource/Rai4.design/description/Rai4.odesign#//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Rai4%20diagram']/@defaultLayer/@edgeMappings[name='ProcessingNodeCluster_ProcessingNode']/@style"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_z_nIUpbCEe-T98T5xGCmTw" labelSize="12"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/resource/Rai4.design/description/Rai4.odesign#//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Rai4%20diagram']/@defaultLayer/@edgeMappings[name='ProcessingNodeCluster_ProcessingNode']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_z_nIVZbCEe-T98T5xGCmTw" sourceNode="_z_aUB5bCEe-T98T5xGCmTw" targetNode="_z_aUAZbCEe-T98T5xGCmTw">
+      <target xmi:type="pasys:ProcessingNodeCluster" href="PollutionHybridKubernetes.xmi#//@ownedElements.4"/>
+      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_z_nIVpbCEe-T98T5xGCmTw" size="2">
+        <description xmi:type="style:EdgeStyleDescription" href="platform:/resource/Rai4.design/description/Rai4.odesign#//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Rai4%20diagram']/@defaultLayer/@edgeMappings[name='ProcessingNodeCluster_ProcessingNode']/@style"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_z_nIV5bCEe-T98T5xGCmTw" labelSize="12"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/resource/Rai4.design/description/Rai4.odesign#//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Rai4%20diagram']/@defaultLayer/@edgeMappings[name='ProcessingNodeCluster_ProcessingNode']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_z_nvYpbCEe-T98T5xGCmTw" sourceNode="_z_a7EJbCEe-T98T5xGCmTw" targetNode="_z_Zs85bCEe-T98T5xGCmTw">
+      <target xmi:type="pasys:ProcessingNodeCluster" href="PollutionHybridKubernetes.xmi#//@ownedElements.5"/>
+      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_z_nvY5bCEe-T98T5xGCmTw" size="2">
+        <description xmi:type="style:EdgeStyleDescription" href="platform:/resource/Rai4.design/description/Rai4.odesign#//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Rai4%20diagram']/@defaultLayer/@edgeMappings[name='ProcessingNodeCluster_ProcessingNode']/@style"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_z_nvZJbCEe-T98T5xGCmTw" labelSize="12"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/resource/Rai4.design/description/Rai4.odesign#//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Rai4%20diagram']/@defaultLayer/@edgeMappings[name='ProcessingNodeCluster_ProcessingNode']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_z_nvZ5bCEe-T98T5xGCmTw" sourceNode="_z_a7E5bCEe-T98T5xGCmTw" targetNode="_z_Zs8JbCEe-T98T5xGCmTw">
+      <target xmi:type="pasys:ProcessingNodeCluster" href="PollutionHybridKubernetes.xmi#//@ownedElements.6"/>
+      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_z_nvaJbCEe-T98T5xGCmTw" size="2">
+        <description xmi:type="style:EdgeStyleDescription" href="platform:/resource/Rai4.design/description/Rai4.odesign#//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Rai4%20diagram']/@defaultLayer/@edgeMappings[name='ProcessingNodeCluster_ProcessingNode']/@style"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_z_nvaZbCEe-T98T5xGCmTw" labelSize="12"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/resource/Rai4.design/description/Rai4.odesign#//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Rai4%20diagram']/@defaultLayer/@edgeMappings[name='ProcessingNodeCluster_ProcessingNode']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_z_nvbJbCEe-T98T5xGCmTw" sourceNode="_z_a7E5bCEe-T98T5xGCmTw" targetNode="_z_aUAZbCEe-T98T5xGCmTw">
+      <target xmi:type="pasys:ProcessingNodeCluster" href="PollutionHybridKubernetes.xmi#//@ownedElements.6"/>
+      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_z_nvbZbCEe-T98T5xGCmTw" size="2">
+        <description xmi:type="style:EdgeStyleDescription" href="platform:/resource/Rai4.design/description/Rai4.odesign#//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Rai4%20diagram']/@defaultLayer/@edgeMappings[name='ProcessingNodeCluster_ProcessingNode']/@style"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_z_nvbpbCEe-T98T5xGCmTw" labelSize="12"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/resource/Rai4.design/description/Rai4.odesign#//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Rai4%20diagram']/@defaultLayer/@edgeMappings[name='ProcessingNodeCluster_ProcessingNode']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_z_oWcpbCEe-T98T5xGCmTw" sourceNode="_z_a7FpbCEe-T98T5xGCmTw" targetNode="_z_biIZbCEe-T98T5xGCmTw">
+      <target xmi:type="pasys:StormService" href="PollutionHybridKubernetes.xmi#//@ownedElements.9"/>
+      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_z_oWc5bCEe-T98T5xGCmTw" size="2">
+        <description xmi:type="style:EdgeStyleDescription" href="platform:/resource/Rai4.design/description/Rai4.odesign#//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Rai4%20diagram']/@defaultLayer/@edgeMappings[name='SchedulingService_Workflow']/@style"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_z_oWdJbCEe-T98T5xGCmTw" labelSize="12"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/resource/Rai4.design/description/Rai4.odesign#//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Rai4%20diagram']/@defaultLayer/@edgeMappings[name='SchedulingService_Workflow']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_z_o9gJbCEe-T98T5xGCmTw" sourceNode="_z_Ye0ZbCEe-T98T5xGCmTw" targetNode="_z_biJJbCEe-T98T5xGCmTw">
+      <target xmi:type="pasys:KafkaService" href="PollutionHybridKubernetes.xmi#1"/>
+      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_z_o9gZbCEe-T98T5xGCmTw" size="2">
+        <description xmi:type="style:EdgeStyleDescription" href="platform:/resource/Rai4.design/description/Rai4.odesign#//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Rai4%20diagram']/@defaultLayer/@edgeMappings[name='Service(Cassandra%26Storm)_ZookeeperService']/@style"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_z_o9gpbCEe-T98T5xGCmTw" labelSize="12"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/resource/Rai4.design/description/Rai4.odesign#//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Rai4%20diagram']/@defaultLayer/@edgeMappings[name='Service(Cassandra%26Storm)_ZookeeperService']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_z_o9hZbCEe-T98T5xGCmTw" sourceNode="_z_a7FpbCEe-T98T5xGCmTw" targetNode="_z_biJJbCEe-T98T5xGCmTw">
+      <target xmi:type="pasys:StormService" href="PollutionHybridKubernetes.xmi#//@ownedElements.9"/>
+      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_z_o9hpbCEe-T98T5xGCmTw" size="2">
+        <description xmi:type="style:EdgeStyleDescription" href="platform:/resource/Rai4.design/description/Rai4.odesign#//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Rai4%20diagram']/@defaultLayer/@edgeMappings[name='Service(Cassandra%26Storm)_ZookeeperService']/@style"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_z_o9h5bCEe-T98T5xGCmTw" labelSize="12"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/resource/Rai4.design/description/Rai4.odesign#//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Rai4%20diagram']/@defaultLayer/@edgeMappings[name='Service(Cassandra%26Storm)_ZookeeperService']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_z_pkkJbCEe-T98T5xGCmTw" sourceNode="_z_biIZbCEe-T98T5xGCmTw" targetNode="_z_a7FpbCEe-T98T5xGCmTw">
+      <target xmi:type="pasys:Workflow" href="PollutionHybridKubernetes.xmi#//@ownedElements.11"/>
+      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_z_pkkZbCEe-T98T5xGCmTw" size="2">
+        <description xmi:type="style:EdgeStyleDescription" href="platform:/resource/Rai4.design/description/Rai4.odesign#//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Rai4%20diagram']/@defaultLayer/@edgeMappings[name='Workflow_SchedulingService']/@style"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_z_pkkpbCEe-T98T5xGCmTw" labelSize="12"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/resource/Rai4.design/description/Rai4.odesign#//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Rai4%20diagram']/@defaultLayer/@edgeMappings[name='Workflow_SchedulingService']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_z_pklZbCEe-T98T5xGCmTw" sourceNode="_z_Ye1JbCEe-T98T5xGCmTw" targetNode="_z_Ye0ZbCEe-T98T5xGCmTw">
+      <target xmi:type="pasys:KafkaWorkloadStreamData" href="PollutionHybridKubernetes.xmi#//@ownedElements.10"/>
+      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_z_pklpbCEe-T98T5xGCmTw" size="2">
+        <description xmi:type="style:EdgeStyleDescription" href="platform:/resource/Rai4.design/description/Rai4.odesign#//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Rai4%20diagram']/@defaultLayer/@edgeMappings[name='WorkloadStreamData_CommunicationService']/@style"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_z_pkl5bCEe-T98T5xGCmTw" labelSize="12"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/resource/Rai4.design/description/Rai4.odesign#//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Rai4%20diagram']/@defaultLayer/@edgeMappings[name='WorkloadStreamData_CommunicationService']"/>
+    </ownedDiagramElements>
+    <description xmi:type="description_1:DiagramDescription" href="platform:/resource/Rai4.design/description/Rai4.odesign#//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Rai4%20diagram']"/>
+    <filterVariableHistory xmi:type="diagram:FilterVariableHistory" uid="_z_SYMZbCEe-T98T5xGCmTw"/>
+    <activatedLayers xmi:type="description_1:Layer" href="platform:/resource/Rai4.design/description/Rai4.odesign#//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Rai4%20diagram']/@defaultLayer"/>
+    <target xmi:type="pasys:ComputationalSystem" href="PollutionHybridKubernetes.xmi#/"/>
+  </diagram:DSemanticDiagram>
+  <diagram:DSemanticDiagram uid="_71h7sJbCEe-T98T5xGCmTw">
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_71nbQJbCEe-T98T5xGCmTw" source="GMF_DIAGRAMS">
+      <data xmi:type="notation:Diagram" xmi:id="_71nbQZbCEe-T98T5xGCmTw" type="Sirius" element="_71h7sJbCEe-T98T5xGCmTw" measurementUnit="Pixel">
+        <children xmi:type="notation:Node" xmi:id="_71opYpbCEe-T98T5xGCmTw" type="2001" element="_71oCUJbCEe-T98T5xGCmTw">
+          <children xmi:type="notation:Node" xmi:id="_71opZZbCEe-T98T5xGCmTw" type="5002">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_71opZpbCEe-T98T5xGCmTw" y="5"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_71opZ5bCEe-T98T5xGCmTw" type="3003" element="_71oCUZbCEe-T98T5xGCmTw">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_71opaJbCEe-T98T5xGCmTw" fontName="Segoe UI"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_71opaZbCEe-T98T5xGCmTw"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_71opY5bCEe-T98T5xGCmTw" fontName="Segoe UI" fontHeight="10" bold="true"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_71opZJbCEe-T98T5xGCmTw" width="240" height="100"/>
+        </children>
+        <styles xmi:type="notation:DiagramStyle" xmi:id="_71nbQpbCEe-T98T5xGCmTw"/>
+      </data>
+    </ownedAnnotationEntries>
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_71opYJbCEe-T98T5xGCmTw" source="DANNOTATION_CUSTOMIZATION_KEY">
+      <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_71opYZbCEe-T98T5xGCmTw"/>
+    </ownedAnnotationEntries>
+    <ownedDiagramElements xmi:type="diagram:DNode" uid="_71oCUJbCEe-T98T5xGCmTw" name="3.7" width="24" height="10" resizeKind="NSEW">
+      <target xmi:type="pasys:KubernetesDeploymentConf" href="PollutionHybridKubernetes.xmi#//@ownedElements.7/@deploymentConfig"/>
+      <semanticElements xmi:type="pasys:KubernetesDeploymentConf" href="PollutionHybridKubernetes.xmi#//@ownedElements.7/@deploymentConfig"/>
+      <ownedStyle xmi:type="diagram:Square" uid="_71oCUZbCEe-T98T5xGCmTw" labelSize="10" iconPath="/Rai4.design/icons/deployment_config_image.png" borderColor="255,255,255" labelPosition="node" width="24" height="10" color="255,255,255">
+        <labelFormat>bold</labelFormat>
+        <description xmi:type="style:SquareDescription" href="platform:/resource/Rai4.design/description/Rai4.odesign#//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Zookeeper%20Service%20Diagram']/@defaultLayer/@nodeMappings[name='Kubernetes%20Deployment%20Conf']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/Rai4.design/description/Rai4.odesign#//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Zookeeper%20Service%20Diagram']/@defaultLayer/@nodeMappings[name='Kubernetes%20Deployment%20Conf']"/>
+    </ownedDiagramElements>
+    <description xmi:type="description_1:DiagramDescription" href="platform:/resource/Rai4.design/description/Rai4.odesign#//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Zookeeper%20Service%20Diagram']"/>
+    <filterVariableHistory xmi:type="diagram:FilterVariableHistory" uid="_71h7sZbCEe-T98T5xGCmTw"/>
+    <activatedLayers xmi:type="description_1:Layer" href="platform:/resource/Rai4.design/description/Rai4.odesign#//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Zookeeper%20Service%20Diagram']/@defaultLayer"/>
+    <target xmi:type="pasys:ZookeeperService" href="PollutionHybridKubernetes.xmi#//@ownedElements.7"/>
+  </diagram:DSemanticDiagram>
+  <diagram:DSemanticDiagram uid="_8nouEJbCEe-T98T5xGCmTw">
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_8nxQ8JbCEe-T98T5xGCmTw" source="GMF_DIAGRAMS">
+      <data xmi:type="notation:Diagram" xmi:id="_8nxQ8ZbCEe-T98T5xGCmTw" type="Sirius" element="_8nouEJbCEe-T98T5xGCmTw" measurementUnit="Pixel">
+        <children xmi:type="notation:Node" xmi:id="_8nzGIJbCEe-T98T5xGCmTw" type="2001" element="_8nx4AJbCEe-T98T5xGCmTw">
+          <children xmi:type="notation:Node" xmi:id="_8nzGI5bCEe-T98T5xGCmTw" type="5002">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_8nzGJJbCEe-T98T5xGCmTw" y="5"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_8nztNZbCEe-T98T5xGCmTw" type="3003" element="_8nx4AZbCEe-T98T5xGCmTw">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_8nztNpbCEe-T98T5xGCmTw" fontName="Segoe UI"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_8nztN5bCEe-T98T5xGCmTw"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_8nzGIZbCEe-T98T5xGCmTw" fontName="Segoe UI" fontHeight="10" bold="true"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_8nzGIpbCEe-T98T5xGCmTw" width="240" height="100"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_8nzGJZbCEe-T98T5xGCmTw" type="2001" element="_8nx4A5bCEe-T98T5xGCmTw">
+          <children xmi:type="notation:Node" xmi:id="_8nzGKJbCEe-T98T5xGCmTw" type="5002">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_8nzGKZbCEe-T98T5xGCmTw" y="5"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_8nztOJbCEe-T98T5xGCmTw" type="3003" element="_8nx4BJbCEe-T98T5xGCmTw">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_8nztOZbCEe-T98T5xGCmTw" fontName="Segoe UI"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_8nztOpbCEe-T98T5xGCmTw"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_8nzGJpbCEe-T98T5xGCmTw" fontName="Segoe UI" fontHeight="10" bold="true"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_8nzGJ5bCEe-T98T5xGCmTw" x="300" width="240" height="100"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_8nzGKpbCEe-T98T5xGCmTw" type="2001" element="_8nyfEZbCEe-T98T5xGCmTw">
+          <children xmi:type="notation:Node" xmi:id="_8nzGLZbCEe-T98T5xGCmTw" type="5002">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_8nzGLpbCEe-T98T5xGCmTw" y="5"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_8nztO5bCEe-T98T5xGCmTw" type="3003" element="_8nyfEpbCEe-T98T5xGCmTw">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_8nztPJbCEe-T98T5xGCmTw" fontName="Segoe UI"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_8nztPZbCEe-T98T5xGCmTw"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_8nzGK5bCEe-T98T5xGCmTw" fontName="Segoe UI" fontHeight="10" bold="true"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_8nzGLJbCEe-T98T5xGCmTw" x="600" width="240" height="100"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_8nztMJbCEe-T98T5xGCmTw" type="2001" element="_8nyfFJbCEe-T98T5xGCmTw">
+          <children xmi:type="notation:Node" xmi:id="_8nztM5bCEe-T98T5xGCmTw" type="5002">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_8nztNJbCEe-T98T5xGCmTw" y="5"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_8nztPpbCEe-T98T5xGCmTw" type="3003" element="_8nyfFZbCEe-T98T5xGCmTw">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_8nztP5bCEe-T98T5xGCmTw" fontName="Segoe UI"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_8nztQJbCEe-T98T5xGCmTw"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_8nztMZbCEe-T98T5xGCmTw" fontName="Segoe UI" fontHeight="10" bold="true"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_8nztMpbCEe-T98T5xGCmTw" x="900" width="240" height="100"/>
+        </children>
+        <styles xmi:type="notation:DiagramStyle" xmi:id="_8nxQ8pbCEe-T98T5xGCmTw"/>
+      </data>
+    </ownedAnnotationEntries>
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_8nyfF5bCEe-T98T5xGCmTw" source="DANNOTATION_CUSTOMIZATION_KEY">
+      <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_8nyfGJbCEe-T98T5xGCmTw"/>
+    </ownedAnnotationEntries>
+    <ownedDiagramElements xmi:type="diagram:DNode" uid="_8nx4AJbCEe-T98T5xGCmTw" name="storm" width="24" height="10" resizeKind="NSEW">
+      <target xmi:type="pasys:NodeDeploymentConf" href="PollutionHybridKubernetes.xmi#//@ownedElements.9/@deploymentConfig"/>
+      <semanticElements xmi:type="pasys:NodeDeploymentConf" href="PollutionHybridKubernetes.xmi#//@ownedElements.9/@deploymentConfig"/>
+      <ownedStyle xmi:type="diagram:Square" uid="_8nx4AZbCEe-T98T5xGCmTw" labelSize="10" iconPath="/Rai4.design/icons/deployment_config_image.png" borderColor="255,255,255" labelPosition="node" width="24" height="10" color="255,255,255">
+        <labelFormat>bold</labelFormat>
+        <description xmi:type="style:SquareDescription" href="platform:/resource/Rai4.design/description/Rai4.odesign#//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Storm%20Service%20Diagram']/@defaultLayer/@nodeMappings[name='Node%20Deployment%20Conf']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/Rai4.design/description/Rai4.odesign#//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Storm%20Service%20Diagram']/@defaultLayer/@nodeMappings[name='Node%20Deployment%20Conf']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNode" uid="_8nx4A5bCEe-T98T5xGCmTw" name="PolllutionStormNimbus" width="24" height="10" resizeKind="NSEW">
+      <target xmi:type="pasys:StormNimbus" href="PollutionHybridKubernetes.xmi#//@ownedElements.9/@nimbus"/>
+      <semanticElements xmi:type="pasys:StormNimbus" href="PollutionHybridKubernetes.xmi#//@ownedElements.9/@nimbus"/>
+      <ownedStyle xmi:type="diagram:Square" uid="_8nx4BJbCEe-T98T5xGCmTw" labelSize="10" iconPath="/Rai4.design/icons/storm_nimbus_image.png" borderColor="255,255,255" labelPosition="node" width="24" height="10" color="255,255,255">
+        <labelFormat>bold</labelFormat>
+        <description xmi:type="style:SquareDescription" href="platform:/resource/Rai4.design/description/Rai4.odesign#//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Storm%20Service%20Diagram']/@defaultLayer/@nodeMappings[name='Storm%20Nimbus']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/Rai4.design/description/Rai4.odesign#//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Storm%20Service%20Diagram']/@defaultLayer/@nodeMappings[name='Storm%20Nimbus']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNode" uid="_8nyfEZbCEe-T98T5xGCmTw" name="PollutionStormSupervisor" width="24" height="10" resizeKind="NSEW">
+      <target xmi:type="pasys:StormSupervisor" href="PollutionHybridKubernetes.xmi#//@ownedElements.9/@supervisor"/>
+      <semanticElements xmi:type="pasys:StormSupervisor" href="PollutionHybridKubernetes.xmi#//@ownedElements.9/@supervisor"/>
+      <ownedStyle xmi:type="diagram:Square" uid="_8nyfEpbCEe-T98T5xGCmTw" labelSize="10" iconPath="/Rai4.design/icons/storm_supervisor_image.png" borderColor="255,255,255" labelPosition="node" width="24" height="10" color="255,255,255">
+        <labelFormat>bold</labelFormat>
+        <description xmi:type="style:SquareDescription" href="platform:/resource/Rai4.design/description/Rai4.odesign#//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Storm%20Service%20Diagram']/@defaultLayer/@nodeMappings[name='Storm%20Supervisor']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/Rai4.design/description/Rai4.odesign#//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Storm%20Service%20Diagram']/@defaultLayer/@nodeMappings[name='Storm%20Supervisor']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNode" uid="_8nyfFJbCEe-T98T5xGCmTw" name="PollutionStormUI" width="24" height="10" resizeKind="NSEW">
+      <target xmi:type="pasys:StormUI" href="PollutionHybridKubernetes.xmi#//@ownedElements.9/@ui"/>
+      <semanticElements xmi:type="pasys:StormUI" href="PollutionHybridKubernetes.xmi#//@ownedElements.9/@ui"/>
+      <ownedStyle xmi:type="diagram:Square" uid="_8nyfFZbCEe-T98T5xGCmTw" labelSize="10" iconPath="/Rai4.design/icons/storm_ui_image.png" borderColor="255,255,255" labelPosition="node" width="24" height="10" color="255,255,255">
+        <labelFormat>bold</labelFormat>
+        <description xmi:type="style:SquareDescription" href="platform:/resource/Rai4.design/description/Rai4.odesign#//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Storm%20Service%20Diagram']/@defaultLayer/@nodeMappings[name='Storm%20UI']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/Rai4.design/description/Rai4.odesign#//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Storm%20Service%20Diagram']/@defaultLayer/@nodeMappings[name='Storm%20UI']"/>
+    </ownedDiagramElements>
+    <description xmi:type="description_1:DiagramDescription" href="platform:/resource/Rai4.design/description/Rai4.odesign#//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Storm%20Service%20Diagram']"/>
+    <filterVariableHistory xmi:type="diagram:FilterVariableHistory" uid="_8nouEZbCEe-T98T5xGCmTw"/>
+    <activatedLayers xmi:type="description_1:Layer" href="platform:/resource/Rai4.design/description/Rai4.odesign#//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Storm%20Service%20Diagram']/@defaultLayer"/>
+    <target xmi:type="pasys:StormService" href="PollutionHybridKubernetes.xmi#//@ownedElements.9"/>
+  </diagram:DSemanticDiagram>
+  <diagram:DSemanticDiagram uid="_9SUp0JbCEe-T98T5xGCmTw">
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_9SdMsJbCEe-T98T5xGCmTw" source="GMF_DIAGRAMS">
+      <data xmi:type="notation:Diagram" xmi:id="_9SdMsZbCEe-T98T5xGCmTw" type="Sirius" element="_9SUp0JbCEe-T98T5xGCmTw" measurementUnit="Pixel">
+        <children xmi:type="notation:Node" xmi:id="_9SfB4pbCEe-T98T5xGCmTw" type="2001" element="_9SdzwJbCEe-T98T5xGCmTw">
+          <children xmi:type="notation:Node" xmi:id="_9Sfo8JbCEe-T98T5xGCmTw" type="5002">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_9Sfo8ZbCEe-T98T5xGCmTw" y="5"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_9Sfo_JbCEe-T98T5xGCmTw" type="3003" element="_9Sea0JbCEe-T98T5xGCmTw">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_9Sfo_ZbCEe-T98T5xGCmTw" fontName="Segoe UI"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_9Sfo_pbCEe-T98T5xGCmTw"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_9SfB45bCEe-T98T5xGCmTw" fontName="Segoe UI" fontHeight="10" bold="true"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_9SfB5JbCEe-T98T5xGCmTw" width="240" height="100"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_9Sfo8pbCEe-T98T5xGCmTw" type="2001" element="_9Sea0pbCEe-T98T5xGCmTw">
+          <children xmi:type="notation:Node" xmi:id="_9Sfo9ZbCEe-T98T5xGCmTw" type="5002">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_9Sfo9pbCEe-T98T5xGCmTw" y="5"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_9Sfo_5bCEe-T98T5xGCmTw" type="3003" element="_9Sea05bCEe-T98T5xGCmTw">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_9SfpAJbCEe-T98T5xGCmTw" fontName="Segoe UI"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_9SfpAZbCEe-T98T5xGCmTw"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_9Sfo85bCEe-T98T5xGCmTw" fontName="Segoe UI" fontHeight="10" bold="true"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_9Sfo9JbCEe-T98T5xGCmTw" x="300" width="240" height="100"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_9Sfo95bCEe-T98T5xGCmTw" type="2001" element="_9Sea1ZbCEe-T98T5xGCmTw">
+          <children xmi:type="notation:Node" xmi:id="_9Sfo-pbCEe-T98T5xGCmTw" type="5002">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_9Sfo-5bCEe-T98T5xGCmTw" y="5"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_9SgQAJbCEe-T98T5xGCmTw" type="3003" element="_9Sea1pbCEe-T98T5xGCmTw">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_9SgQAZbCEe-T98T5xGCmTw" fontName="Segoe UI"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_9SgQApbCEe-T98T5xGCmTw"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_9Sfo-JbCEe-T98T5xGCmTw" fontName="Segoe UI" fontHeight="10" bold="true"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_9Sfo-ZbCEe-T98T5xGCmTw" x="600" width="240" height="100"/>
+        </children>
+        <styles xmi:type="notation:DiagramStyle" xmi:id="_9SdMspbCEe-T98T5xGCmTw"/>
+      </data>
+    </ownedAnnotationEntries>
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_9SfB4JbCEe-T98T5xGCmTw" source="DANNOTATION_CUSTOMIZATION_KEY">
+      <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_9SfB4ZbCEe-T98T5xGCmTw"/>
+    </ownedAnnotationEntries>
+    <ownedDiagramElements xmi:type="diagram:DNode" uid="_9SdzwJbCEe-T98T5xGCmTw" name="PollutionCluster" width="24" height="10" resizeKind="NSEW">
+      <target xmi:type="pasys:DataCenter" href="PollutionHybridKubernetes.xmi#//@ownedElements.12/@dataCenters.0"/>
+      <semanticElements xmi:type="pasys:DataCenter" href="PollutionHybridKubernetes.xmi#//@ownedElements.12/@dataCenters.0"/>
+      <ownedStyle xmi:type="diagram:Square" uid="_9Sea0JbCEe-T98T5xGCmTw" labelSize="10" iconPath="/Rai4.design/icons/data_center_image.png" borderColor="255,255,255" labelPosition="node" width="24" height="10" color="255,255,255">
+        <labelFormat>bold</labelFormat>
+        <description xmi:type="style:SquareDescription" href="platform:/resource/Rai4.design/description/Rai4.odesign#//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Cassandra%20Service%20Diagram']/@defaultLayer/@nodeMappings[name='Data%20Center']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/Rai4.design/description/Rai4.odesign#//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Cassandra%20Service%20Diagram']/@defaultLayer/@nodeMappings[name='Data%20Center']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNode" uid="_9Sea0pbCEe-T98T5xGCmTw" name="cassandra_schema.sql" width="24" height="10" resizeKind="NSEW">
+      <target xmi:type="pasys:FileDescriptor" href="PollutionHybridKubernetes.xmi#//@ownedElements.12/@cqlSchemas.0"/>
+      <semanticElements xmi:type="pasys:FileDescriptor" href="PollutionHybridKubernetes.xmi#//@ownedElements.12/@cqlSchemas.0"/>
+      <ownedStyle xmi:type="diagram:Square" uid="_9Sea05bCEe-T98T5xGCmTw" labelSize="10" iconPath="/Rai4.design/icons/file_descriptor_image.png" borderColor="255,255,255" labelPosition="node" width="24" height="10" color="255,255,255">
+        <labelFormat>bold</labelFormat>
+        <description xmi:type="style:SquareDescription" href="platform:/resource/Rai4.design/description/Rai4.odesign#//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Cassandra%20Service%20Diagram']/@defaultLayer/@nodeMappings[name='File%20Descriptor']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/Rai4.design/description/Rai4.odesign#//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Cassandra%20Service%20Diagram']/@defaultLayer/@nodeMappings[name='File%20Descriptor']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNode" uid="_9Sea1ZbCEe-T98T5xGCmTw" name="cassandra" width="24" height="10" resizeKind="NSEW">
+      <target xmi:type="pasys:NodeDeploymentConf" href="PollutionHybridKubernetes.xmi#//@ownedElements.12/@deploymentConfig"/>
+      <semanticElements xmi:type="pasys:NodeDeploymentConf" href="PollutionHybridKubernetes.xmi#//@ownedElements.12/@deploymentConfig"/>
+      <ownedStyle xmi:type="diagram:Square" uid="_9Sea1pbCEe-T98T5xGCmTw" labelSize="10" iconPath="/Rai4.design/icons/deployment_config_image.png" borderColor="255,255,255" labelPosition="node" width="24" height="10" color="255,255,255">
+        <labelFormat>bold</labelFormat>
+        <description xmi:type="style:SquareDescription" href="platform:/resource/Rai4.design/description/Rai4.odesign#//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Cassandra%20Service%20Diagram']/@defaultLayer/@nodeMappings[name='Node%20Deployment%20Conf']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/Rai4.design/description/Rai4.odesign#//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Cassandra%20Service%20Diagram']/@defaultLayer/@nodeMappings[name='Node%20Deployment%20Conf']"/>
+    </ownedDiagramElements>
+    <description xmi:type="description_1:DiagramDescription" href="platform:/resource/Rai4.design/description/Rai4.odesign#//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Cassandra%20Service%20Diagram']"/>
+    <filterVariableHistory xmi:type="diagram:FilterVariableHistory" uid="_9SVQ4JbCEe-T98T5xGCmTw"/>
+    <activatedLayers xmi:type="description_1:Layer" href="platform:/resource/Rai4.design/description/Rai4.odesign#//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Cassandra%20Service%20Diagram']/@defaultLayer"/>
+    <target xmi:type="pasys:CassandraService" href="PollutionHybridKubernetes.xmi#//@ownedElements.12"/>
+  </diagram:DSemanticDiagram>
+  <diagram:DSemanticDiagram uid="_99_dAJbCEe-T98T5xGCmTw">
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_9-JOAJbCEe-T98T5xGCmTw" source="GMF_DIAGRAMS">
+      <data xmi:type="notation:Diagram" xmi:id="_9-JOAZbCEe-T98T5xGCmTw" type="Sirius" element="_99_dAJbCEe-T98T5xGCmTw" measurementUnit="Pixel">
+        <children xmi:type="notation:Node" xmi:id="_9-KcI5bCEe-T98T5xGCmTw" type="2001" element="_9-J1EJbCEe-T98T5xGCmTw">
+          <children xmi:type="notation:Node" xmi:id="_9-KcJpbCEe-T98T5xGCmTw" type="5002">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_9-KcJ5bCEe-T98T5xGCmTw" y="5"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_9-KcKJbCEe-T98T5xGCmTw" type="3003" element="_9-J1EZbCEe-T98T5xGCmTw">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_9-KcKZbCEe-T98T5xGCmTw" fontName="Segoe UI"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_9-KcKpbCEe-T98T5xGCmTw"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_9-KcJJbCEe-T98T5xGCmTw" fontName="Segoe UI" fontHeight="10" bold="true"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_9-KcJZbCEe-T98T5xGCmTw" width="240" height="100"/>
+        </children>
+        <styles xmi:type="notation:DiagramStyle" xmi:id="_9-JOApbCEe-T98T5xGCmTw"/>
+      </data>
+    </ownedAnnotationEntries>
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_9-KcIZbCEe-T98T5xGCmTw" source="DANNOTATION_CUSTOMIZATION_KEY">
+      <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_9-KcIpbCEe-T98T5xGCmTw"/>
+    </ownedAnnotationEntries>
+    <ownedDiagramElements xmi:type="diagram:DNode" uid="_9-J1EJbCEe-T98T5xGCmTw" name="1.0-10.2.1" width="24" height="10" resizeKind="NSEW">
+      <target xmi:type="pasys:KubernetesDeploymentConf" href="PollutionHybridKubernetes.xmi#//@ownedElements.10/@deploymentConfig"/>
+      <semanticElements xmi:type="pasys:KubernetesDeploymentConf" href="PollutionHybridKubernetes.xmi#//@ownedElements.10/@deploymentConfig"/>
+      <ownedStyle xmi:type="diagram:Square" uid="_9-J1EZbCEe-T98T5xGCmTw" labelSize="10" iconPath="/Rai4.design/icons/deployment_config_image.png" borderColor="255,255,255" labelPosition="node" width="24" height="10" color="255,255,255">
+        <labelFormat>bold</labelFormat>
+        <description xmi:type="style:SquareDescription" href="platform:/resource/Rai4.design/description/Rai4.odesign#//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Stream%20Data%20Diagram']/@defaultLayer/@nodeMappings[name='Kubernetes%20Deployment%20Conf']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/Rai4.design/description/Rai4.odesign#//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Stream%20Data%20Diagram']/@defaultLayer/@nodeMappings[name='Kubernetes%20Deployment%20Conf']"/>
+    </ownedDiagramElements>
+    <description xmi:type="description_1:DiagramDescription" href="platform:/resource/Rai4.design/description/Rai4.odesign#//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Stream%20Data%20Diagram']"/>
+    <filterVariableHistory xmi:type="diagram:FilterVariableHistory" uid="_99_dAZbCEe-T98T5xGCmTw"/>
+    <activatedLayers xmi:type="description_1:Layer" href="platform:/resource/Rai4.design/description/Rai4.odesign#//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Stream%20Data%20Diagram']/@defaultLayer"/>
+    <target xmi:type="pasys:KafkaWorkloadStreamData" href="PollutionHybridKubernetes.xmi#//@ownedElements.10"/>
+  </diagram:DSemanticDiagram>
+  <diagram:DSemanticDiagram uid="_-1POEJbCEe-T98T5xGCmTw">
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_-1Wi0JbCEe-T98T5xGCmTw" source="GMF_DIAGRAMS">
+      <data xmi:type="notation:Diagram" xmi:id="_-1Wi0ZbCEe-T98T5xGCmTw" type="Sirius" element="_-1POEJbCEe-T98T5xGCmTw" measurementUnit="Pixel">
+        <children xmi:type="notation:Node" xmi:id="_-1Xw8JbCEe-T98T5xGCmTw" type="2001" element="_-1XJ4JbCEe-T98T5xGCmTw">
+          <children xmi:type="notation:Node" xmi:id="_-1Xw85bCEe-T98T5xGCmTw" type="5002">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_-1Xw9JbCEe-T98T5xGCmTw" y="5"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_-1Xw9ZbCEe-T98T5xGCmTw" type="3003" element="_-1XJ4ZbCEe-T98T5xGCmTw">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_-1Xw9pbCEe-T98T5xGCmTw" fontName="Segoe UI"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_-1Xw95bCEe-T98T5xGCmTw"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_-1Xw8ZbCEe-T98T5xGCmTw" fontName="Segoe UI" fontHeight="10" bold="true"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_-1Xw8pbCEe-T98T5xGCmTw" width="240" height="100"/>
+        </children>
+        <styles xmi:type="notation:DiagramStyle" xmi:id="_-1Wi0pbCEe-T98T5xGCmTw"/>
+      </data>
+    </ownedAnnotationEntries>
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_-1XJ45bCEe-T98T5xGCmTw" source="DANNOTATION_CUSTOMIZATION_KEY">
+      <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_-1XJ5JbCEe-T98T5xGCmTw"/>
+    </ownedAnnotationEntries>
+    <ownedDiagramElements xmi:type="diagram:DNode" uid="_-1XJ4JbCEe-T98T5xGCmTw" name="1.0-10.2.1" width="24" height="10" resizeKind="NSEW">
+      <target xmi:type="pasys:KubernetesDeploymentConf" href="PollutionHybridKubernetes.xmi#//@ownedElements.8/@deploymentConfig"/>
+      <semanticElements xmi:type="pasys:KubernetesDeploymentConf" href="PollutionHybridKubernetes.xmi#//@ownedElements.8/@deploymentConfig"/>
+      <ownedStyle xmi:type="diagram:Square" uid="_-1XJ4ZbCEe-T98T5xGCmTw" labelSize="10" iconPath="/Rai4.design/icons/deployment_config_image.png" borderColor="255,255,255" labelPosition="node" width="24" height="10" color="255,255,255">
+        <labelFormat>bold</labelFormat>
+        <description xmi:type="style:SquareDescription" href="platform:/resource/Rai4.design/description/Rai4.odesign#//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Kafka%20Service%20Diagram']/@defaultLayer/@nodeMappings[name='Kubernetes%20Deployment%20Conf']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/Rai4.design/description/Rai4.odesign#//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Kafka%20Service%20Diagram']/@defaultLayer/@nodeMappings[name='Kubernetes%20Deployment%20Conf']"/>
+    </ownedDiagramElements>
+    <description xmi:type="description_1:DiagramDescription" href="platform:/resource/Rai4.design/description/Rai4.odesign#//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Kafka%20Service%20Diagram']"/>
+    <filterVariableHistory xmi:type="diagram:FilterVariableHistory" uid="_-1POEZbCEe-T98T5xGCmTw"/>
+    <activatedLayers xmi:type="description_1:Layer" href="platform:/resource/Rai4.design/description/Rai4.odesign#//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Kafka%20Service%20Diagram']/@defaultLayer"/>
+    <target xmi:type="pasys:KafkaService" href="PollutionHybridKubernetes.xmi#1"/>
+  </diagram:DSemanticDiagram>
+  <diagram:DSemanticDiagram uid="_j-62cJbDEe-T98T5xGCmTw">
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_j_GcoJbDEe-T98T5xGCmTw" source="GMF_DIAGRAMS">
+      <data xmi:type="notation:Diagram" xmi:id="_j_GcoZbDEe-T98T5xGCmTw" type="Sirius" element="_j-62cJbDEe-T98T5xGCmTw" measurementUnit="Pixel">
+        <children xmi:type="notation:Node" xmi:id="_j_HqxZbDEe-T98T5xGCmTw" type="2001" element="_j_HDsJbDEe-T98T5xGCmTw">
+          <children xmi:type="notation:Node" xmi:id="_j_IR0JbDEe-T98T5xGCmTw" type="5002">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_j_IR0ZbDEe-T98T5xGCmTw" y="5"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_j_IR15bDEe-T98T5xGCmTw" type="3003" element="_j_HDsZbDEe-T98T5xGCmTw">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_j_IR2JbDEe-T98T5xGCmTw" fontName="Segoe UI"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_j_IR2ZbDEe-T98T5xGCmTw"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_j_HqxpbDEe-T98T5xGCmTw" fontName="Segoe UI" fontHeight="10" bold="true"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_j_Hqx5bDEe-T98T5xGCmTw" width="240" height="100"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_j_IR0pbDEe-T98T5xGCmTw" type="2001" element="_j_HqwJbDEe-T98T5xGCmTw">
+          <children xmi:type="notation:Node" xmi:id="_j_IR1ZbDEe-T98T5xGCmTw" type="5002">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_j_IR1pbDEe-T98T5xGCmTw" y="5"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_j_I44JbDEe-T98T5xGCmTw" type="3003" element="_j_HqwZbDEe-T98T5xGCmTw">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_j_I44ZbDEe-T98T5xGCmTw" fontName="Segoe UI"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_j_I44pbDEe-T98T5xGCmTw"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_j_IR05bDEe-T98T5xGCmTw" fontName="Segoe UI" fontHeight="10" bold="true"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_j_IR1JbDEe-T98T5xGCmTw" x="300" width="240" height="100"/>
+        </children>
+        <styles xmi:type="notation:DiagramStyle" xmi:id="_j_GcopbDEe-T98T5xGCmTw"/>
+      </data>
+    </ownedAnnotationEntries>
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_j_Hqw5bDEe-T98T5xGCmTw" source="DANNOTATION_CUSTOMIZATION_KEY">
+      <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_j_HqxJbDEe-T98T5xGCmTw"/>
+    </ownedAnnotationEntries>
+    <ownedDiagramElements xmi:type="diagram:DNode" uid="_j_HDsJbDEe-T98T5xGCmTw" name="SantanderPollution.jar" width="24" height="10" resizeKind="NSEW">
+      <target xmi:type="pasys:NodeDeploymentConf" href="PollutionHybridKubernetes.xmi#//@ownedElements.11/@deploymentConfig"/>
+      <semanticElements xmi:type="pasys:NodeDeploymentConf" href="PollutionHybridKubernetes.xmi#//@ownedElements.11/@deploymentConfig"/>
+      <ownedStyle xmi:type="diagram:Square" uid="_j_HDsZbDEe-T98T5xGCmTw" labelSize="10" iconPath="/Rai4.design/icons/deployment_config_image.png" borderColor="255,255,255" labelPosition="node" width="24" height="10" color="255,255,255">
+        <labelFormat>bold</labelFormat>
+        <description xmi:type="style:SquareDescription" href="platform:/resource/Rai4.design/description/Rai4.odesign#//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Workflow%20Diagram']/@defaultLayer/@nodeMappings[name='Node%20Deployment%20Conf']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/Rai4.design/description/Rai4.odesign#//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Workflow%20Diagram']/@defaultLayer/@nodeMappings[name='Node%20Deployment%20Conf']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNode" uid="_j_HqwJbDEe-T98T5xGCmTw" name="MainTask" width="24" height="10" resizeKind="NSEW">
+      <target xmi:type="pasys:Task" href="PollutionHybridKubernetes.xmi#//@ownedElements.11/@ownedTasks.0"/>
+      <semanticElements xmi:type="pasys:Task" href="PollutionHybridKubernetes.xmi#//@ownedElements.11/@ownedTasks.0"/>
+      <ownedStyle xmi:type="diagram:Square" uid="_j_HqwZbDEe-T98T5xGCmTw" labelSize="10" iconPath="/Rai4.design/icons/task_image.png" borderColor="255,255,255" labelPosition="node" width="24" height="10" color="255,255,255">
+        <labelFormat>bold</labelFormat>
+        <description xmi:type="style:SquareDescription" href="platform:/resource/Rai4.design/description/Rai4.odesign#//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Workflow%20Diagram']/@defaultLayer/@nodeMappings[name='Task']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/Rai4.design/description/Rai4.odesign#//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Workflow%20Diagram']/@defaultLayer/@nodeMappings[name='Task']"/>
+    </ownedDiagramElements>
+    <description xmi:type="description_1:DiagramDescription" href="platform:/resource/Rai4.design/description/Rai4.odesign#//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Workflow%20Diagram']"/>
+    <filterVariableHistory xmi:type="diagram:FilterVariableHistory" uid="_j-62cZbDEe-T98T5xGCmTw"/>
+    <activatedLayers xmi:type="description_1:Layer" href="platform:/resource/Rai4.design/description/Rai4.odesign#//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Workflow%20Diagram']/@defaultLayer"/>
+    <target xmi:type="pasys:Workflow" href="PollutionHybridKubernetes.xmi#//@ownedElements.11"/>
+  </diagram:DSemanticDiagram>
+</xmi:XMI>
