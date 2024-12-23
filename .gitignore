@@ -1,0 +1,27 @@
+# Carpetas generales de Eclipse
+**/bin/
+**/tmp/
+**/.settings/
+**/.project
+**/target/
+
+# Archivos compilados
+**/*.class
+**/*.tmp
+**/*.bak
+**/*.swp
+**/*~.nib
+
+# Xtext específicos en el proyecto SintaxisTextual/
+SintaxisTextual/**/src-gen/
+SintaxisTextual/**/xtend-gen/
+SintaxisTextual/**/.launch/
+SintaxisTextual/**/plugin.xml_gen
+
+# EMF específicos en RAI4/
+RAI4/**/model-gen/
+RAI4/**/generated/
+
+# Sirius específicos en SintaxisVisual/
+SintaxisVisual/**/*.aird~
+SintaxisVisual/**/*.aird.*
