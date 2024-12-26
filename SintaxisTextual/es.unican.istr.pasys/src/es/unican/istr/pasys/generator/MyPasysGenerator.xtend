@@ -20,6 +20,8 @@ import es.unican.istr.pasys.pasys.OrchestrationCluster
 import es.unican.istr.pasys.pasys.NomadDeploymentConf
 import es.unican.istr.pasys.pasys.KubernetesDeploymentConf
 import es.unican.istr.pasys.pasys.SwarmDeploymentConf
+import es.unican.istr.pasys.pasys.KafkaWorkloadStreamData
+import es.unican.istr.pasys.pasys.OrchestratorDeploymentConf
 
 class MyPasysGenerator extends AbstractGenerator {
 
@@ -34,6 +36,9 @@ class MyPasysGenerator extends AbstractGenerator {
 	            KafkaService: {
 	                generateKafkaConfigFile(element, fsa)
 	                generateKafkaScriptFile(element, fsa)
+	        	}
+	        	KafkaWorkloadStreamData: {
+	        		generateTopicScript(element, fsa)
 	        	}
 	        	StormService: {
 	                generateStormConfigFile(element, fsa)
@@ -299,6 +304,89 @@ class MyPasysGenerator extends AbstractGenerator {
 	    fsa.generateFile('''kafka/kafka«kafkaService.commId».sh''', scriptContent)
 	}
 	
+	
+	// Kafka Workload Stream Data
+	def void generateTopicScript(KafkaWorkloadStreamData kafkaStream, IFileSystemAccess2 fsa) {
+	    val server = kafkaStream.holder
+	    if (!(server instanceof KafkaService)) {
+	        throw new IllegalStateException('''Topic «kafkaStream.name» is not assigned to a Kafka Server''')
+	    }
+	    
+	    val kafkaService = server as KafkaService
+	    val scriptName = '''topic_«kafkaStream.id».sh'''
+	    
+	    // Generar el contenido del script según el tipo de deployment
+	    val scriptContent = switch (kafkaStream.deploymentConfig) {
+	        NodeDeploymentConf: {
+	            val nodeConf = kafkaStream.deploymentConfig as NodeDeploymentConf
+	            val serverHost = kafkaService.host as ProcessingNodeCluster
+	            val bootstrapServer = '''«serverHost.nodes.get(0).ip»:«kafkaService.clientPort»'''
+	            generateNodeScriptContent(kafkaStream, bootstrapServer, nodeConf)
+	        }
+	        OrchestratorDeploymentConf: {
+	            val bootstrapServer = '''«kafkaService.name»-hs:«kafkaService.clientPort»'''
+	            generateOrchestratorScriptContent(kafkaStream, bootstrapServer)
+	        }
+	        default: 
+	            throw new IllegalStateException("Unsupported deployment configuration")
+	    }
+	    
+	    // Generar el script principal
+    	fsa.generateFile('''kafkaworkloadstreamdata/«scriptName»''', scriptContent)
+	    
+	    // Si es un despliegue orquestado, generar también el script de Helm
+	    if (kafkaStream.deploymentConfig instanceof OrchestratorDeploymentConf) {
+	        val helmContent = '''
+	            kubectl cp C:\\Temp\\localScripts\\«scriptName» «kafkaService.name»-0
+	            kubectl exec «kafkaService.name»-0 -- /bin/bash «scriptName»
+	        '''
+        	fsa.generateFile('''kafkaworkloadstreamdata/helm_«scriptName»''', helmContent)
+	    }
+	}
+	
+	private def String generateNodeScriptContent(KafkaWorkloadStreamData stream, String bootstrapServer, NodeDeploymentConf nodeConf) {
+	    '''
+	        #!/bin/bash
+	        cd «nodeConf.scriptFolderPath»
+	        
+	        TOPIC_NAME="«stream.name»"
+	        
+	        «nodeConf.artifactLocator»/«nodeConf.artifactName» --list --bootstrap-server «bootstrapServer» | grep «stream.name»
+	        
+	        #Si existe el topico
+	        if [ $? -eq 0 ]; then
+	            exit 0
+	        fi
+	        
+	        #Si no existe el topico se crea
+	        «nodeConf.artifactLocator»/«nodeConf.artifactName» --create --bootstrap-server «bootstrapServer» \
+	            --replication-factor «stream.numReplication» \
+	            --partitions «stream.numPartitions» \
+	            --topic «stream.name»
+	    '''
+	}
+	
+	private def String generateOrchestratorScriptContent(KafkaWorkloadStreamData stream, String bootstrapServer) {
+	    '''
+	        #!/bin/bash
+	        cd /tmp
+	        
+	        TOPIC_NAME="«stream.name»"
+	        
+	        kafka-topics.sh --list --bootstrap-server «bootstrapServer» | grep «stream.name»
+	        
+	        #Si existe el topico
+	        if [ $? -eq 0 ]; then
+	            exit 0
+	        fi
+	        
+	        #Si no existe el topico se crea
+	        kafka-topics.sh --create --bootstrap-server «bootstrapServer» \
+	            --replication-factor «stream.numReplication» \
+	            --partitions «stream.numPartitions» \
+	            --topic «stream.name»
+	    '''
+	}
 	
     // Storm Service
     
