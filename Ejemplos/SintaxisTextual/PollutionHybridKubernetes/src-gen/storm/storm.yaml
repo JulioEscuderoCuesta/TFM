@@ -11,7 +11,7 @@ storm.zookeeper.servers:
 storm.zookeeper.port: 2181
 
 # Supervisor configuration
-        supervisor.slots.ports:
+supervisor.slots.ports:
         - 6700
         - 6701
         - 6702

@@ -4,19 +4,21 @@
 storm.local.dir: "storm-local"
 
 # UI configuration
-ui.port: 2018
+ui.port: 8080
 
 storm.zookeeper.servers:
-- "ZkNode"
+- "ZkNode1"
+- "ZkNode2"
+- "ZkNode3"
 
-storm.zookeeper.port: 2018
+storm.zookeeper.port: 2181
 
 # Supervisor configuration
-        supervisor.slots.ports:
+supervisor.slots.ports:
         - 6700
         - 6701
         - 6702
         - 6703
 
 # Nimbus configuration
-nimbus.seeds: ["KafkaNode", "CassandraNode"]
+nimbus.seeds: ["NimbusNode"]

@@ -11,19 +11,16 @@ endpoint_snitch: SimpleSnitch
 storage_port: 7000
 ssl_storage_port: 7001
 rpc_port: 9160
-listen_address: 172.31.16.51
-rpc_address: 172.31.16.51
-broadcast_rpc_address: 172.31.16.51
 
 # Data directories
 data_file_directories:
-    - /home/gestor/apache/Services/cassandra/data/data
+- /home/gestor/apache/Services/cassandra/data/data
 
 # Seed provider configuration
 seed_provider:
-    - class_name: SimpleProvider
-      parameters:
-          - seeds: "172.31.16.51"
+- class_name: SimpleProvider
+  parameters:
+  - seeds: "172.31.16.51"
 
 # Performance settings
 concurrent_reads: 32

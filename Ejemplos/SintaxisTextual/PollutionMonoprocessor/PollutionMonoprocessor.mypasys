@@ -2,7 +2,7 @@ ComputationalSystem SantanderPollution {
     date "20/05/2024"
     authors "Yo"
 	ownedElements {
-		PhysicalProcessingNode MainNode 
+		PhysicalProcessingNode MainNode
         {
             id "MainNode"
             ip "127.0.0.1"
@@ -126,7 +126,7 @@ ComputationalSystem SantanderPollution {
 			listeners "PLAINTEXT://127.0.0.1:9092"	
 		},
 		
-		KafkaWorkloadStreamData "Pollution" {
+		KafkaWorkloadStreamData "Pollution" {   
 			id "PollutionKafka"
 			cleanupPolicy false
 			retention_ms 0

@@ -1,5 +1,5 @@
 ComputationalSystem SantanderPollution {
-	date "20/11/2019"
+	date "20/11/2019" 
 	authors "P. López y R. Dintén"
 	ownedElements {
 		PhysicalProcessingNode NimbusNode {
@@ -151,7 +151,7 @@ ComputationalSystem SantanderPollution {
 			}
 		},
 		
-		StormService PollutionStorm {
+		StormService PollutionStorm { 
 			id PollutionStorm
 			host NimbusCluster
 			zookeeperConnect PollutionZkpr

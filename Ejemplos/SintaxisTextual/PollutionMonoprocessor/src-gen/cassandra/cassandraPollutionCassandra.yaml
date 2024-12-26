@@ -21,7 +21,7 @@ seed_provider:
 - class_name: SimpleSeedProvider
   parameters:
   - seeds: "127.0.0.1"
-	
+
 # Performance settings
 concurrent_reads: 32
 concurrent_writes: 32
