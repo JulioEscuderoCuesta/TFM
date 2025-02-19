@@ -1,0 +1,72 @@
+# Licensed to the Apache Software Foundation (ASF) under one or more
+# contributor license agreements.
+
+# Model-specific configurations
+cluster_name: CassandraCluster
+num_tokens: 256
+auto_bootstrap: false
+endpoint_snitch: SimpleSnitch
+
+# Network configuration
+storage_port: 7000
+ssl_storage_port: 7001
+rpc_port: 9160
+
+# Data directories
+data_file_directories:
+- /home/gestor/apache/Services/cassandra/data/data
+
+# Seed provider configuration
+seed_provider:
+- class_name: SimpleProvider
+  parameters:
+  - seeds: "172.31.16.51"
+
+# Performance settings
+concurrent_reads: 32
+concurrent_writes: 32
+concurrent_counter_writes: 32
+concurrent_materialized_view_writes: 32
+
+# Inter-node settings
+internode_compression: dc
+inter_dc_tcp_nodelay: false
+
+# TTL settings
+tracetype_query_ttl: 86400
+tracetype_repair_ttl: 604800
+
+# Feature flags
+enable_user_defined_functions: false
+enable_scripted_user_defined_functions: false
+enable_materialized_views: true
+
+# System settings
+windows_timer_interval: 1
+
+# Memory and cache settings
+memtable_allocation_type: heap_buffers
+
+# Timeout settings
+read_request_timeout_in_ms: 5000
+write_request_timeout_in_ms: 2000
+counter_write_request_timeout_in_ms: 5000
+cas_contention_timeout_in_ms: 1000
+range_request_timeout_in_ms: 10000
+truncate_request_timeout_in_ms: 60000
+request_timeout_in_ms: 10000
+
+# Security settings
+authenticator: AllowAllAuthenticator
+authorizer: AllowAllAuthorizer
+
+# Transport settings
+start_native_transport: true
+start_rpc: false
+
+# Auto-tuning settings
+trickle_fsync: false
+trickle_fsync_interval_in_kb: 10240
+
+# GC settings
+gc_warn_threshold_in_ms: 1000

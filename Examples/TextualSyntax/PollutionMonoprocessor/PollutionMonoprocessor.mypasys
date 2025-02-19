@@ -1,0 +1,215 @@
+ComputationalSystem SantanderPollution {
+    date "20/05/2024"
+    authors "Yo"
+	ownedElements {
+		PhysicalProcessingNode MainNode
+        {
+            id "MainNode"
+            ip "127.0.0.1"
+            speedFactor 1.0
+            userName "gestor"
+            concurrencyLevel 8
+            memorySize 0
+            os "Ubuntu"
+        },
+                
+        ProcessingNodeCluster MainCluster
+        {
+            id "MainCluster"
+            nodes ( MainNode )
+        },
+        
+        ZookeeperService PollutionZkpr
+        {
+            id "PollutionZkpr"
+            serverId 2
+            clientPort "2181"
+            tickTime 2000
+            leaderServers true
+            peerPort "2888"
+            leaderPort "3888"
+            initLimit 5
+            syncLimit 3
+            host MainCluster
+            deploymentConfig NodeDeploymentConf 'kafka-topics.sh' {
+            	isRunning false
+                artifactLocator "/home/gestor/apache/Services/zookeeper/bin"
+                configFolderPath "/home/gestor/apache/Services/zookeeper/config"
+                dataFolderPath "/home/gestor/apache/Services/zookeeper/data"
+                logFolderPath "/home/gestor/apache/Services/zookeeper/logs" 
+                scriptFolderPath "/home/gestor/apache/Services/zookeeper/scripts"
+            }
+        },
+        
+        StormService PollutionStorm {
+            id "PollutionStorm"
+            host MainCluster
+            zookeeperConnect PollutionZkpr
+            deploymentConfig NodeDeploymentConf "Conf_storm" {
+				isRunning false
+				artifactLocator "/home/gestor/apache/services/storm/bin"
+	            configFolderPath "/home/gestor/apache/services/storm/config"
+	            dataFolderPath "/home/gestor/apache/services/storm/data"
+	            logFolderPath "/home/gestor/apache/services/storm/logs"
+	            scriptFolderPath "/home/gestor/apache/services/storm/scripts"
+            }
+            nimbus StormNimbus PollutionStormNimbus {
+                id PollutionStormNimbus
+                deploymentConfig NodeDeploymentConf "Conf_storm" {
+					isRunning false
+					artifactLocator "/home/gestor/apache/services/storm/bin"
+		            configFolderPath "/home/gestor/apache/services/storm/config"
+		            dataFolderPath "/home/gestor/apache/services/storm/data"
+		            logFolderPath "/home/gestor/apache/services/storm/logs"
+		            scriptFolderPath "/home/gestor/apache/services/storm/scripts"
+                }
+                host MainCluster
+            }
+            supervisor StormSupervisor PollutionStormSupervisor {
+                id PollutionStormSupervisor
+                deploymentConfig NodeDeploymentConf "Conf_storm" {
+					isRunning false
+					artifactLocator "/home/gestor/apache/services/storm/bin"
+		            configFolderPath "/home/gestor/apache/services/storm/config"
+		            dataFolderPath "/home/gestor/apache/services/storm/data"
+		            logFolderPath "/home/gestor/apache/services/storm/logs"
+		            scriptFolderPath "/home/gestor/apache/services/storm/scripts"
+                }
+                host MainCluster
+                supervisorSlotPorts {
+                    "6700", "6701", "6702", "6703"
+                }
+            }
+            ui StormUI PollutionStormUI {
+            	id PollutionStormUI
+            	uiPort "8080"
+            	deploymentConfig NodeDeploymentConf "Conf_storm" {
+            		isRunning false
+                    artifactLocator "/home/gestor/apache/services/storm/bin"
+                    configFolderPath "/home/gestor/apache/services/storm/config"
+                    dataFolderPath "/home/gestor/apache/services/storm/data"
+                    logFolderPath "/home/gestor/apache/services/storm/logs"
+                    scriptFolderPath "/home/gestor/apache/services/storm/scripts"
+                }
+                host MainCluster  
+            }    
+        },
+       
+        
+		KafkaService PollutionKafka {
+			commId 1
+			id PollutionKafka
+			clientPort "9092"
+			autoCreateTopicEnable false
+			deleteTopicEnable false
+			zookeeperConnect PollutionZkpr
+			zookeeperConnectionTimeout 6000
+			numPartitions 4
+			numRecoveryThreadsPerDataDir 1
+			logFlushInterval 1000
+			logFlushIntervalMessages 10000
+			numIOThreads 8
+			numNetworkThreads 3
+			socketReceiveBufferBytes 12400
+			socketRequestMaxBytes 104857600
+			socketSendBufferBytes 102400
+			host MainCluster
+			deploymentConfig NodeDeploymentConf "kafka-Service-start.sh" {
+				isRunning false
+				artifactLocator "/home/gestor/apache/services/kafka/bin"
+                configFolderPath "/home/gestor/apache/services/kafka/config"
+                dataFolderPath "/home/gestor/apache/services/kafka/data"
+                logFolderPath "/home/gestor/apache/services/kafka/logs"
+                scriptFolderPath "/home/gestor/apache/services/kafka/scripts"
+			}
+			advertisedListeners "PLAINTEXT://127.0.0.1:9092"
+			listeners "PLAINTEXT://127.0.0.1:9092"	
+		},
+		
+		KafkaWorkloadStreamData "Pollution" {   
+			id "PollutionKafka"
+			cleanupPolicy false
+			retention_ms 0
+			retention_bytes 0
+			numPartitions 1
+			numReplication 1
+			messageSize 0
+			holder PollutionKafka
+			deploymentConfig NodeDeploymentConf "kafka-topics.sh" {
+				isRunning false
+				artifactLocator "/home/gestor/apache/services/kafka/bin"
+                configFolderPath "/home/gestor/apache/services/topics/config"
+                dataFolderPath "/home/gestor/apache/services/topics/data"
+                logFolderPath "/home/gestor/apache/services/topics/logs"	
+                scriptFolderPath "/home/gestor/apache/services/topics/scripts"
+			}
+		},
+			
+		
+		CassandraService "Pollution Cassandra" {
+			id PollutionCassandra
+        	logging root
+        	passwd root
+        	port 9042
+        	autoBootstrap false
+        	numTokens 256
+        	dataFileDir "/home/gestor/apache/Services/cassandra/data/data"
+        	storagePort "7000"
+        	sslStoragePort "7001"
+        	rpcPort "9160"
+        	host MainCluster
+        	deploymentConfig NodeDeploymentConf "Conf_Cassandra" {
+        		isRunning false
+                artifactLocator "/home/gestor/apache/services/cassandra/bin"
+                configFolderPath "/home/gestor/apache/services/cassandra/config"
+                dataFolderPath "/home/gestor/apache/services/cassandra/data"
+                logFolderPath "/home/gestor/apache/services/cassandra/logs"
+                scriptFolderPath "/home/gestor/apache/services/cassandra/scripts"
+        	}
+        	dataCenters {
+        		DataCenter PollutionCluster {
+        			id PollutionCluster
+        			racks {
+        				Rack PollutionCluster {
+        					id PollutionClusterRack
+        					nodes MainCluster 
+        				}
+        			}
+        		}
+        	}
+        	cqlSchemas {
+        		DeploymentFileDescriptor {
+        			fileContent "/home/gestor/apache/apps/pollution/workflows/data"        			   			
+        			fileName "cassandra_schema.sql"
+        			filePath "/home/gestor/apache/apps/pollution/workflows/data"
+        			elementType CASSANDRA_SCHEMA             			
+        			owner MainNode
+        		}
+        	}
+        	endpointSnitch GossipingPropertyFileSnitch
+        	seeds MainCluster
+		},
+		
+		Workflow PollutionProcess {	 
+			id PollutionProcess
+        	ownedTasks {
+        		Task MainTask {
+        			id MainTask
+        			triggerStreamData Pollution 
+        			implementingClassName "es.unican.dintenr.santanderPollution.SantanderPollutionTopology"	 
+        		}		
+        	}
+        	rootTask MainTask
+			scheduler PollutionStorm
+			deploymentConfig NodeDeploymentConf "SantanderPollution.jar" {
+				isRunning false
+                artifactLocator "/home/gestor/apache/apps/pollution/workflows/jars"
+                configFolderPath "/home/gestor/apache/apps/pollution/workflows/config"
+                dataFolderPath "/home/gestor/apache/apps/pollution/workflows/data"
+                logFolderPath "/home/gestor/apache/apps/pollution/workflows/logs"
+                scriptFolderPath "/home/gestor/apache/apps/pollution/workflows/scripts"
+        	}
+
+		}
+	}
+}
