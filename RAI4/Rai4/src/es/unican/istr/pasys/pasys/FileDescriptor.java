@@ -18,7 +18,7 @@ import org.eclipse.emf.ecore.EObject;
  * </ul>
  *
  * @see es.unican.istr.pasys.pasys.PasysPackage#getFileDescriptor()
- * @model
+ * @model abstract="true"
  * @generated
  */
 public interface FileDescriptor extends EObject {

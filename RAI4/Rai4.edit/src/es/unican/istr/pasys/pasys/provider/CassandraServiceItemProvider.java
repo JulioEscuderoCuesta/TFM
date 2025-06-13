@@ -360,11 +360,6 @@ public class CassandraServiceItemProvider extends PersistenceServiceItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(PasysPackage.Literals.CASSANDRA_SERVICE__CQL_SCHEMAS,
-				 PasysFactory.eINSTANCE.createFileDescriptor()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(PasysPackage.Literals.CASSANDRA_SERVICE__CQL_SCHEMAS,
 				 PasysFactory.eINSTANCE.createDeploymentFileDescriptor()));
 
 		newChildDescriptors.add

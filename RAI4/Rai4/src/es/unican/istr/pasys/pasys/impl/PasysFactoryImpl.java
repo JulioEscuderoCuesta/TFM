@@ -14,7 +14,6 @@ import es.unican.istr.pasys.pasys.DeploymentConstraints;
 import es.unican.istr.pasys.pasys.DeploymentFileDescriptor;
 import es.unican.istr.pasys.pasys.DerivedStreamData;
 import es.unican.istr.pasys.pasys.ExporterData;
-import es.unican.istr.pasys.pasys.FileDescriptor;
 import es.unican.istr.pasys.pasys.FlowStreamData;
 import es.unican.istr.pasys.pasys.KafkaFlowStreamData;
 import es.unican.istr.pasys.pasys.KafkaService;
@@ -180,7 +179,6 @@ public class PasysFactoryImpl extends EFactoryImpl implements PasysFactory {
 			case PasysPackage.PORT: return createPort();
 			case PasysPackage.DEPLOYMENT_CONSTRAINTS: return createDeploymentConstraints();
 			case PasysPackage.STRING_TO_STRING_MAP: return (EObject)createStringToStringMap();
-			case PasysPackage.FILE_DESCRIPTOR: return createFileDescriptor();
 			case PasysPackage.DEPLOYMENT_FILE_DESCRIPTOR: return createDeploymentFileDescriptor();
 			case PasysPackage.ARTIFACT_DESCRIPTOR: return createArtifactDescriptor();
 			default:
@@ -848,17 +846,6 @@ public class PasysFactoryImpl extends EFactoryImpl implements PasysFactory {
 	public Map.Entry<String, String> createStringToStringMap() {
 		StringToStringMapImpl stringToStringMap = new StringToStringMapImpl();
 		return stringToStringMap;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public FileDescriptor createFileDescriptor() {
-		FileDescriptorImpl fileDescriptor = new FileDescriptorImpl();
-		return fileDescriptor;
 	}
 
 	/**

@@ -508,15 +508,6 @@ public interface PasysFactory extends EFactory {
 	DeploymentConstraints createDeploymentConstraints();
 
 	/**
-	 * Returns a new object of class '<em>File Descriptor</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>File Descriptor</em>'.
-	 * @generated
-	 */
-	FileDescriptor createFileDescriptor();
-
-	/**
 	 * Returns a new object of class '<em>Deployment File Descriptor</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

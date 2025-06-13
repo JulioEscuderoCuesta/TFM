@@ -423,7 +423,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pasys.ecore#//StringToStringMap/key"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pasys.ecore#//StringToStringMap/value"/>
     </genClasses>
-    <genClasses ecoreClass="pasys.ecore#//FileDescriptor">
+    <genClasses image="false" ecoreClass="pasys.ecore#//FileDescriptor">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pasys.ecore#//FileDescriptor/filePath"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pasys.ecore#//FileDescriptor/fileName"/>
     </genClasses>

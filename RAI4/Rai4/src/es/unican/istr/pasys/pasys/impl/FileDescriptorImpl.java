@@ -26,7 +26,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  *
  * @generated
  */
-public class FileDescriptorImpl extends MinimalEObjectImpl.Container implements FileDescriptor {
+public abstract class FileDescriptorImpl extends MinimalEObjectImpl.Container implements FileDescriptor {
 	/**
 	 * The default value of the '{@link #getFilePath() <em>File Path</em>}' attribute.
 	 * <!-- begin-user-doc -->

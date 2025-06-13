@@ -11433,8 +11433,8 @@ class MyPasysParsingTest {
 				date "20/11/2019"
 				authors "P. López y R. Dintén"
 				ownedElements {
-					Network network {
-						id network
+					Network network1 {
+						id network1
 						bandwith 3.0
 					}
 				}
@@ -19067,12 +19067,13 @@ class MyPasysParsingTest {
 				date "18/18/2024"
 				authors "Julio"
 				ownedElements {	
-					KubernetesCluster cluster {
-						id cluster
-						kubeConfigPath "/path/file"
-						apiVersion "2"
+				SwarmCluster cluster {
+					id "SwarmCluster"
+					ip "200.0.0.1"
+					port "1205"
+					user root
 					},
-					
+
 					MemSQLService mem {
 						id mem
 						host cluster

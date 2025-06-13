@@ -1337,29 +1337,6 @@ public class PasysItemProviderAdapterFactory extends PasysAdapterFactory impleme
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link es.unican.istr.pasys.pasys.FileDescriptor} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected FileDescriptorItemProvider fileDescriptorItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link es.unican.istr.pasys.pasys.FileDescriptor}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createFileDescriptorAdapter() {
-		if (fileDescriptorItemProvider == null) {
-			fileDescriptorItemProvider = new FileDescriptorItemProvider(this);
-		}
-
-		return fileDescriptorItemProvider;
-	}
-
-	/**
 	 * This keeps track of the one adapter used for all {@link es.unican.istr.pasys.pasys.DeploymentFileDescriptor} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1565,7 +1542,6 @@ public class PasysItemProviderAdapterFactory extends PasysAdapterFactory impleme
 		if (portItemProvider != null) portItemProvider.dispose();
 		if (deploymentConstraintsItemProvider != null) deploymentConstraintsItemProvider.dispose();
 		if (stringToStringMapItemProvider != null) stringToStringMapItemProvider.dispose();
-		if (fileDescriptorItemProvider != null) fileDescriptorItemProvider.dispose();
 		if (deploymentFileDescriptorItemProvider != null) deploymentFileDescriptorItemProvider.dispose();
 		if (artifactDescriptorItemProvider != null) artifactDescriptorItemProvider.dispose();
 	}

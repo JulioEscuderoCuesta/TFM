@@ -134,10 +134,7 @@ public class MyPasysValidator extends AbstractMyPasysValidator {
     public void checkValidArtifactDescriptorLocalPath(ArtifactDescriptor artifactDescriptor) {
         String path = artifactDescriptor.getLocalPath();
         
-        if (path.isEmpty()) {
-            error("Local path cannot be empty. Please provide a valid file path (e.g., /usr/local/bin/file or C:\\Program Files\\file.txt).",
-                    PasysPackage.Literals.ARTIFACT_DESCRIPTOR__LOCAL_PATH, EMPTY_FIELD);
-        } else if (!path.matches(PATH_PATTERN)) {
+        if (!path.matches(PATH_PATTERN)) {
             error("Invalid file path. Please provide a valid file path (e.g., /usr/local/bin/file or C:\\Program Files\\file.txt).",
                     PasysPackage.Literals.ARTIFACT_DESCRIPTOR__LOCAL_PATH, INVALID_PATH);
         }
@@ -153,10 +150,7 @@ public class MyPasysValidator extends AbstractMyPasysValidator {
     public void checkAWSVirtualProcessingNodeKeyPair(AWSVirtualProcessingNode node) {
         String keyPair = node.getKeyPair();
         
-        if (keyPair.isEmpty()) {
-            error("KeyPair must not be empty.",
-            		PasysPackage.Literals.AWS_VIRTUAL_PROCESSING_NODE__KEY_PAIR, EMPTY_FIELD);
-        } else if (!keyPair.matches(KEY_VALUE_EQUALS_PATTERN) && !keyPair.matches(KEY_VALUE_COLON_PATTERN)) {
+        if (!keyPair.matches(KEY_VALUE_EQUALS_PATTERN) && !keyPair.matches(KEY_VALUE_COLON_PATTERN)) {
             error("Invalid keyPair format. The expected format is 'key=value' or '{key: value}' separated by commas.",
             		PasysPackage.Literals.AWS_VIRTUAL_PROCESSING_NODE__KEY_PAIR, INVALID_KEY_VALUE_FORMAT);
         }
@@ -227,13 +221,8 @@ public class MyPasysValidator extends AbstractMyPasysValidator {
     @Check
     public void checkDataFileDir(CassandraService cassandraService) {
         String dataFileDir = cassandraService.getDataFileDir();
-        
-        if (dataFileDir.isEmpty()) {
-            error("dataFileDir path cannot be empty. Please provide a valid dataFileDir path (e.g., /usr/local/bin/file or C:\\Program Files\\file.txt).",
-                  PasysPackage.Literals.CASSANDRA_SERVICE__DATA_FILE_DIR, 
-                  EMPTY_FIELD);
-        }
-        else if (!dataFileDir.matches(PATH_PATTERN)) {
+
+        if (!dataFileDir.matches(PATH_PATTERN)) {
             error("Invalid dataFileDir path. Please provide a valid dataFileDir path (e.g., /usr/local/bin/file or C:\\Program Files\\file.txt).",
                   PasysPackage.Literals.CASSANDRA_SERVICE__DATA_FILE_DIR, 
                   INVALID_PATH);
@@ -248,8 +237,8 @@ public class MyPasysValidator extends AbstractMyPasysValidator {
     public void checkEndPointSnitch(CassandraService cassandraService) {
         String endPointSnitch = cassandraService.getEndpointSnitch();
         
-        if (endPointSnitch.isEmpty()) {
-            error("endPointSnitch path cannot be empty. Please provide a valid endPointSnitch path (e.g., /usr/local/bin/file or C:\\Program Files\\file.txt).",
+        if (!endPointSnitch.matches(PATH_PATTERN)) {
+            error("Invalid endPointSnitch path. Please provide a valid endPointSnitch path (e.g., /usr/local/bin/file or C:\\Program Files\\file.txt).",
                   PasysPackage.Literals.CASSANDRA_SERVICE__ENDPOINT_SNITCH, 
                   EMPTY_FIELD);
         }
@@ -263,8 +252,8 @@ public class MyPasysValidator extends AbstractMyPasysValidator {
     public void checkSeedProviderClass(CassandraService cassandraService) {
         String seedProviderClass = cassandraService.getSeedProviderClass();
         
-        if (seedProviderClass.isEmpty()) {
-            error("seedProviderClass path cannot be empty. Please provide a valid seedProviderClass path (e.g., /usr/local/bin/file or C:\\Program Files\\file.txt).",
+        if (!seedProviderClass.matches(PATH_PATTERN)) {
+            error("Invalid seedProviderClass path. Please provide a valid seedProviderClass path (e.g., /usr/local/bin/file or C:\\Program Files\\file.txt).",
                   PasysPackage.Literals.CASSANDRA_SERVICE__SEED_PROVIDER_CLASS, 
                   EMPTY_FIELD);
         }
@@ -280,12 +269,10 @@ public class MyPasysValidator extends AbstractMyPasysValidator {
 
         if (labels != null)
         {
-            System.out.println("Labels: " + labels); // Depuración
         	validateProperties(labels, PasysPackage.Literals.DEPLOYMENT_CONSTRAINTS__LABELS, "labels");
 
         }
     	if (resources != null) {
-            System.out.println("Resources: " + resources); // Depuración
     		validateProperties(resources, PasysPackage.Literals.DEPLOYMENT_CONSTRAINTS__LABELS, "resources");
 
     	}
@@ -302,10 +289,7 @@ public class MyPasysValidator extends AbstractMyPasysValidator {
     public void checkValidFileDescriptorPath(FileDescriptor fileDescriptor) {
         String path = fileDescriptor.getFilePath();
         
-        if (path.isEmpty()) {
-            error("Local path cannot be empty. Please provide a valid file path (e.g., /usr/local/bin/file or C:\\Program Files\\file.txt).",
-                    PasysPackage.Literals.FILE_DESCRIPTOR__FILE_PATH, EMPTY_FIELD);
-        } else if (!path.matches(PATH_PATTERN)) {
+        if (!path.matches(PATH_PATTERN)) {
             error("Invalid file path. Please provide a valid file path (e.g., /usr/local/bin/file or C:\\Program Files\\file.txt).",
                     PasysPackage.Literals.FILE_DESCRIPTOR__FILE_PATH, INVALID_PATH);
         }
@@ -376,10 +360,7 @@ public class MyPasysValidator extends AbstractMyPasysValidator {
     public void checkKubernetesClusterKubeConfigPath(KubernetesCluster kubernetesCluster) {
         String kubeConfigPath = kubernetesCluster.getKubeConfigPath();
         
-        if (kubeConfigPath.isEmpty()) {
-            error("KubeConfigPath cannot be empty. Please provide a valid KubeConfigPath (e.g., /usr/local/bin/file or C:\\Program Files\\file.txt).",
-                    PasysPackage.Literals.KUBERNETES_CLUSTER__KUBE_CONFIG_PATH, EMPTY_FIELD);
-        } else if (!kubeConfigPath.matches(PATH_PATTERN)) {
+        if (!kubeConfigPath.matches(PATH_PATTERN)) {
             error("Invalid KubeConfigPath. Please provide a valid KubeConfigPath (e.g., /usr/local/bin/file or C:\\Program Files\\file.txt).",
                     PasysPackage.Literals.KUBERNETES_CLUSTER__KUBE_CONFIG_PATH, INVALID_PATH);
         }
@@ -416,16 +397,7 @@ public class MyPasysValidator extends AbstractMyPasysValidator {
     public void checkNodeDeploymentConfArtifactLocatorPath(NodeDeploymentConf nodeDeploymentConf) {
         String artifactLocator = nodeDeploymentConf.getArtifactLocator();
         
-        if (artifactLocator == null)
-        	return;
-        
-        if (artifactLocator == null || artifactLocator.isEmpty()) {
-            error("ArtifactLocator path cannot be empty. Please provide a valid file path.",
-                  PasysPackage.Literals.NODE_DEPLOYMENT_CONF__ARTIFACT_LOCATOR, 
-                  EMPTY_FIELD);
-        }
-        
-        else if (!artifactLocator.matches(PATH_PATTERN)) {
+        if (!artifactLocator.matches(PATH_PATTERN)) {
             error("Invalid artifactLocator path. Please provide a valid file path.",
                   PasysPackage.Literals.NODE_DEPLOYMENT_CONF__ARTIFACT_LOCATOR, 
                   INVALID_PATH);
@@ -439,16 +411,6 @@ public class MyPasysValidator extends AbstractMyPasysValidator {
     @Check
     public void checkNodeDeploymentConfCodeFolderPath(NodeDeploymentConf nodeDeploymentConf) {
         String codeConfigPath = nodeDeploymentConf.getCodeFolderPath();
-        
-        if (codeConfigPath == null)
-        	return;
-        
-        if (codeConfigPath.isEmpty()) {
-            error("CodeFolder path cannot be empty. Please provide a valid file path.",
-                  PasysPackage.Literals.NODE_DEPLOYMENT_CONF__CODE_FOLDER_PATH, 
-                  EMPTY_FIELD);
-            return;
-        }
         
         if (!codeConfigPath.matches(PATH_PATTERN)) {
             error("Invalid codeFolder path. Please provide a valid file path.",
@@ -465,16 +427,7 @@ public class MyPasysValidator extends AbstractMyPasysValidator {
     public void checkNodeDeploymentConfConfigFolderPath(NodeDeploymentConf nodeDeploymentConf) {
         String configFolderPath = nodeDeploymentConf.getConfigFolderPath();
         
-        if (configFolderPath == null)
-        	return;
-        
-        if (configFolderPath == null || configFolderPath.isEmpty()) {
-            error("ConfigFolder path cannot be empty. Please provide a valid file path.",
-                  PasysPackage.Literals.NODE_DEPLOYMENT_CONF__CONFIG_FOLDER_PATH, 
-                  EMPTY_FIELD);
-        }
-        
-        else if (!configFolderPath.matches(PATH_PATTERN)) {
+        if (!configFolderPath.matches(PATH_PATTERN)) {
             error("Invalid configFolder path. Please provide a valid file path.",
                   PasysPackage.Literals.NODE_DEPLOYMENT_CONF__CONFIG_FOLDER_PATH, 
                   INVALID_PATH);
@@ -489,16 +442,7 @@ public class MyPasysValidator extends AbstractMyPasysValidator {
     public void checkNodeDeploymentConfDataFolderPath(NodeDeploymentConf nodeDeploymentConf) {
         String dataFolderPath = nodeDeploymentConf.getDataFolderPath();
         
-        if (dataFolderPath == null)
-        	return;
-        
-        if (dataFolderPath == null || dataFolderPath.isEmpty()) {
-            error("DataFolder path cannot be empty. Please provide a valid file path.",
-                  PasysPackage.Literals.NODE_DEPLOYMENT_CONF__DATA_FOLDER_PATH, 
-                  EMPTY_FIELD);
-        }
-        
-        else if (!dataFolderPath.matches(PATH_PATTERN)) {
+        if (!dataFolderPath.matches(PATH_PATTERN)) {
             error("Invalid dataFolder path. Please provide a valid file path.",
                   PasysPackage.Literals.NODE_DEPLOYMENT_CONF__DATA_FOLDER_PATH, 
                   INVALID_PATH);
@@ -513,16 +457,7 @@ public class MyPasysValidator extends AbstractMyPasysValidator {
     public void checkNodeDeploymentConfLogFolderPath(NodeDeploymentConf nodeDeploymentConf) {
         String logFolderPath = nodeDeploymentConf.getLogFolderPath();
         
-        if (logFolderPath == null)
-        	return;
-        
-        if (logFolderPath == null || logFolderPath.isEmpty()) {
-            error("LogFolder path cannot be empty. Please provide a valid file path.",
-                  PasysPackage.Literals.NODE_DEPLOYMENT_CONF__LOG_FOLDER_PATH, 
-                  EMPTY_FIELD);
-        }
-        
-        else if (!logFolderPath.matches(PATH_PATTERN)) {
+        if (!logFolderPath.matches(PATH_PATTERN)) {
             error("Invalid logFolder path. Please provide a valid file path.",
                   PasysPackage.Literals.NODE_DEPLOYMENT_CONF__LOG_FOLDER_PATH, 
                   INVALID_PATH);
@@ -537,16 +472,7 @@ public class MyPasysValidator extends AbstractMyPasysValidator {
     public void checkNodeDeploymentConfScriptFolderPath(NodeDeploymentConf nodeDeploymentConf) {
         String scriptFolderPath = nodeDeploymentConf.getScriptFolderPath();
         
-        if (scriptFolderPath == null)
-        	return;
-        
-        if (scriptFolderPath == null || scriptFolderPath.isEmpty()) {
-            error("ScriptFolder path cannot be empty. Please provide a valid file path.",
-                  PasysPackage.Literals.NODE_DEPLOYMENT_CONF__SCRIPT_FOLDER_PATH, 
-                  EMPTY_FIELD);
-        }
-        
-        else if (!scriptFolderPath.matches(PATH_PATTERN)) {
+        if (!scriptFolderPath.matches(PATH_PATTERN)) {
             error("Invalid scriptFolder path. Please provide a valid file path.",
                   PasysPackage.Literals.NODE_DEPLOYMENT_CONF__SCRIPT_FOLDER_PATH, 
                   INVALID_PATH);
@@ -615,9 +541,6 @@ public class MyPasysValidator extends AbstractMyPasysValidator {
     public void checkNomadClusterIp(NomadCluster nomadCluster) {
         String ip = nomadCluster.getIp();
         
-        if (ip.isEmpty())
-        	error("Ip must not be empty",
-        			PasysPackage.Literals.NOMAD_CLUSTER__IP, EMPTY_FIELD);
         if (!ip.matches(IP_PATTERN)) {
             error("Invalid external IP address format. Expected format: xxx.xxx.xxx.xxx where each block is between 0-255",
                     PasysPackage.Literals.NOMAD_CLUSTER__IP, INVALID_IP);
@@ -659,8 +582,8 @@ public class MyPasysValidator extends AbstractMyPasysValidator {
         
         if (env == null)
         	return;
-        else   	
-        	validateProperties(env, PasysPackage.Literals.ORCHESTRATOR_DEPLOYMENT_CONF__ENV, "env");
+        
+        validateProperties(env, PasysPackage.Literals.ORCHESTRATOR_DEPLOYMENT_CONF__ENV, "env");
     }
     
     
@@ -744,10 +667,7 @@ public class MyPasysValidator extends AbstractMyPasysValidator {
     public void checkProcessingNodeIp(ProcessingNode node) {
     	String nodeIP = node.getIp();
     	
-        if (nodeIP.isEmpty()) {
-        	error("Invalid IP address. It must be not empty",
-					PasysPackage.Literals.PROCESSING_NODE__IP, EMPTY_FIELD);
-        } else if (!nodeIP.matches(IP_PATTERN)) {
+        if (!nodeIP.matches(IP_PATTERN)) {
         	error("Invalid IP address format. Expected format: xxx.xxx.xxx.xxx where each block is between 0-255",
 					PasysPackage.Literals.PROCESSING_NODE__IP, INVALID_IP);
         }
@@ -801,10 +721,7 @@ public class MyPasysValidator extends AbstractMyPasysValidator {
     public void checkSparkService(SparkService sparkService) {
     	String localDir = sparkService.getLocalDir();    
     	    
-        if (localDir.isEmpty()) {
-            error("LocalDir cannot be empty. Please provide a valid file path (e.g., /usr/local/bin/file or C:\\Program Files\\file.txt).",
-                    PasysPackage.Literals.SPARK_SERVICE__LOCAL_DIR, EMPTY_FIELD);
-        } else if (!localDir.matches(PATH_PATTERN)) {
+        if (!localDir.matches(PATH_PATTERN)) {
             error("Invalid localDir path. Please provide a valid file path (e.g., /usr/local/bin/file or C:\\Program Files\\file.txt).",
                     PasysPackage.Literals.SPARK_SERVICE__LOCAL_DIR, INVALID_PATH);
         }
@@ -840,13 +757,7 @@ public class MyPasysValidator extends AbstractMyPasysValidator {
     public void checkStormService(StormService stormService) {
     	String localDir = stormService.getLocalDir();  
     	
-    	if(localDir == null)
-    		return;
-    	
-        if (localDir.isEmpty()) {
-            error("LocalDir cannot be empty. Please provide a valid file path (e.g., /usr/local/bin/file or C:\\Program Files\\file.txt).",
-                    PasysPackage.Literals.STORM_SERVICE__LOCAL_DIR, EMPTY_FIELD);
-        } else if (!localDir.matches(PATH_PATTERN)) {
+    	if (!localDir.matches(PATH_PATTERN)) {
             error("Invalid localDir path. Please provide a valid file path (e.g., /usr/local/bin/file or C:\\Program Files\\file.txt).",
                     PasysPackage.Literals.STORM_SERVICE__LOCAL_DIR, INVALID_PATH);
         }
@@ -855,12 +766,14 @@ public class MyPasysValidator extends AbstractMyPasysValidator {
     
     // Storm Supervisor
     
+    /**
+     * Valida que el campo "supervisorSlotsPorts" tenga los puertos en un formato correcto y estén comprendidos entre los 
+     * valores 1024 y 65534 (ambos incluidos)
+     * @param stormSupervisor
+     */
     @Check
     public void checkStormSupervisor(StormSupervisor stormSupervisor) {
     	EList<String> supervisorSlotsPorts = stormSupervisor.getSupervisorSlotPorts();
-    	
-    	if(supervisorSlotsPorts == null)
-    		return;
     	
         for (String portStr : supervisorSlotsPorts) {
             int port = Integer.MIN_VALUE;
@@ -917,10 +830,7 @@ public class MyPasysValidator extends AbstractMyPasysValidator {
     public void checkSwarmClusterlIp(SwarmCluster swarmCluster) {
         String ip = swarmCluster.getIp();
         
-        if (ip.isEmpty()) {
-        	error("Invalid IP address. It must be not empty",
-					PasysPackage.Literals.SWARM_CLUSTER__IP, EMPTY_FIELD);
-        } else if (!ip.matches(IP_PATTERN)) {
+        if (!ip.matches(IP_PATTERN)) {
         	error("Invalid IP address format. Expected format: xxx.xxx.xxx.xxx where each block is between 0-255",
 					PasysPackage.Literals.SWARM_CLUSTER__IP, INVALID_IP);
         }
@@ -957,10 +867,7 @@ public class MyPasysValidator extends AbstractMyPasysValidator {
     public void checkVirtualProcessingNodeExternalIp(VirtualProcessingNode node) {
         String externalIP = node.getExternalIP();
         
-        if (externalIP == null || externalIP.isEmpty()) {
-        	error("Invalid IP address. It must be not empty",
-					PasysPackage.Literals.VIRTUAL_PROCESSING_NODE__EXTERNAL_IP, EMPTY_FIELD);
-        } else if (!externalIP.matches(IP_PATTERN)) {
+        if (!externalIP.matches(IP_PATTERN)) {
         	error("Invalid IP address format. Expected format: xxx.xxx.xxx.xxx where each block is between 0-255",
 					PasysPackage.Literals.VIRTUAL_PROCESSING_NODE__EXTERNAL_IP, INVALID_IP);
         }
@@ -1023,49 +930,18 @@ public class MyPasysValidator extends AbstractMyPasysValidator {
         }
     }
     
-    private String normalizePropertiesString(Properties properties) {
-        String rawString = properties.toString();
-
-        if (rawString.startsWith("{") && rawString.endsWith("}")) {
-            rawString = rawString.substring(1, rawString.length() - 1);
-        }
-
-        return rawString.replaceAll("\\s+", "");
-    }
-    
     private void validateProperties(Properties properties, EStructuralFeature feature, String attributeName) {
         if (properties == null || properties.isEmpty()) {
-            error(
-                attributeName + " cannot be empty. Please provide a value",
-                feature,
-                EMPTY_FIELD);
+            error(attributeName + " cannot be empty. Please provide a value",
+                  feature, EMPTY_FIELD);
             return;
         }
-
-        String rawPropertiesString = properties.toString()
-            .replaceAll("[{}]", "")  // Eliminar llaves
-            .replaceAll("\"", "");   // Eliminar comillas
-
-        String[] pairs = rawPropertiesString.split(",\\s*");
-        List<String> validPairs = new ArrayList<>();
-
-        for (String pair : pairs) {
-            String[] keyValue = pair.split("=");
-            if (keyValue.length == 2) {
-                validPairs.add(keyValue[0].trim() + "=" + keyValue[1].trim());
-            }
-        }
-
-        String propertiesString = String.join(",", validPairs);
-
-        System.out.println("Processed properties string: " + propertiesString);
-
-        if (!propertiesString.matches(PROPERTIES_PATTERN)) {
-            error(
-                "Invalid " + attributeName + " format. Please provide a valid Properties string (e.g., key1=value1,key2=value2).",
-                feature,
-                INVALID_PROPERTIES_PATTERN
-            );
+        
+        String rawPropertiesString = properties.toString().replaceAll("[{}]", "").replaceAll("\"", "");
+        
+        if (!rawPropertiesString.matches(PROPERTIES_PATTERN)) {
+            error("Invalid " + attributeName + " format. Please provide a valid Properties string (e.g., key1=value1,key2=value2).",
+                  feature, INVALID_PROPERTIES_PATTERN);
         }
     }
 

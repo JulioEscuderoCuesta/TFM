@@ -8,9 +8,9 @@ auto_bootstrap: false
 endpoint_snitch: SimpleSnitch
 
 # Network configuration
-storage_port: 2018
-ssl_storage_port: 2318
-rpc_port: 2011
+storage_port: 7000
+ssl_storage_port: 7001
+rpc_port: 9160
 
 # Data directories
 data_file_directories:

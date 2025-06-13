@@ -670,7 +670,6 @@ ComputationalSystem CompleteSystem {
 				}
 			)
 			concurrencyLevel 2
-			configData "key=value,key2=value2"
 			configFiles ( 
 				DeploymentFileDescriptor {
 					fileContent "content"
@@ -709,7 +708,6 @@ ComputationalSystem CompleteSystem {
 						command "dddd"
 						constraints DeploymentConstraints {
 						}
-						env "key2=value, key3=value3" 
 						imagePullPolicy "ed"
 						
 						ports {
