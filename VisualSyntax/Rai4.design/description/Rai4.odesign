@@ -3,7 +3,7 @@
   <ownedViewpoints name="Rai4">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Rai4 diagram" domainClass="ComputationalSystem" enablePopupBars="true">
       <metamodel href="www.unican.es/istr/pasys#/"/>
-      <defaultLayer name="Default">
+      <defaultLayer name="Computational System Description">
         <nodeMappings name="AVRO Service" domainClass="pasys::AVROService">
           <style xsi:type="style:SquareDescription" labelSize="10" iconPath="/Rai4.design/icons/apache_AVRO_image.PNG" labelPosition="node" resizeKind="NSEW" width="50" height="10">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
@@ -409,6 +409,7 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="pasys::Network" referenceName="ownedElements">
                 <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'New Network'"/>
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="id" valueExpression="aql:'hola'"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -815,14 +816,6 @@
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
           </style>
         </nodeMappings>
-        <nodeMappings name="File Descriptor" domainClass="pasys::FileDescriptor">
-          <style xsi:type="style:SquareDescription" labelSize="10" labelExpression="feature:fileName" iconPath="/Rai4.design/icons/file_descriptor_image.png" labelPosition="node" resizeKind="NSEW" width="24" height="10">
-            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-            <labelFormat>bold</labelFormat>
-            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-          </style>
-        </nodeMappings>
         <nodeMappings name="Node Deployment Conf" semanticCandidatesExpression="aql:self.deploymentConfig" domainClass="pasys::NodeDeploymentConf">
           <style xsi:type="style:SquareDescription" labelSize="10" labelExpression="feature:artifactName" iconPath="/Rai4.design/icons/deployment_config_image.png" labelPosition="node" resizeKind="NSEW" width="24" height="10">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
@@ -880,15 +873,6 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="pasys::DeploymentFileDescriptor" referenceName="cqlSchemas">
                 <subModelOperations xsi:type="tool_1:SetValue" featureName="fileName" valueExpression="aql:'New Deployment File Descriptor'"/>
-              </firstModelOperations>
-            </initialOperation>
-          </ownedTools>
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="File Descriptor" nodeMappings="//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Cassandra%20Service%20Diagram']/@defaultLayer/@nodeMappings[name='File%20Descriptor']" iconPath="/Rai4.design/icons/file_descriptor_image.png">
-            <variable name="container"/>
-            <viewVariable name="containerView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="pasys::FileDescriptor" referenceName="cqlSchemas">
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="fileName" valueExpression="aql:'New File Descriptor'"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
