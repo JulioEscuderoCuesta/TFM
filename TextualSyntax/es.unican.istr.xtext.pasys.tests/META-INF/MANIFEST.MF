@@ -1,0 +1,17 @@
+Manifest-Version: 1.0
+Automatic-Module-Name: es.unican.istr.xtext.pasys.tests
+Bundle-ManifestVersion: 2
+Bundle-Name: es.unican.istr.xtext.pasys.tests
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.0.qualifier
+Bundle-SymbolicName: es.unican.istr.xtext.pasys.tests; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: es.unican.istr.xtext.pasys,
+ Rai4,
+ org.eclipse.xtext.testing,
+ org.eclipse.xtext.xbase.testing,
+ org.eclipse.xtext.xbase.lib;bundle-version="2.14.0"
+Import-Package: org.junit.jupiter.api;version="[5.1.0,6.0.0)",
+ org.junit.jupiter.api.extension;version="[5.1.0,6.0.0)"
+Bundle-RequiredExecutionEnvironment: JavaSE-17
+Export-Package: es.unican.istr.xtext.tests;x-internal=true
