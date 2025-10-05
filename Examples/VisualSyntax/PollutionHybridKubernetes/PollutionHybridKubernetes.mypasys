@@ -1,0 +1,242 @@
+ComputationalSystem SantanderPollution {   
+	date "20/11/2019"
+	authors "P. López y R. Dintén"
+	ownedElements {
+		PhysicalProcessingNode NimbusNode {
+			id NimbusNode
+			ip "172.31.16.48"
+			speedFactor 1.0
+			userName gestor
+			concurrencyLevel 8 
+			os Ubuntu
+		},
+		
+		PhysicalProcessingNode SupervisorNode {
+			id SupervisorNode
+			ip "172.31.16.52"
+			speedFactor 1.0
+			userName gestor
+			concurrencyLevel 1
+			os Ubuntu
+		},
+		
+		PhysicalProcessingNode CassandraNode {
+			id CassandraNode
+			ip "172.31.16.47"
+			speedFactor 1.0
+			userName gestor
+			concurrencyLevel 1
+			os Ubuntu
+		},
+		
+		ProcessingNodeCluster StormCluster {
+			id StormCluster
+			nodes ( NimbusNode, SupervisorNode )
+		},
+		
+		ProcessingNodeCluster NimbusCluster {
+			id NimbusCluster
+			nodes ( NimbusNode )
+		}, 
+		
+		ProcessingNodeCluster SupervisorCluster {
+			id SupervisorCluster
+			nodes ( SupervisorNode )
+		}, 
+				
+		ProcessingNodeCluster CassandraCluster {
+			id CasandraCluster
+			nodes ( CassandraNode )
+		},
+		
+		KubernetesCluster "KubernetesCluster" {
+			id "KubernetesCluster"
+			kubeConfigPath "src/temp/kubernetes/kubeConfig"
+		},
+		
+		ZookeeperService PollutionZkpr {
+			id PollutionZkpr
+			serverId 0
+			clientPort "2181"
+			tickTime 2000
+			leaderServers true
+			peerPort "2888"
+			leaderPort "3888"
+			initLimit 5
+			syncLimit 3
+			host ^KubernetesCluster
+			deploymentConfig KubernetesDeploymentConf zookeeper {
+				replicas 3
+				imagePullPolicy IfNotPresent
+				imageTag "3.7"
+				serviceType LOAD_BALANCER
+			}			
+		},
+	
+		KafkaService PollutionKafka {
+			commId 1
+			id PollutionKafka
+			clientPort "9092"
+			autoCreateTopicEnable false
+			deleteTopicEnable false
+			zookeeperConnect PollutionZkpr
+			zookeeperConnectionTimeout 6000
+			numPartitions 4
+			numRecoveryThreadsPerDataDir 1
+			logFlushInterval 1000
+			logFlushIntervalMessages 10000
+			numIOThreads 8
+			numNetworkThreads 3
+			socketReceiveBufferBytes 12400
+			socketRequestMaxBytes 104857600
+			socketSendBufferBytes 102400
+			host ^KubernetesCluster
+			deploymentConfig KubernetesDeploymentConf "gcr.io/google_containers/kubernetes-kafka" {
+				replicas 3
+				imagePullPolicy IfNotPresent
+				imageTag "1.0-10.2.1"
+				serviceType LOAD_BALANCER
+			}
+			advertisedListeners "PLAINTEXT://172.31.16.47:9092"	
+			listeners "PLAINTEXT://172.31.16.47:9092"
+		},
+		
+		StormService PollutionStorm {
+			id PollutionStorm
+			host NimbusCluster
+			zookeeperConnect PollutionZkpr
+			deploymentConfig NodeDeploymentConf "storm" {
+				isRunning false
+				artifactLocator "/home/gestor/apache/services/storm/bin"
+	            configFolderPath "/home/gestor/apache/services/storm/config"
+	            dataFolderPath "/home/gestor/apache/services/storm/data"
+	            logFolderPath "/home/gestor/apache/services/storm/logs"
+	            scriptFolderPath "/home/gestor/apache/services/storm/scripts"
+			}
+			nimbus StormNimbus PollutionStormNimbus {
+				id PollutionStormNimbus
+				deploymentConfig NodeDeploymentConf "storm" {
+					isRunning false
+					artifactLocator "/home/gestor/apache/services/storm/bin"
+		            configFolderPath "/home/gestor/apache/services/storm/config"
+		            dataFolderPath "/home/gestor/apache/services/storm/data"
+		            logFolderPath "/home/gestor/apache/services/storm/logs"
+		            scriptFolderPath "/home/gestor/apache/services/storm/scripts"
+				}
+				host NimbusCluster
+			}
+			supervisor StormSupervisor PollutioStormSupervisor {
+				id PollutionStormSupervisor
+				deploymentConfig NodeDeploymentConf "storm" {
+					isRunning false
+					artifactLocator "/home/gestor/apache/services/storm/bin"
+		            configFolderPath "/home/gestor/apache/services/storm/config"
+		            dataFolderPath "/home/gestor/apache/services/storm/data"
+		            logFolderPath "/home/gestor/apache/services/storm/logs"		
+		            scriptFolderPath "/home/gestor/apache/services/storm/scripts"			
+				}
+				host SupervisorCluster 
+				supervisorSlotPorts { "6700", "6701", "6702", "6703" }
+			}
+			ui StormUI PollutionStormUI {
+				id PollutionStormUI
+				uiPort "8080"
+				deploymentConfig NodeDeploymentConf "storm" {
+					isRunning false
+					artifactLocator "/home/gestor/apache/services/storm/bin"
+		            configFolderPath "/home/gestor/apache/services/storm/config"
+		            dataFolderPath "/home/gestor/apache/services/storm/data"
+		            logFolderPath "/home/gestor/apache/services/storm/logs"	
+		            scriptFolderPath "/home/gestor/apache/services/storm/scripts"					
+				}
+				host NimbusCluster
+			}
+		},
+		
+		KafkaWorkloadStreamData Pollution {
+			id Pollution
+			cleanupPolicy false
+			retention_ms 0
+			retention_bytes 0
+			numPartitions 1
+			numReplication 1
+			messageSize 0
+			holder PollutionKafka
+			deploymentConfig KubernetesDeploymentConf "gcr.io/google_containers/kubernetes-kafka" {
+				replicas 1
+				imagePullPolicy IfNotPresent
+				imageTag "1.0-10.2.1"
+				serviceType LOAD_BALANCER
+			}
+			
+		},
+		
+		Workflow PollutionProcess {
+			id PollutionProcess
+			ownedTasks { 
+				Task MainTask {	
+					id MainTask
+					triggerStreamData Pollution
+					implementingClassName "es.unican.dintenr.santanderPollution.SantanderPollutionTopology"
+					}
+				}
+			rootTask MainTask
+			scheduler PollutionStorm
+			deploymentConfig NodeDeploymentConf "SantanderPollution.jar" {
+				isRunning false
+				artifactLocator "/home/gestor/apache/pollution/workflows/bin"
+	            configFolderPath "/home/gestor/apache/pollution/workflows/config"
+	            dataFolderPath "/home/gestor/apache/pollution/workflows/data"
+	            logFolderPath "/home/gestor/apache/pollution/workflows/logs"	
+	            scriptFolderPath "/home/gestor/apache/pollution/workflows/scripts"
+			}	
+	
+		},
+		
+		CassandraService PollutionCassandra {
+			id PollutionCassandra
+			logging root
+			passwd root
+			port 9042
+			autoBootstrap false
+			numTokens 256
+			dataFileDir "/home/gestor/apache/Services/cassandra/data/data"
+			storagePort "7000"
+			sslStoragePort "7001"
+			rpcPort "9160"
+			host CassandraCluster
+			deploymentConfig NodeDeploymentConf "Conf cassandra" {
+				isRunning false
+				artifactLocator "/home/gestor/apache/services/cassandra/bin"
+	            configFolderPath "/home/gestor/apache/services/cassandra/config"
+	            dataFolderPath "/home/gestor/apache/services/cassandra/data"
+	            logFolderPath "/home/gestor/apache/services/cassandra/logs"
+	            scriptFolderPath "/home/gestor/apache/services/cassandra/scripts"
+			}
+			dataCenters { 
+				DataCenter PollutionCluster {
+					id PollutionCluster
+					racks { 
+						Rack PollutionCluster {
+							id PollutionCluster
+							nodes CassandraCluster
+						}
+					}
+				}
+			}
+			cqlSchemas { 
+				ArtifactDescriptor { 
+					fileName "cassandra_schema"
+					filePath "/home/gestor/apache/apps/pollution/workflows/data"
+					localPath "/home/gestor/apache/apps/pollution/workflows/data"
+				}
+			}
+			endpointSnitch "SimpleSnitch"
+			seeds CassandraCluster
+			seedProviderClass "SimpleProvider"
+
+		}
+		
+		
+	}
+}
