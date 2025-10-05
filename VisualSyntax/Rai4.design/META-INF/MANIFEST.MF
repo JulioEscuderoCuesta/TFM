@@ -9,7 +9,8 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.eclipse.core.nodes;resolution:=optional,
  org.eclipse.sirius,
- org.eclipse.sirius.common.acceleo.aql
+ org.eclipse.sirius.common.acceleo.aql,
+ Rai4;bundle-version="0.1.0"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-17
 Bundle-Vendor: %providerName

@@ -3,7 +3,7 @@
   <ownedViewpoints name="Rai4">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Rai4 diagram" domainClass="ComputationalSystem" enablePopupBars="true">
       <metamodel href="www.unican.es/istr/pasys#/"/>
-      <defaultLayer name="Default">
+      <defaultLayer name="Computational System Description">
         <nodeMappings name="AVRO Service" domainClass="pasys::AVROService">
           <style xsi:type="style:SquareDescription" labelSize="10" iconPath="/Rai4.design/icons/apache_AVRO_image.PNG" labelPosition="node" resizeKind="NSEW" width="50" height="10">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
@@ -409,6 +409,7 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="pasys::Network" referenceName="ownedElements">
                 <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'New Network'"/>
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="id" valueExpression="aql:'hola'"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -604,7 +605,7 @@
             <element name="element"/>
             <elementView name="elementView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:Navigation" createIfNotExistent="true" diagramDescription="//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Prometheus%20Service']"/>
+              <firstModelOperations xsi:type="tool:Navigation" createIfNotExistent="true" diagramDescription="//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Prometheus%20Service%20Diagram']"/>
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool:DoubleClickDescription" name="Spark Service" mappings="//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Rai4%20diagram']/@defaultLayer/@nodeMappings[name='Spark%20Service']">
@@ -815,14 +816,6 @@
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
           </style>
         </nodeMappings>
-        <nodeMappings name="File Descriptor" domainClass="pasys::FileDescriptor">
-          <style xsi:type="style:SquareDescription" labelSize="10" labelExpression="feature:fileName" iconPath="/Rai4.design/icons/file_descriptor_image.png" labelPosition="node" resizeKind="NSEW" width="24" height="10">
-            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-            <labelFormat>bold</labelFormat>
-            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-          </style>
-        </nodeMappings>
         <nodeMappings name="Node Deployment Conf" semanticCandidatesExpression="aql:self.deploymentConfig" domainClass="pasys::NodeDeploymentConf">
           <style xsi:type="style:SquareDescription" labelSize="10" labelExpression="feature:artifactName" iconPath="/Rai4.design/icons/deployment_config_image.png" labelPosition="node" resizeKind="NSEW" width="24" height="10">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
@@ -880,15 +873,6 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="pasys::DeploymentFileDescriptor" referenceName="cqlSchemas">
                 <subModelOperations xsi:type="tool_1:SetValue" featureName="fileName" valueExpression="aql:'New Deployment File Descriptor'"/>
-              </firstModelOperations>
-            </initialOperation>
-          </ownedTools>
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="File Descriptor" nodeMappings="//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Cassandra%20Service%20Diagram']/@defaultLayer/@nodeMappings[name='File%20Descriptor']" iconPath="/Rai4.design/icons/file_descriptor_image.png">
-            <variable name="container"/>
-            <viewVariable name="containerView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="pasys::FileDescriptor" referenceName="cqlSchemas">
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="fileName" valueExpression="aql:'New File Descriptor'"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -1425,7 +1409,7 @@
         </toolSections>
       </defaultLayer>
     </ownedRepresentations>
-    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Prometheus Service" titleExpression="aql:'Prometheus Service: ' + self.name" domainClass="pasys::PrometheusService" enablePopupBars="true">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Prometheus Service Diagram" titleExpression="aql:'Prometheus Service: ' + self.name" domainClass="pasys::PrometheusService" enablePopupBars="true">
       <defaultLayer name="Prometheus Service Description">
         <nodeMappings name="Exporter Data" domainClass="pasys::ExporterData">
           <style xsi:type="style:SquareDescription" labelSize="10" iconPath="/Rai4.design/icons/exporter_data_image.png" labelPosition="node" resizeKind="NSEW" width="24" height="10">
@@ -1435,7 +1419,7 @@
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
           </style>
         </nodeMappings>
-        <nodeMappings name="Kubernetes Deployment Conf" semanticCandidatesExpression="aql:self.deploymentConfig" doubleClickDescription="//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Prometheus%20Service']/@defaultLayer/@toolSections.0/@ownedTools[name='Orchestration%20Deployment%20Conf']" domainClass="pasys::KubernetesDeploymentConf">
+        <nodeMappings name="Kubernetes Deployment Conf" semanticCandidatesExpression="aql:self.deploymentConfig" doubleClickDescription="//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Prometheus%20Service%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Orchestration%20Deployment%20Conf']" domainClass="pasys::KubernetesDeploymentConf">
           <style xsi:type="style:SquareDescription" labelSize="10" labelExpression="feature:imageTag" iconPath="/Rai4.design/icons/deployment_config_image.png" labelPosition="node" resizeKind="NSEW" width="24" height="10">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
             <labelFormat>bold</labelFormat>
@@ -1443,7 +1427,7 @@
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
           </style>
         </nodeMappings>
-        <nodeMappings name="Node Deployment Conf" semanticCandidatesExpression="aql:self.deploymentConfig" doubleClickDescription="//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Prometheus%20Service']/@defaultLayer/@toolSections.0/@ownedTools[name='Orchestration%20Deployment%20Conf']" domainClass="pasys::NodeDeploymentConf">
+        <nodeMappings name="Node Deployment Conf" semanticCandidatesExpression="aql:self.deploymentConfig" doubleClickDescription="//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Prometheus%20Service%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Orchestration%20Deployment%20Conf']" domainClass="pasys::NodeDeploymentConf">
           <style xsi:type="style:SquareDescription" labelSize="10" labelExpression="feature:artifactName" iconPath="/Rai4.design/icons/deployment_config_image.png" labelPosition="node" resizeKind="NSEW" width="24" height="10">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
             <labelFormat>bold</labelFormat>
@@ -1451,7 +1435,7 @@
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
           </style>
         </nodeMappings>
-        <nodeMappings name="Nomad Deployment Conf" semanticCandidatesExpression="aql:self.deploymentConfig" doubleClickDescription="//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Prometheus%20Service']/@defaultLayer/@toolSections.0/@ownedTools[name='Orchestration%20Deployment%20Conf']" domainClass="pasys::NomadDeploymentConf">
+        <nodeMappings name="Nomad Deployment Conf" semanticCandidatesExpression="aql:self.deploymentConfig" doubleClickDescription="//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Prometheus%20Service%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Orchestration%20Deployment%20Conf']" domainClass="pasys::NomadDeploymentConf">
           <style xsi:type="style:SquareDescription" labelSize="10" labelExpression="feature:imageTag" iconPath="/Rai4.design/icons/deployment_config_image.png" labelPosition="node" resizeKind="NSEW" width="24" height="10">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
             <labelFormat>bold</labelFormat>
@@ -1459,7 +1443,7 @@
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
           </style>
         </nodeMappings>
-        <nodeMappings name="Swarm Deployment Conf" semanticCandidatesExpression="aql:self.deploymentConfig" doubleClickDescription="//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Prometheus%20Service']/@defaultLayer/@toolSections.0/@ownedTools[name='Orchestration%20Deployment%20Conf']" domainClass="pasys::SwarmDeploymentConf">
+        <nodeMappings name="Swarm Deployment Conf" semanticCandidatesExpression="aql:self.deploymentConfig" doubleClickDescription="//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Prometheus%20Service%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Orchestration%20Deployment%20Conf']" domainClass="pasys::SwarmDeploymentConf">
           <style xsi:type="style:SquareDescription" labelSize="10" labelExpression="feature:imageTag" iconPath="/Rai4.design/icons/deployment_config_image.png" labelPosition="node" resizeKind="NSEW" width="24" height="10">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
             <labelFormat>bold</labelFormat>
@@ -1468,7 +1452,7 @@
           </style>
         </nodeMappings>
         <toolSections name="Create Prometheus Service Elements">
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="Exported Data" nodeMappings="//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Prometheus%20Service']/@defaultLayer/@nodeMappings[name='Exporter%20Data']" iconPath="/Rai4.design/icons/exporter_data_image.png">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="Exported Data" nodeMappings="//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Prometheus%20Service%20Diagram']/@defaultLayer/@nodeMappings[name='Exporter%20Data']" iconPath="/Rai4.design/icons/exporter_data_image.png">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -1477,7 +1461,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="Kubernetes Deployment Conf" nodeMappings="//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Prometheus%20Service']/@defaultLayer/@nodeMappings[name='Kubernetes%20Deployment%20Conf']" iconPath="/Rai4.design/icons/deployment_config_image.png">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="Kubernetes Deployment Conf" nodeMappings="//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Prometheus%20Service%20Diagram']/@defaultLayer/@nodeMappings[name='Kubernetes%20Deployment%20Conf']" iconPath="/Rai4.design/icons/deployment_config_image.png">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -1486,7 +1470,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="Node Deployment Conf" nodeMappings="//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Prometheus%20Service']/@defaultLayer/@nodeMappings[name='Node%20Deployment%20Conf']" iconPath="/Rai4.design/icons/deployment_config_image.png">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="Node Deployment Conf" nodeMappings="//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Prometheus%20Service%20Diagram']/@defaultLayer/@nodeMappings[name='Node%20Deployment%20Conf']" iconPath="/Rai4.design/icons/deployment_config_image.png">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -1495,7 +1479,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="Nomad Deployment Conf" nodeMappings="//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Prometheus%20Service']/@defaultLayer/@nodeMappings[name='Nomad%20Deployment%20Conf']" iconPath="/Rai4.design/icons/deployment_config_image.png">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="Nomad Deployment Conf" nodeMappings="//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Prometheus%20Service%20Diagram']/@defaultLayer/@nodeMappings[name='Nomad%20Deployment%20Conf']" iconPath="/Rai4.design/icons/deployment_config_image.png">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -1504,7 +1488,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="Swarm Deployment Conf" nodeMappings="//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Prometheus%20Service']/@defaultLayer/@nodeMappings[name='Swarm%20Deployment%20Conf']" iconPath="/Rai4.design/icons/deployment_config_image.png">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="Swarm Deployment Conf" nodeMappings="//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Prometheus%20Service%20Diagram']/@defaultLayer/@nodeMappings[name='Swarm%20Deployment%20Conf']" iconPath="/Rai4.design/icons/deployment_config_image.png">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -1513,7 +1497,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DoubleClickDescription" name="Orchestration Deployment Conf" mappings="//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Prometheus%20Service']/@defaultLayer/@nodeMappings[name='Kubernetes%20Deployment%20Conf'] //@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Prometheus%20Service']/@defaultLayer/@nodeMappings[name='Node%20Deployment%20Conf'] //@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Prometheus%20Service']/@defaultLayer/@nodeMappings[name='Swarm%20Deployment%20Conf'] //@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Prometheus%20Service']/@defaultLayer/@nodeMappings[name='Nomad%20Deployment%20Conf']">
+          <ownedTools xsi:type="tool:DoubleClickDescription" name="Orchestration Deployment Conf" mappings="//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Prometheus%20Service%20Diagram']/@defaultLayer/@nodeMappings[name='Kubernetes%20Deployment%20Conf'] //@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Prometheus%20Service%20Diagram']/@defaultLayer/@nodeMappings[name='Node%20Deployment%20Conf'] //@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Prometheus%20Service%20Diagram']/@defaultLayer/@nodeMappings[name='Swarm%20Deployment%20Conf'] //@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Prometheus%20Service%20Diagram']/@defaultLayer/@nodeMappings[name='Nomad%20Deployment%20Conf']">
             <element name="element"/>
             <elementView name="elementView"/>
             <initialOperation>
