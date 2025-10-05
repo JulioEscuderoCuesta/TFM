@@ -19,7 +19,9 @@ Require-Bundle: es.unican.istr.xtext.pasys,
  org.eclipse.xtext.builder
 Import-Package: org.apache.log4j
 Bundle-RequiredExecutionEnvironment: JavaSE-17
-Export-Package: es.unican.istr.xtext.ui.contentassist,
+Export-Package: es.unican.istr.xtext.ui,
+ es.unican.istr.xtext.pasys.ui,
+ es.unican.istr.xtext.ui.contentassist,
  es.unican.istr.xtext.ui.quickfix,
  es.unican.istr.xtext.pasys.ui.internal
 Bundle-Activator: es.unican.istr.xtext.pasys.ui.internal.PasysActivator

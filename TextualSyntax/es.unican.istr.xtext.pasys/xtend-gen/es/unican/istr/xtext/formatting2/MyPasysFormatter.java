@@ -20,6 +20,7 @@ import org.eclipse.xtext.formatting2.AbstractFormatter2;
 import org.eclipse.xtext.formatting2.IFormattableDocument;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.xbase.lib.Extension;
+import org.eclipse.xtext.xbase.lib.XbaseGenerated;
 
 @SuppressWarnings("all")
 public class MyPasysFormatter extends AbstractFormatter2 {
@@ -57,6 +58,7 @@ public class MyPasysFormatter extends AbstractFormatter2 {
     }
   }
 
+  @XbaseGenerated
   public void format(final Object physicalProcessingNode, final IFormattableDocument document) {
     if (physicalProcessingNode instanceof PhysicalProcessingNode) {
       _format((PhysicalProcessingNode)physicalProcessingNode, document);

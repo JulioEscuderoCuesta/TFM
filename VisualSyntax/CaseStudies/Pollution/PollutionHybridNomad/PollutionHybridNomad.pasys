@@ -187,8 +187,10 @@
         dataFolderPath="/home/gestor/apache/services/cassandra/data"
         logFolderPath="/home/gestor/apache/services/cassandra/logs"/>
     <cqlSchemas
+    	xsi:type="pasys:ArtifactDescriptor"
         filePath="/home/gestor/apache/apps/pollution/workflows/data"
         fileName="cassandra_schema.sql"/>
+        localPath="/home/gestor/apache/apps/pollution/workflows/data"
     <dataCenters
         name="PollutionCluster"
         id="PollutionCluster">

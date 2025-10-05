@@ -9,106 +9,82 @@
     authors="P. López y R. Dintén">
   <ownedElements
       xsi:type="pasys:PhysicalProcessingNode"
-      name="MainNode"
-      id="MainNode"
-      ip="127.0.0.1"
+      name="NimbusNode"
+      id="NimbusNode"
+      ip="172.31.16.48"
       os="Ubuntu"
       concurrencyLevel="8"
       userName="gestor"/>
   <ownedElements
+      xsi:type="pasys:PhysicalProcessingNode"
+      name="CassandraNode"
+      id="CassandraNode"
+      ip="172.31.16.47"
+      os="Ubuntu"
+      userName="gestor"/>
+  <ownedElements
+      xsi:type="pasys:PhysicalProcessingNode"
+      name="SupervisorNode"
+      id="SupervisorNode"
+      ip="172.31.16.52"
+      os="Ubuntu"
+      userName="gestor"/>
+  <ownedElements
       xsi:type="pasys:ProcessingNodeCluster"
-      name="MainCluster"
-      id="MainCluster"
+      name="NimbusCluster"
+      id="NimbusCluster"
       nodes="//@ownedElements.0"/>
   <ownedElements
-      xsi:type="pasys:KafkaService"
-      name="PollutionKafka"
-      id="PollutionKafka"
-      host="//@ownedElements.1"
-      commId="1"
-      zookeeperConnect="2"
-      listeners="PLAINTEXT://127.0.0.1:9092"
-      advertisedListeners="PLAINTEXT://127.0.0.1:9092"
-      autoCreateTopicEnable="true">
-    <deploymentConfig
-        xsi:type="pasys:NodeDeploymentConf"
-        artifactLocator="/home/gestor/apache/services/kafka/bin"
-        artifactName="kafka-Service-start.sh"
-        configFolderPath="/home/gestor/apache/Services/kafka/config"
-        scriptFolderPath="/home/gestor/apache/services/kafka/scripts"
-        dataFolderPath="/home/gestor/apache/Services/kafka/data"
-        logFolderPath="/home/gestor/apache/Services/kafka/logs"/>
-  </ownedElements>
+      xsi:type="pasys:ProcessingNodeCluster"
+      name="SupervisorCluster"
+      id="SupervisorCluster"
+      nodes="//@ownedElements.2"/>
   <ownedElements
-      xsi:type="pasys:KafkaWorkloadStreamData"
-      name="Pollution"
-      id="Pollution"
-      numPartitions="1"
-      numReplication="1"
-      holder="1">
-    <deploymentConfig
-        xsi:type="pasys:NodeDeploymentConf"
-        artifactLocator="/home/gestor/apache/services/kafka/bin"
-        artifactName="kafka-topics.sh"
-        configFolderPath="/home/gestor/apache/apps/pollution/topics/config"
-        scriptFolderPath="/home/gestor/apache/apps/pollution/topics/scripts"
-        dataFolderPath="/home/gestor/apache/apps/pollution/topics/data"
-        logFolderPath="/home/gestor/apache/apps/pollution/topics/log"/>
-  </ownedElements>
+      xsi:type="pasys:ProcessingNodeCluster"
+      name="CassandraCluster"
+      id="CassandraCluster"
+      nodes="//@ownedElements.1"/>
+  <ownedElements
+      xsi:type="pasys:ProcessingNodeCluster"
+      name="StormCluster"
+      id="StormCluster"
+      nodes="//@ownedElements.0 //@ownedElements.2"/>
   <ownedElements
       xsi:type="pasys:ZookeeperService"
       name="PollutionZkpr"
       id="PollutionZkpr"
-      host="//@ownedElements.1"
-      serverId="2">
+      host="//@ownedElements.13">
     <deploymentConfig
-        xsi:type="pasys:NodeDeploymentConf"
-        artifactLocator="/home/gestor/apache/Services/zookeeper/bin"
-        artifactName="zkService.sh"
-        configFolderPath="/home/gestor/apache/Services/zookeeper/config"
-        scriptFolderPath="/home/gestor/apache/Services/zookeeper/scripts"
-        dataFolderPath="/home/gestor/apache/Services/zookeeper/data"
-        logFolderPath="/home/gestor/apache/Services/zookeeper/logs"/>
+        xsi:type="pasys:KubernetesDeploymentConf"
+        image="zookeeper"
+        imageTag="3.7"
+        imagePullPolicy="IfNotPresent"
+        replicas="3"/>
   </ownedElements>
   <ownedElements
-      xsi:type="pasys:CassandraService"
-      name="PollutionCassandra"
-      id="PollutionCassandra"
-      host="//@ownedElements.1"
-      logging="root"
-      passwd="root"
-      port="9042"
-      seeds="//@ownedElements.1"
-      seedProviderClass="SimpleSeedProvider"
-      endpointSnitch="GossipingPropertyFileSnitch"
-      dataFileDir="/home/gestor/apache/Services/cassandra/data/data">
+      xsi:type="pasys:KafkaService"
+      name="PollutionKafka"
+      id="PollutionKafka"
+      host="//@ownedElements.13"
+      commId="1"
+      zookeeperConnect="//@ownedElements.7"
+      listeners="PLAINTEXT://172.31.16.47:9092"
+      advertisedListeners="PLAINTEXT://172.31.16.47:9092"
+      autoCreateTopicEnable="true">
     <deploymentConfig
-        xsi:type="pasys:NodeDeploymentConf"
-        artifactLocator="/home/gestor/apache/services/cassandra/bin"
-        artifactName="cassandra"
-        configFolderPath="/home/gestor/apache/services/cassandra/config"
-        scriptFolderPath="/home/gestor/apache/services/cassandra/scripts"
-        dataFolderPath="/home/gestor/apache/services/cassandra/data"
-        logFolderPath="/home/gestor/apache/services/cassandra/logs"/>
-    <cqlSchemas
-        filePath="/home/gestor/apache/apps/pollution/workflows/data"
-        fileName="cassandra_schema.sql"/>
-    <dataCenters
-        name="PollutionCluster"
-        id="PollutionCluster">
-      <racks
-          name="PollutionCluster"
-          id="PollutionClusterRack"
-          nodes="//@ownedElements.1"/>
-    </dataCenters>
+        xsi:type="pasys:KubernetesDeploymentConf"
+        image="gcr.io/google_containers/kubernetes-kafka"
+        imageTag="1.0-10.2.1"
+        imagePullPolicy="IfNotPresent"
+        replicas="3"/>
   </ownedElements>
   <ownedElements
       xsi:type="pasys:StormService"
       name="PollutionStorm"
       id="PollutionStorm"
-      host="//@ownedElements.1"
-      workflows="//@ownedElements.7"
-      zookeeperConnect="2">
+      host="//@ownedElements.6"
+      workflows="//@ownedElements.11"
+      zookeeperConnect="//@ownedElements.7">
     <deploymentConfig
         xsi:type="pasys:NodeDeploymentConf"
         artifactLocator="/home/gestor/apache/services/storm/bin"
@@ -120,7 +96,7 @@
     <nimbus
         name="PolllutionStormNimbus"
         id="PolllutionStormNimbus"
-        host="//@ownedElements.1">
+        host="//@ownedElements.3">
       <deploymentConfig
           xsi:type="pasys:NodeDeploymentConf"
           artifactLocator="/home/gestor/apache/services/storm/bin"
@@ -133,7 +109,7 @@
     <supervisor
         name="PollutionStormSupervisor"
         id="PollutionStormSupervisor"
-        host="//@ownedElements.1">
+        host="//@ownedElements.4">
       <deploymentConfig
           xsi:type="pasys:NodeDeploymentConf"
           artifactLocator="/home/gestor/apache/services/storm/bin"
@@ -149,7 +125,7 @@
     </supervisor>
     <ui name="PollutionStormUI"
         id="PollutionStormUI"
-        host="//@ownedElements.1">
+        host="//@ownedElements.3">
       <deploymentConfig
           xsi:type="pasys:NodeDeploymentConf"
           artifactLocator="/home/gestor/apache/services/storm/bin"
@@ -161,11 +137,24 @@
     </ui>
   </ownedElements>
   <ownedElements
+      xsi:type="pasys:KafkaWorkloadStreamData"
+      name="Pollution"
+      id="Pollution"
+      numPartitions="1"
+      numReplication="1"
+      holder="1">
+    <deploymentConfig
+        xsi:type="pasys:KubernetesDeploymentConf"
+        image="gcr.io/google_containers/kubernetes-kafka"
+        imageTag="1.0-10.2.1"
+        imagePullPolicy="IfNotPresent"/>
+  </ownedElements>
+  <ownedElements
       xsi:type="pasys:Workflow"
       name="PollutionProcess"
       id="PollutionProcess"
-      rootTask="//@ownedElements.7/@ownedTasks.0"
-      scheduler="//@ownedElements.6">
+      rootTask="//@ownedElements.11/@ownedTasks.0"
+      scheduler="//@ownedElements.9">
     <deploymentConfig
         xsi:type="pasys:NodeDeploymentConf"
         artifactLocator="/home/gestor/apache/apps/pollution/workflows/jars"
@@ -178,6 +167,44 @@
         name="MainTask"
         id="MainTask"
         implementingClassName="es.unican.dintenr.santanderPollution.SantanderPollutionTopology"
-        triggerStreamData="//@ownedElements.3"/>
+        triggerStreamData="//@ownedElements.10"/>
   </ownedElements>
+  <ownedElements
+      xsi:type="pasys:CassandraService"
+      name="PollutionCassandra"
+      id="PollutionCassandra"
+      host="//@ownedElements.5"
+      logging="root"
+      passwd="root"
+      port="9042"
+      seeds="//@ownedElements.5"
+      seedProviderClass="SimpleProvider"
+      dataFileDir="/home/gestor/apache/services/cassandra/data/data">
+    <deploymentConfig
+        xsi:type="pasys:NodeDeploymentConf"
+        artifactLocator="/home/gestor/apache/services/cassandra/bin"
+        artifactName="cassandra"
+        configFolderPath="/home/gestor/apache/services/cassandra/config"
+        scriptFolderPath="/home/gestor/apache/services/cassandra/scripts"
+        dataFolderPath="/home/gestor/apache/services/cassandra/data"
+        logFolderPath="/home/gestor/apache/services/cassandra/logs"/>
+    <cqlSchemas
+    	xsi:type="pasys:ArtifactDescriptor"
+        filePath="/home/gestor/apache/apps/pollution/workflows/data"
+        fileName="cassandra_schema.sql"/>
+        localPath="/home/gestor/apache/apps/pollution/workflows/data"
+    <dataCenters
+        name="PollutionCluster"
+        id="PollutionCluster">
+      <racks
+          name="PollutionCluster"
+          id="PollutionCluster"
+          nodes="//@ownedElements.5"/>
+    </dataCenters>
+  </ownedElements>
+  <ownedElements
+      xsi:type="pasys:KubernetesCluster"
+      name="KubernetesCluster"
+      id="KubernetesCluster"
+      kubeConfigPath="C:\\temp\\kubernetes\\kubeConfig"/>
 </pasys:ComputationalSystem>
