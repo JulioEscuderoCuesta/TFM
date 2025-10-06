@@ -1,0 +1,728 @@
+grammar es.unican.istr.pasys.xtext.Rai4 with org.eclipse.xtext.common.Terminals
+
+import "www.unican.es/istr/pasys"  
+import "http://www.eclipse.org/emf/2002/Ecore" as ecore
+
+ComputationalSystem returns ComputationalSystem:
+	'ComputationalSystem'
+	name=EString
+	'{'
+		'date' date=EString
+		('authors' authors=EString)?
+		'ownedElements' '{' ownedElements+=SystemElement ( "," ownedElements+=SystemElement)* '}'
+		('targetPlatformName' targetPlatformName=EString)?
+		('doc' doc=EString)?
+		('authenticationFiles' '{' authenticationFiles+=StringToStringMap ( "," authenticationFiles+=StringToStringMap)* '}' )?		
+	'}';
+
+SystemElement returns SystemElement:
+	PhysicalProcessingNode | AWSVirtualProcessingNode | ProcessingNodeCluster | KubernetesCluster | SwarmCluster | NomadCluster | Network | AVROService | ZookeeperService | KafkaService | NodeScheduler | SparkService | StormService | Neo4JService | MemSQLService | CassandraService | PrometheusService | KafkaWorkloadStreamData | Workflow | SchedulableSet | ProcessingNodeUtilization | ProcessingNodeMemory | NetworkUtilization | WorkflowLatency | TaskProcessingAmount | StreamDataRate;
+
+NodeHostedMeter returns NodeHostedMeter:
+	NodeResourceMeter | CommunicationMeter;
+
+ProcessingNode returns ProcessingNode:
+	PhysicalProcessingNode | AWSVirtualProcessingNode;
+
+DeploymentConfiguration returns DeploymentConfiguration:
+	NodeDeploymentConf | KubernetesDeploymentConf | SwarmDeploymentConf | NomadDeploymentConf;
+
+ProcessingResourceCluster returns ProcessingResourceCluster:
+	ProcessingNodeCluster | KubernetesCluster | SwarmCluster | NomadCluster;
+
+FileDescriptor returns FileDescriptor:
+	DeploymentFileDescriptor | ArtifactDescriptor;
+
+Meter returns Meter:
+	NodeResourceMeter | CommunicationMeter | StreamRateMeter | WorkflowLatencyMeter | TaskProcessingAmountMeter;
+
+CommunicationService returns CommunicationService:
+	KafkaService;
+
+SchedulingService returns SchedulingService:
+	NodeScheduler | SparkService | StormService;
+
+StreamData returns StreamData:
+	WorkflowStreamData | WorkloadStreamData;
+
+WorkloadStreamData returns WorkloadStreamData:
+	KafkaWorkloadStreamData;
+	
+WorkflowStreamData returns WorkflowStreamData:
+	FlowStreamData | DerivedStreamData;
+
+FlowStreamData returns FlowStreamData:
+	KafkaFlowStreamData;
+	
+MonitoringService returns MonitoringService:
+	PrometheusService;
+
+EString returns ecore::EString:
+	STRING | ID;
+
+StringToStringMap returns StringToStringMap:
+    key=EString '=' value=EString;
+
+PhysicalProcessingNode returns PhysicalProcessingNode:
+	'PhysicalProcessingNode'
+	name=EString
+	'{'
+		'id' id=EString
+		'ip' ip=EString
+		'speedFactor' speedFactor=EDouble
+		'userName' userName=EString
+		('codeFiles' '(' codeFiles+=ArtifactDescriptor ( "," codeFiles+=ArtifactDescriptor)* ')' )?
+		('concurrencyLevel' concurrencyLevel=EInt)?
+		('configData' configData=Properties)?
+		('configFiles' '(' configFiles+=DeploymentFileDescriptor ( "," configFiles+=DeploymentFileDescriptor)* ')' )?
+		('connectedTo' '(' connectedTo+=[Network|EString] ( "," connectedTo+=[Network|EString])* ')' )?
+		('launchingScripts' '(' launchingScripts+=DeploymentFileDescriptor ( "," launchingScripts+=DeploymentFileDescriptor)* ')' )?
+		('memorySize' memorySize=EInt)?
+		('os' os=EString)?
+		('ownedMeters' '{' ownedMeters+=NodeHostedMeter ( "," ownedMeters+=NodeHostedMeter)* '}' )?
+	'}';
+
+AWSVirtualProcessingNode returns AWSVirtualProcessingNode:
+	'AWSVirtualProcessingNode'
+	name=EString
+	'{'
+		'id' id=EString
+		'ip' ip=EString
+		'speedFactor' speedFactor=EDouble
+		'userName' userName=EString
+		'externalIP' externalIP=EString
+		'keyPair' keyPair=EString
+		('AMI' AMI=EString)?
+		('codeFiles' '(' codeFiles+=ArtifactDescriptor ( "," codeFiles+=ArtifactDescriptor)* ')' )?
+		('concurrencyLevel' concurrencyLevel=EInt)?
+		('configData' configData=Properties)?
+		('configFiles' '(' configFiles+=DeploymentFileDescriptor ( "," configFiles+=DeploymentFileDescriptor)* ')' )?
+		('connectedTo' '(' connectedTo+=[Network|EString] ( "," connectedTo+=[Network|EString])* ')' )?
+		('instanceType' instanceType=EString)?
+		('launchingScripts' '(' launchingScripts+=DeploymentFileDescriptor ( "," launchingScripts+=DeploymentFileDescriptor)* ')' )?
+		('memorySize' memorySize=EInt)?
+		('os' os=EString)?
+		('ownedMeters' '{' ownedMeters+=NodeHostedMeter ( "," ownedMeters+=NodeHostedMeter)* '}' )?
+		('securityGroup' securityGroup=EString)?
+		('subNet' subNet=EString)?
+		('vpc' vpc=EString)?
+	'}';
+
+ProcessingNodeCluster returns ProcessingNodeCluster:
+	'ProcessingNodeCluster'
+	name=EString
+	'{'
+		'id' id=EString
+		'nodes' '(' nodes+=[ProcessingNode|EString] ( "," nodes+=[ProcessingNode|EString])* ')' 
+	'}';
+
+KubernetesCluster returns KubernetesCluster:
+	'KubernetesCluster'
+	name=EString
+	'{'
+		'id' id=EString
+		'kubeConfigPath' kubeConfigPath=EString
+		('apiVersion' apiVersion=EString)?
+	'}';
+
+SwarmCluster returns SwarmCluster:
+	'SwarmCluster'
+	name=EString
+	'{'
+		'id' id=EString
+		'ip' ip=EString
+		'port' port=EString
+		'user' user=EString
+	'}';
+
+NomadCluster returns NomadCluster:
+	'NomadCluster'
+	name=EString
+	'{'
+		'id' id=EString
+		'ip' ip=EString
+		'port' port=EString
+	'}';
+
+Network returns Network:
+	'Network'
+	name=EString
+	'{'
+		'id' id=EString
+		'bandwith' bandwith=EDouble
+	'}';
+
+AVROService returns AVROService:
+	'AVROService'
+	name=EString
+	'{'
+		'id' id=EString
+		'host' host=[ProcessingResourceCluster|EString]
+		'deploymentConfig' deploymentConfig=DeploymentConfiguration
+	'}';
+
+ZookeeperService returns ZookeeperService:
+	'ZookeeperService'
+	name=EString
+	'{'
+		'id' id=EString
+		'serverId' serverId=EInt
+		'clientPort' clientPort=EString
+		'tickTime' tickTime=ELong
+		'leaderServers' leaderServers=EBoolean
+		'peerPort' peerPort=EString
+		'leaderPort' leaderPort=EString
+		'initLimit' initLimit=EInt
+		'syncLimit' syncLimit=EInt
+		'host' host=[ProcessingResourceCluster|EString]
+		'deploymentConfig' deploymentConfig=DeploymentConfiguration
+	'}';
+
+KafkaService returns KafkaService:
+	'KafkaService'
+	name=EString
+	'{'
+		'commId' commId=EInt
+		'id' id=EString
+		'clientPort' clientPort=EString
+		'autoCreateTopicEnable' autoCreateTopicEnable=EBoolean
+		'deleteTopicEnable' deleteTopicEnable=EBoolean
+		'zookeeperConnect' zookeeperConnect=[ZookeeperService|EString]
+        'zookeeperConnectionTimeout' zookeeperConnectionTimeout=EInt
+		'numPartitions' numPartitions=EInt
+		'numRecoveryThreadsPerDataDir' numRecoveryThreadsPerDataDir=EInt
+		'logFlushInterval' logFlushInterval=EInt
+		'logFlushIntervalMessages' logFlushIntervalMessages=EInt
+		'numIOThreads' numIOThreads=EInt
+		'numNetworkThreads' numNetworkThreads=EInt
+		'socketReceiveBufferBytes' socketReceiveBufferBytes=EInt
+		'socketRequestMaxBytes' socketRequestMaxBytes=EInt
+		'socketSendBufferBytes' socketSendBufferBytes=EInt
+		'host' host=[ProcessingResourceCluster|EString]
+		'deploymentConfig' deploymentConfig=DeploymentConfiguration
+		('advertisedListeners' advertisedListeners=EString)?
+		('listeners' listeners=EString)?
+	'}';
+
+NodeScheduler returns NodeScheduler:
+	'NodeScheduler'
+	name=EString
+	'{'
+		'id' id=EString
+		'host' host=[ProcessingResourceCluster|EString]	
+		'deploymentConfig' deploymentConfig=DeploymentConfiguration
+		('workflows' '(' workflows+=[Workflow|EString] ( "," workflows+=[Workflow|EString])* ')' )?
+	'}';
+
+SparkService returns SparkService:
+	'SparkService'
+	name=EString
+	'{'
+		'id' id=EString
+		'host' host=[ProcessingResourceCluster|EString]
+		'driverCores' driverCores=EInt
+		'driverMemory' driverMemory=ELong
+		'driverSuperviser' driverSuperviser=EBoolean
+		'executorMemory' executorMemory=ELong
+		'logCallerContext' logCallerContext=EString
+		'logConf' logConf=EBoolean
+		'load' load=[SchedulableSet|EString]
+		'master' master=[ProcessingResourceCluster|EString]
+		'windowSize' windowSize=EInt
+		'deploymentConfig' deploymentConfig=DeploymentConfiguration	
+		('driverMaxResultSize' driverMaxResultSize=EString)?
+		('extraListener' extraListener=EString)?
+		('localDir' localDir=EString)?
+		('submitDeployMode' submitDeployMode=EString)?
+		('workflows' '(' workflows+=[Workflow|EString] ( "," workflows+=[Workflow|EString])* ')' )?
+	'}';
+
+StormService returns StormService:
+	'StormService'
+	name=EString
+	'{'
+		'id' id=EString
+		'host' host=[ProcessingResourceCluster|EString]		
+		'zookeeperConnect' zookeeperConnect=[ZookeeperService|EString]
+		'deploymentConfig' deploymentConfig=DeploymentConfiguration
+		'nimbus' nimbus=StormNimbus
+		'supervisor' supervisor=StormSupervisor
+		('localDir' localDir=EString)?
+		('ui' ui=StormUI)?
+		('workflows' '(' workflows+=[Workflow|EString] ( "," workflows+=[Workflow|EString])* ')' )?
+	'}';
+
+
+Neo4JService returns Neo4JService:
+	'Neo4JService'
+	name=EString
+	'{'
+		'id' id=EString
+		'host' host=[ProcessingResourceCluster|EString]
+		'logging' logging=EString
+		'passwd' passwd=EString
+		'port' port=EInt
+		'deploymentConfig' deploymentConfig=DeploymentConfiguration
+	'}';
+
+MemSQLService returns MemSQLService:
+	'MemSQLService'
+	name=EString
+	'{'
+		'id' id=EString
+		'host' host=[ProcessingResourceCluster|EString]
+		'logging' logging=EString
+		'passwd' passwd=EString
+		'port' port=EInt
+		'deploymentConfig' deploymentConfig=DeploymentConfiguration
+	'}';
+
+CassandraService returns CassandraService:
+	'CassandraService'
+	name=EString
+	'{'
+		'id' id=EString
+		'logging' logging=EString
+		'passwd' passwd=EString
+		'port' port=EInt
+		'autoBootstrap' autoBootstrap=EBoolean
+		'numTokens' numTokens=EInt
+		'dataFileDir' dataFileDir=EString
+		'storagePort' storagePort=EString
+		'sslStoragePort' sslStoragePort=EString
+		'rpcPort' rpcPort=EString
+		'host' host=[ProcessingResourceCluster|EString]
+		'deploymentConfig' deploymentConfig=DeploymentConfiguration
+		'dataCenters' '{' dataCenters+=DataCenter ( "," dataCenters+=DataCenter)* '}' 
+		('cqlSchemas' '{' cqlSchemas+=FileDescriptor ( "," cqlSchemas+=FileDescriptor)* '}' )?
+		('endpointSnitch' endpointSnitch=EString)?
+		('seeds' seeds=[ProcessingNodeCluster|EString])?
+		('seedProviderClass' seedProviderClass=EString)?
+	'}';
+
+PrometheusService returns PrometheusService:
+	'PrometheusService'
+	name=EString
+	'{'
+		'id' id=EString
+		'host' host=[ProcessingResourceCluster|EString]
+		'deploymentConfig' deploymentConfig=DeploymentConfiguration
+		('exportersData' '{' exportersData+=ExporterData ( "," exportersData+=ExporterData)* '}' )?
+		('monitorizedMeters' '(' monitorizedMeters+=[Meter|EString] ( "," monitorizedMeters+=[Meter|EString])* ')' )?
+	'}';
+
+KafkaWorkloadStreamData returns KafkaWorkloadStreamData:
+	'KafkaWorkloadStreamData'
+	name=EString
+	'{'
+		'id' id=EString
+		'cleanupPolicy' cleanupPolicy=EBoolean
+		'retention_ms' retention_ms=ELong
+		'retention_bytes' retention_bytes=EInt
+		'numPartitions' numPartitions=EInt
+		'numReplication' numReplication=EInt
+		'messageSize' messageSize=EInt
+		'holder' holder=[CommunicationService|EString]
+		'deploymentConfig' deploymentConfig=DeploymentConfiguration
+		('assignedPartition' '{' assignedPartition+=StreamDataPartition ( "," assignedPartition+=StreamDataPartition)* '}' )?
+		('ownedMeters' '{' ownedMeters+=StreamRateMeter ( "," ownedMeters+=StreamRateMeter)* '}' )?
+		('schemaFile' schemaFile=EString)?
+	'}';
+
+Workflow returns Workflow:
+	'Workflow'
+	name=EString
+	'{'
+		'id' id=EString
+		'ownedTasks' '{' ownedTasks+=Task ( "," ownedTasks+=Task)* '}'	
+		'rootTask' rootTask=[Task]
+		'scheduler' scheduler=[SchedulingService|EString]
+		'deploymentConfig' deploymentConfig=DeploymentConfiguration
+		('ownedMeters' '{' ownedMeters+=WorkflowLatencyMeter ( "," ownedMeters+=WorkflowLatencyMeter)* '}' )?
+		('ownedStreamData' '{' ownedStreamData+=WorkflowStreamData ( "," ownedStreamData+=WorkflowStreamData)* '}' )?
+		('ownedTaskExecutors' '{' ownedTaskExecutors+=TaskExecutor ( "," ownedTaskExecutors+=TaskExecutor)* '}' )?
+	'}';
+    
+SchedulableSet returns SchedulableSet:
+	'SchedulableSet'
+	name=EString
+	'{'
+		'id' id=EString
+		'workflows' '(' workflows+=[Workflow|EString] ( "," workflows+=[Workflow|EString])* ')' 
+	'}';
+
+ProcessingNodeUtilization returns ProcessingNodeUtilization:
+	'ProcessingNodeUtilization'
+	name=EString
+	'{'
+		'id' id=EString
+		'target' target=[ProcessingNode|EString]
+	'}';
+
+ProcessingNodeMemory returns ProcessingNodeMemory:
+	'ProcessingNodeMemory'
+	name=EString
+	'{'
+		'id' id=EString
+		'target' target=[ProcessingNode|EString]
+	'}';
+
+NetworkUtilization returns NetworkUtilization:
+	'NetworkUtilization'
+	name=EString
+	'{'
+		'id' id=EString
+		'target' target=[Network|EString]
+	'}';
+
+WorkflowLatency returns WorkflowLatency:
+	'WorkflowLatency'
+	name=EString
+	'{'
+		'id' id=EString
+		'target' target=[Workflow|EString]
+	'}';
+
+TaskProcessingAmount returns TaskProcessingAmount:
+	'TaskProcessingAmount'
+	name=EString
+	'{'
+		'id' id=EString
+		'target' target=[Task|EString]
+		'histogramBuckectNum' histogramBuckectNum=EInt
+		'expectedMaxTPA' expectedMaxTPA=ELong
+		'expectedMinTPA' expectedMinTPA=ELong
+		'linearBucketDistribution' linearBucketDistribution=EBoolean
+	'}';
+
+StreamDataRate returns StreamDataRate:
+	'StreamDataRate'
+	name=EString
+	'{'
+		'id' id=EString
+		'target' target=[StreamData|EString]
+	'}';
+
+EInt returns ecore::EInt:
+	'-'? INT;
+
+EDouble returns ecore::EDouble:
+	'-'? INT? '.' INT (('E'|'e') '-'? INT)?;
+
+Properties returns Properties:
+    STRING;
+
+DeploymentFileDescriptor returns DeploymentFileDescriptor:
+	'DeploymentFileDescriptor'
+	'{'
+		'fileContent' fileContent=EString
+		'fileName' fileName=EString
+		'filePath' filePath=EString
+		('elementType' elementType=DeployableComponentType)?
+		('owner' owner=[ProcessingNode|EString])?
+	'}';
+
+ArtifactDescriptor returns ArtifactDescriptor:
+	'ArtifactDescriptor'
+	'{'
+		'fileName' fileName=EString
+		'filePath' filePath=EString
+		'localPath' localPath=EString
+	'}';
+
+enum DeployableComponentType returns DeployableComponentType:
+				PROMETHEUS_SERVICE = 'PROMETHEUS_SERVICE' | ZOOKEEPER_SERVICE = 'ZOOKEEPER_SERVICE' | KAFKA_SERVICE = 'KAFKA_SERVICE' | CASSANDRA_SERVICE_SEED = 'CASSANDRA_SERVICE_SEED' | CASSANDRA_SERVICE = 'CASSANDRA_SERVICE' | STORM_NIMBUS = 'STORM_NIMBUS' | STORM_SUPERVISOR = 'STORM_SUPERVISOR' | STORM_UI = 'STORM_UI' | SPARK_SERVICE = 'SPARK_SERVICE' | KAFKA_WORKLOAD_STREAM = 'KAFKA_WORKLOAD_STREAM' | KAFKA_FLOW_STREAM = 'KAFKA_FLOW_STREAM' | AVRO_SERVICE = 'AVRO_SERVICE' | NODE_RESOURCE_METER = 'NODE_RESOURCE_METER' | TASK_EXECUTOR = 'TASK_EXECUTOR' | TASK_AMOUNT_METER = 'TASK_AMOUNT_METER' | DOCKER_STACK = 'DOCKER_STACK' | CASSANDRA_SCHEMA = 'CASSANDRA_SCHEMA' | WORKFLOW = 'WORKFLOW';
+
+ELong returns ecore::ELong:
+	'-'? INT;
+
+NodeResourceMeter returns NodeResourceMeter:
+	'NodeResourceMeter'
+	name=EString
+	'{'
+		'id' id=EString
+		'monitoringPort' monitoringPort=EString
+		'monitoringTime' monitoringTime=ELong
+		'deploymentConfig' deploymentConfig=DeploymentConfiguration
+		('mMetric' mMetric=[ProcessingNodeMemory])?
+		('monitoringServer' monitoringServer=[MonitoringService|EString])?
+		('uMetric' uMetric=[ProcessingNodeUtilization])?
+	'}';
+
+CommunicationMeter returns CommunicationMeter:
+	'CommunicationMeter'
+	name=EString
+	'{'
+		'id' id=EString
+		'metric' metric=[NetworkUtilization|EString]
+		'monitoringPort' monitoringPort=EString
+		'monitoringTime' monitoringTime=ELong
+		'deploymentConfig' deploymentConfig=DeploymentConfiguration
+		('monitoringServer' monitoringServer=[MonitoringService|EString])?
+	'}';
+
+NodeDeploymentConf returns NodeDeploymentConf:
+	'NodeDeploymentConf'
+	artifactName=EString
+	'{'
+		'isRunning' isRunning=EBoolean
+		('arguments' '{' arguments+=EString ( "," arguments+=EString)* '}' )?
+		('artifactLocator' artifactLocator=EString)?
+		('codeFolderPath' codeFolderPath=EString)?
+		('configFolderPath' configFolderPath=EString)?
+		('dataFolderPath' dataFolderPath=EString)?
+		('logFolderPath' logFolderPath=EString)?
+		('scriptFolderPath' scriptFolderPath=EString)?
+	'}';
+
+KubernetesDeploymentConf returns KubernetesDeploymentConf:
+	'KubernetesDeploymentConf'
+	 image=EString
+	'{'
+		'replicas' replicas=EInt
+		('args' args=EString)?
+		('command' command=EString)?
+		('constraints' constraints=DeploymentConstraints)?
+		('env' env=Properties)?
+		('externalIP' externalIP=EString)?
+		('imagePullPolicy' imagePullPolicy=EString)?
+		('imageTag' imageTag=EString)?
+		('ports' '{' ports+=Port ( "," ports+=Port)* '}' )?
+		('restartPolicy' restartPolicy=EString)?
+		('serviceType' serviceType=ServiceType)?
+		('volumes' '{' volumes+=Volume ( "," volumes+=Volume)* '}' )?
+	'}';
+
+SwarmDeploymentConf returns SwarmDeploymentConf:
+	'SwarmDeploymentConf'
+	(imageTag=EString)?
+	'{'
+		'image' image=EString
+		'replicas' replicas=EInt
+		('args' args=EString)?
+		('command' command=EString)?
+		('constraints' constraints=DeploymentConstraints)?
+		('env' env=Properties)?
+		('imagePullPolicy' imagePullPolicy=EString)?
+		('network' '(' network+=EString ( "," network+=EString)* ')' )?
+		('ports' '{' ports+=Port ( "," ports+=Port)* '}' )?
+		('restartPolicy' restartPolicy=EString)?
+		('volumes' '{' volumes+=Volume ( "," volumes+=Volume)* '}' )?
+	'}';
+
+NomadDeploymentConf returns NomadDeploymentConf:
+	'NomadDeploymentConf'
+	(imageTag=EString)?
+	'{'
+		'image' image=EString
+		'priority' priority=EInt
+		'region' region=EString
+		'dataCenter' dataCenter=EString
+		'replicas' replicas=EInt
+		('args' args=EString)?
+		('command' command=EString)?
+		('constraints' constraints=DeploymentConstraints)?
+		('driver' driver=NomadDriver)?
+		('env' env=Properties)?
+		('imagePullPolicy' imagePullPolicy=EString)?
+		('ports' '{' ports+=Port ( "," ports+=Port)* '}' )?
+		('restartPolicy' restartPolicy=EString)?
+		('volumes' '{' volumes+=Volume ( "," volumes+=Volume)* '}' )?
+	'}';
+
+Volume returns Volume:
+	'Volume'
+	'{'
+		'source' source=EString
+		'target' target=EString
+		('accessMode' accessMode=VolumeAccessMode)?
+		('type' type=VolumeType)?
+	'}';
+
+Port returns Port:
+	'Port'
+	'{'
+		'published' published=EString
+		'target' target=EString
+	'}';
+
+DeploymentConstraints returns DeploymentConstraints:
+	{DeploymentConstraints}
+	'DeploymentConstraints'
+	'{'
+		('labels' labels=Properties)?
+		('resources' resources=Properties)?
+	'}';
+
+enum VolumeType returns VolumeType:
+				VOLUME = 'VOLUME' | BIND = 'BIND' | TMPFS = 'TMPFS' | NPIPE = 'NPIPE';
+
+enum VolumeAccessMode returns VolumeAccessMode:
+				READWRITEONCE = 'READWRITEONCE' | READONLYMANY = 'READONLYMANY' | READWRITEMANY = 'READWRITEMANY' | READWRITEONCEPOD = 'READWRITEONCEPOD';
+
+EBoolean returns ecore::EBoolean:
+	'true' | 'false';
+
+enum ServiceType returns ServiceType:
+				LOAD_BALANCER = 'LOAD_BALANCER' | CLUSTER_IP = 'CLUSTER_IP';
+
+enum NomadDriver returns NomadDriver:
+				JAVA = 'JAVA' | DOCKER = 'DOCKER' | QEMU = 'QEMU' | PODMAN = 'PODMAN' | EXEC = 'EXEC';
+
+StreamRateMeter returns StreamRateMeter:
+	'StreamRateMeter'
+	name=EString
+	'{'
+		'id' id=EString
+		'monitoringPort' monitoringPort=EString
+		'monitoringTime' monitoringTime=ELong
+		'metric' metric=[StreamDataRate|EString]
+		'deploymentConfig' deploymentConfig=DeploymentConfiguration
+	    ('monitoringServer' monitoringServer=[MonitoringService|EString])?
+	'}';
+
+WorkflowLatencyMeter returns WorkflowLatencyMeter:
+	'WorkflowLatencyMeter'
+	name=EString
+	'{'
+		'id' id=EString
+		'monitoringPort' monitoringPort=EString
+		'monitoringTime' monitoringTime=ELong
+		'deploymentConfig' deploymentConfig=DeploymentConfiguration
+		('metric' metric=[WorkflowLatency|EString])?
+		('monitoringServer' monitoringServer=[MonitoringService|EString])?
+	'}';
+
+TaskProcessingAmountMeter returns TaskProcessingAmountMeter:
+	'TaskProcessingAmountMeter'
+	name=EString
+	'{'
+		'id' id=EString
+		'metric' metric=[TaskProcessingAmount|EString]
+		'monitoringPort' monitoringPort=EString
+		'monitoringTime' monitoringTime=ELong
+		'deploymentConfig' deploymentConfig=DeploymentConfiguration
+		'monitoringServer' monitoringServer=[MonitoringService|EString]
+	'}';
+
+StormNimbus returns StormNimbus:
+	'StormNimbus'
+	name=EString
+	'{'
+		'id' id=EString
+		'deploymentConfig' deploymentConfig=DeploymentConfiguration
+		('host' host=[ProcessingResourceCluster|EString])?
+	'}';
+
+StormSupervisor returns StormSupervisor:
+	'StormSupervisor'
+	name=EString
+	'{'
+		'id' id=EString
+		'deploymentConfig' deploymentConfig=DeploymentConfiguration
+		('host' host=[ProcessingResourceCluster|EString])?
+		('supervisorSlotPorts' '{' supervisorSlotPorts+=EString ( "," supervisorSlotPorts+=EString)* '}' )?
+	'}';
+
+StormUI returns StormUI:
+	'StormUI'
+	name=EString
+	'{'
+		'id' id=EString
+		'uiPort' uiPort=EString
+		'deploymentConfig' deploymentConfig=DeploymentConfiguration
+        ('host' host=[ProcessingResourceCluster|EString])?	
+	'}';
+
+DataCenter returns DataCenter:
+	'DataCenter'
+	name=EString
+	'{'
+		'id' id=EString
+		'racks' '{' racks+=Rack ( "," racks+=Rack)* '}' 
+	'}';
+
+Rack returns Rack:
+	'Rack'
+	name=EString
+	'{'
+		'id' id=EString
+		'nodes' nodes=[ProcessingNodeCluster|EString]
+	'}';
+
+ExporterData returns ExporterData:
+	'ExporterData'
+	name=EString
+	'{'
+		'artifact' artifact=EString
+	'}';
+
+StreamDataPartition returns StreamDataPartition:
+	'StreamDataPartition'
+	'{'
+		'host' host=[ProcessingNode|EString]
+		('key' key=EString)?
+	'}';
+
+Task returns Task:
+	'Task'
+	name=EString
+	'{'
+		'id' id=EString
+		'triggerStreamData' triggerStreamData=[StreamData|EString]
+		('implementingClassName' implementingClassName=EString)?
+		('inputStreamData' '(' inputStreamData+=[StreamData|EString] ( "," inputStreamData+=[StreamData|EString])* ')' )?
+		('returnedStreamData' returnedStreamData=[StreamData|EString])?
+	'}';
+
+TaskExecutor returns TaskExecutor:
+	'TaskExecutor'
+	name=EString
+	'{'
+		'id' id=EString
+		'deploymentConfig' deploymentConfig=DeploymentConfiguration
+		'executedTasks' '(' executedTasks+=[Task|EString] ( "," executedTasks+=[Task|EString])* ')' 
+		('ownedMeters' '{' ownedMeters+=TaskProcessingAmountMeter ( "," ownedMeters+=TaskProcessingAmountMeter)* '}' )?
+	'}';
+
+KafkaFlowStreamData returns KafkaFlowStreamData:
+	'KafkaFlowStreamData'
+	name=EString
+	'{'
+		'id' id=EString
+		'numPartitions' numPartitions=EInt
+		'numReplication' numReplication=EInt
+		'retention_ms' retention_ms=ELong
+		'retention_bytes' retention_bytes=EInt
+		'cleanupPolicy' cleanupPolicy=EBoolean
+		'isImplemented' isImplemented=EBoolean
+		'isSingleUse' isSingleUse=EBoolean
+		'messageSize' messageSize=EInt
+		'predecessor' predecessor=[StreamData|EString]
+		'source' source=[StreamData|EString]
+		'deploymentConfig' deploymentConfig=DeploymentConfiguration
+		('assignedPartition' '{' assignedPartition+=StreamDataPartition ( "," assignedPartition+=StreamDataPartition)* '}' )?
+		('holder' holder=[CommunicationService|EString])?
+		('ownedMeters' '{' ownedMeters+=StreamRateMeter ( "," ownedMeters+=StreamRateMeter)* '}' )?
+		('schemaFile' schemaFile=EString)?
+	'}';
+
+DerivedStreamData returns DerivedStreamData:
+	'DerivedStreamData'
+	name=EString
+	'{'
+		'id' id=EString
+		'numPartitions' numPartitions=EInt
+		'numReplication' numReplication=EInt
+		'retention_ms' retention_ms=ELong
+		'retention_bytes' retention_bytes=EInt
+		'cleanupPolicy' cleanupPolicy=EBoolean
+		'inputs' '(' inputs+=[StreamData|EString] ( "," inputs+=[StreamData|EString])* ')' 
+		'isSingleUse' isSingleUse=EBoolean
+		'messageSize' messageSize=EInt
+		'pattern' pattern=EString
+		'deploymentConfig' deploymentConfig=DeploymentConfiguration
+		('assignedPartition' '{' assignedPartition+=StreamDataPartition ( "," assignedPartition+=StreamDataPartition)* '}' )?
+		('ownedMeters' '{' ownedMeters+=StreamRateMeter ( "," ownedMeters+=StreamRateMeter)* '}' )?
+		('schemaFile' schemaFile=EString)?
+	'}';

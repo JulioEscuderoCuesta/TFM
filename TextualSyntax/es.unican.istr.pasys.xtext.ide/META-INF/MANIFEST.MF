@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Automatic-Module-Name: es.unican.istr.pasys.xtext.ide
+Bundle-ManifestVersion: 2
+Bundle-Name: es.unican.istr.pasys.xtext.ide
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.0.qualifier
+Bundle-SymbolicName: es.unican.istr.pasys.xtext.ide; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: es.unican.istr.pasys.xtext,
+ Rai4,
+ org.eclipse.xtext.ide,
+ org.eclipse.xtext.xbase.ide,
+ org.antlr.runtime;bundle-version="[3.2.0,3.2.1)"
+Bundle-RequiredExecutionEnvironment: JavaSE-17
+Export-Package: es.unican.istr.pasys.xtext.ide.contentassist.antlr,
+ es.unican.istr.pasys.xtext.ide.contentassist.antlr.internal
