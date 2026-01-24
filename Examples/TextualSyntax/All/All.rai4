@@ -1,0 +1,742 @@
+ComputationalSystem CompleteSystem {
+	date "18/18/2024"
+	authors "Julio"
+	ownedElements {	
+		PhysicalProcessingNode MyNode {
+			id MyNode
+			ip "127.0.0.1"
+			speedFactor 1.0
+			userName "Julio"
+			codeFiles ( 
+				ArtifactDescriptor {
+					fileName "file"
+					filePath "/path"
+					localPath "/path"
+				}
+			)
+			concurrencyLevel 2
+			configData "key=va"
+			configFiles (
+				DeploymentFileDescriptor {
+					fileContent "content"
+					fileName "file"
+					filePath "/path"
+					elementType AVRO_SERVICE
+					owner MyNode
+				}
+			)
+			connectedTo ( network1 )
+			launchingScripts ( 
+				DeploymentFileDescriptor {
+					fileContent "content"
+					fileName "file"
+					filePath "/path"
+					elementType KAFKA_FLOW_STREAM
+					owner MyNode
+				}
+			)
+			memorySize 256
+			os "W"
+			ownedMeters { 
+				CommunicationMeter meter1 {
+					id "meter1"
+					metric networkUt
+					monitoringPort "4300"
+					monitoringTime 4333
+					deploymentConfig NodeDeploymentConf "conf" {
+						isRunning false
+								artifactLocator "/home/gestor/apache/Services/zookeeper/bin"
+						codeFolderPath "/home/gestor/apache/Services/zookeeper/code"
+		                configFolderPath "/home/gestor/apache/Services/zookeeper/config"
+		                dataFolderPath "/home/gestor/apache/Services/zookeeper/data"
+		                logFolderPath "/home/gestor/apache/Services/zookeeper/logs"
+		                scriptFolderPath "/home/gestor/apache/Services/zookeeper/scripts"
+					}
+					monitoringServer prometheus
+				},
+				NodeResourceMeter resourceMeter {
+					id resourceMeter
+					monitoringPort "3333"
+					monitoringTime 323232
+					deploymentConfig NodeDeploymentConf "conf" {
+						isRunning false
+								artifactLocator "/home/gestor/apache/Services/zookeeper/bin"
+						codeFolderPath "/home/gestor/apache/Services/zookeeper/code"						
+		                configFolderPath "/home/gestor/apache/Services/zookeeper/config"
+		                dataFolderPath "/home/gestor/apache/Services/zookeeper/data"
+		                logFolderPath "/home/gestor/apache/Services/zookeeper/logs"
+		                scriptFolderPath "/home/gestor/apache/Services/zookeeper/scripts"
+					}
+					mMetric nodememory
+					monitoringServer prometheus
+					uMetric nodeutilization
+				}
+			}	
+		},
+		
+		
+		ProcessingNodeCluster MyProcessingNodeCluster {
+			id MyProcessingNodeCluster
+			nodes ( MyNode )
+		},
+		
+		AVROService MyAVROService {
+			id myavroservice
+			host MyProcessingNodeCluster
+			deploymentConfig NodeDeploymentConf "conf" {
+				isRunning false
+				artifactLocator "/home/gestor/apache/Services/zookeeper/bin"
+				codeFolderPath "/home/gestor/apache/Services/zookeeper/code"
+                configFolderPath "/home/gestor/apache/Services/zookeeper/config"
+                dataFolderPath "/home/gestor/apache/Services/zookeeper/data"
+                logFolderPath "/home/gestor/apache/Services/zookeeper/logs"
+                scriptFolderPath "/home/gestor/apache/Services/zookeeper/scripts"
+			}
+		},
+
+		CassandraService Cassandra {
+			id PollutionCassandra
+        	logging root
+        	passwd root
+        	port 9042
+        	autoBootstrap false
+        	numTokens 256
+        	dataFileDir "/home/gestor/apache/Services/cassandra/data/data"
+        	storagePort "7000"
+        	sslStoragePort "7001"
+        	rpcPort "9160"
+        	host MyProcessingNodeCluster
+        	deploymentConfig NodeDeploymentConf "Conf_Cassandra" {
+        		isRunning false
+                artifactLocator "/home/gestor/apache/services/cassandra/bin"
+                codeFolderPath "/home/gestor/apache/services/cassandra/code"
+                configFolderPath "/home/gestor/apache/services/cassandra/config"
+                dataFolderPath "/home/gestor/apache/services/cassandra/data"
+                logFolderPath "/home/gestor/apache/services/cassandra/logs"
+                scriptFolderPath "/home/gestor/apache/services/cassandra/scripts"
+        	}
+        	dataCenters {
+        		DataCenter PollutionCluster {
+        			id PollutionCluster
+        			racks {
+        				Rack PollutionCluster {
+        					id PollutionClusterRack
+        					nodes MyProcessingNodeCluster 
+        				}
+        			}
+        		}
+        	}
+        	cqlSchemas {
+        		DeploymentFileDescriptor {
+        			fileContent "/home/gestor/apache/apps/pollution/workflows/data"        			   			
+        			fileName "cassandra_schema.sql"
+        			filePath "/home/gestor/apache/apps/pollution/workflows/data"
+        			elementType CASSANDRA_SCHEMA             			
+        			owner MyNode
+        		}
+        	}
+        	endpointSnitch endpointString
+        	seeds MyProcessingNodeCluster
+        	seedProviderClass SimpleSeedProvider
+		},
+				
+		KafkaService PollutionKafka {
+			commId 1
+			id PollutionKafka
+			clientPort "9092"
+			autoCreateTopicEnable false
+			deleteTopicEnable false
+			zookeeperConnect PollutionZkpr
+			zookeeperConnectionTimeout 6000
+			numPartitions 4
+			numRecoveryThreadsPerDataDir 1
+			logFlushInterval 1000
+			logFlushIntervalMessages 10000
+			numIOThreads 8
+			numNetworkThreads 3
+			socketReceiveBufferBytes 12400
+			socketRequestMaxBytes 104857600
+			socketSendBufferBytes 102400
+			host MyProcessingNodeCluster
+			deploymentConfig NodeDeploymentConf "kafka-Service-start.sh" {
+				isRunning false
+				artifactLocator "/home/gestor/apache/services/kafka/bin"
+				codeFolderPath "/home/gestor/apache/services/kafka/code"
+                configFolderPath "/home/gestor/apache/services/kafka/config"
+                dataFolderPath "/home/gestor/apache/services/kafka/data"
+                logFolderPath "/home/gestor/apache/services/kafka/logs"
+                scriptFolderPath "/home/gestor/apache/services/kafka/scripts"
+			}
+			advertisedListeners "PLAINTEXT://172.31.16.47:9092"
+			listeners "PLAINTEXT://172.31.16.47:9092"	
+		},
+		
+		KafkaWorkloadStreamData Pollution {
+			id Pollution
+			cleanupPolicy false
+			retention_ms 0
+			retention_bytes 0
+			numPartitions 1
+			numReplication 1
+			messageSize 0
+			holder PollutionKafka
+			deploymentConfig NodeDeploymentConf "conf" {
+				isRunning false
+				artifactLocator "/home/gestor/apache/Services/zookeeper/bin"
+                codeFolderPath "/home/gestor/apache/Services/zookeeper/code"
+                configFolderPath "/home/gestor/apache/Services/zookeeper/config"
+                dataFolderPath "/home/gestor/apache/Services/zookeeper/data"
+                logFolderPath "/home/gestor/apache/Services/zookeeper/logs"
+                scriptFolderPath "/home/gestor/apache/Services/zookeeper/scripts"
+			}
+		},
+		
+		KubernetesCluster cluster {
+			id cluster
+			kubeConfigPath "/path/file"
+			apiVersion "2"
+		},
+		
+		MemSQLService mem {
+			id mem
+			host swarm
+			logging "logging"
+			passwd "logging"
+			port 2333	
+			deploymentConfig SwarmDeploymentConf tag1 {
+				image "image"
+				replicas 3
+				args "args"
+				command "ls -s"
+				constraints DeploymentConstraints {
+				}
+				imagePullPolicy IfNotPresent
+				ports { 
+					Port {
+						published "published"
+						target "target"
+					}
+				}
+				restartPolicy "restart"
+				volumes {
+					Volume {
+						source "source"
+						target "target"
+						accessMode READONLYMANY
+						type BIND
+					}
+				}
+			}	
+		},
+		
+		Neo4JService neo {
+			id neo
+			host cluster
+			logging "logging"
+			passwd "logging"
+			port 2333	
+			deploymentConfig KubernetesDeploymentConf kubernetes {
+				replicas 3
+				args "args"
+				command "ls -s"
+				externalIP "200.0.0.1"
+				imagePullPolicy IfNotPresent
+				imageTag "3.7"
+				ports { 
+					Port {
+						published "published"
+						target "target"
+					}
+				}
+				restartPolicy "restart"
+				serviceType LOAD_BALANCER
+				volumes {
+					Volume {
+						source "source"
+						target "target"
+						accessMode READONLYMANY
+						type BIND
+					}
+				}
+			}	
+		},
+		
+		Network network1 {
+			id network1
+			bandwith 3.0
+		},
+		
+		NetworkUtilization networkUt {
+			id net
+			target network1
+		},
+		
+		NodeScheduler nodescheduler {
+			id nodesscheduler
+			host MyProcessingNodeCluster
+			deploymentConfig NodeDeploymentConf "conf" {
+				isRunning false
+				artifactLocator "/home/gestor/apache/Services/zookeeper/bin"
+                codeFolderPath "/home/gestor/apache/Services/zookeeper/code"
+                configFolderPath "/home/gestor/apache/Services/zookeeper/config"
+                dataFolderPath "/home/gestor/apache/Services/zookeeper/data"
+                logFolderPath "/home/gestor/apache/Services/zookeeper/logs"
+                scriptFolderPath "/home/gestor/apache/Services/zookeeper/scripts"
+			}
+			workflows ( workflow )
+		},
+		
+		NomadCluster nomad {
+			id nomad
+			ip "222.22.2.2"
+			port "5554"
+		},
+
+		ProcessingNodeCluster MyProcessingNodeCluster {
+			id MyProcessingNodeCluster
+			nodes ( MyNode )
+		},
+		
+		Workflow workflow {
+			id workflow
+			ownedTasks {
+				Task supertask {
+					id task
+					triggerStreamData Pollution
+					implementingClassName "class"
+					inputStreamData ( Pollution )
+					returnedStreamData Pollution
+				}
+			}
+			rootTask supertask
+			scheduler nodescheduler
+			deploymentConfig NodeDeploymentConf "conf" {
+				isRunning false
+					artifactLocator "/home/gestor/apache/Services/zookeeper/bin"
+	                codeFolderPath "/home/gestor/apache/Services/zookeeper/code"
+	                configFolderPath "/home/gestor/apache/Services/zookeeper/config"
+	                dataFolderPath "/home/gestor/apache/Services/zookeeper/data"
+	                logFolderPath "/home/gestor/apache/Services/zookeeper/logs"
+	                scriptFolderPath "/home/gestor/apache/Services/zookeeper/scripts"
+			}
+			ownedMeters { 
+				WorkflowLatencyMeter workflowlatencymeter {
+					id workflowlatencymeter
+					monitoringPort "3333"
+					monitoringTime 3
+					deploymentConfig NodeDeploymentConf "conf" {
+						isRunning false
+						artifactLocator "/home/gestor/apache/Services/zookeeper/bin"
+		                codeFolderPath "/home/gestor/apache/Services/zookeeper/code"
+		                configFolderPath "/home/gestor/apache/Services/zookeeper/config"
+		                dataFolderPath "/home/gestor/apache/Services/zookeeper/data"
+		                logFolderPath "/home/gestor/apache/Services/zookeeper/logs"
+		                scriptFolderPath "/home/gestor/apache/Services/zookeeper/scripts"
+					}					
+					metric workflowlatency
+					monitoringServer prometheus
+				}
+			}
+			ownedStreamData {
+				KafkaFlowStreamData kddkdk {
+					id kdkdk
+					numPartitions 2
+					numReplication 2
+					retention_ms 2222
+					retention_bytes 30393
+					cleanupPolicy false
+					isImplemented false
+					isSingleUse false
+					messageSize 3333
+					predecessor Pollution
+					source kddkdk
+					deploymentConfig NodeDeploymentConf "conf" {
+						isRunning false
+						artifactLocator "/home/gestor/apache/Services/zookeeper/bin"
+		                codeFolderPath "/home/gestor/apache/Services/zookeeper/code"
+		                configFolderPath "/home/gestor/apache/Services/zookeeper/config"
+		                dataFolderPath "/home/gestor/apache/Services/zookeeper/data"
+		                logFolderPath "/home/gestor/apache/Services/zookeeper/logs"
+		                scriptFolderPath "/home/gestor/apache/Services/zookeeper/scripts"
+					}
+					assignedPartition {
+						StreamDataPartition {
+							host MyNode
+							key "dddd"
+						}
+					}
+					holder PollutionKafka
+					ownedMeters {
+						StreamRateMeter MeterStreamRate {
+							id sdd
+							monitoringPort '3333'
+							monitoringTime 333
+							metric rate
+							deploymentConfig NodeDeploymentConf "conf" {
+								isRunning false
+								artifactLocator "/home/gestor/apache/Services/zookeeper/bin"
+				                codeFolderPath "/home/gestor/apache/Services/zookeeper/code"
+				                configFolderPath "/home/gestor/apache/Services/zookeeper/config"
+				                dataFolderPath "/home/gestor/apache/Services/zookeeper/data"
+				                logFolderPath "/home/gestor/apache/Services/zookeeper/logs"
+				                scriptFolderPath "/home/gestor/apache/Services/zookeeper/scripts"
+							}
+							monitoringServer prometheus
+						}
+					}	
+					schemaFile "ddd"
+				},
+				DerivedStreamData ddd {
+					id dkdkd
+					numPartitions 22
+					numReplication 2
+					retention_ms 222
+					retention_bytes 22
+					cleanupPolicy false
+					inputs ( ddd )
+					isSingleUse false
+					messageSize 222
+					pattern "sss"
+					deploymentConfig NodeDeploymentConf "conf" {
+						isRunning false
+						artifactLocator "/home/gestor/apache/Services/zookeeper/bin"
+		                codeFolderPath "/home/gestor/apache/Services/zookeeper/code"
+		                configFolderPath "/home/gestor/apache/Services/zookeeper/config"
+		                dataFolderPath "/home/gestor/apache/Services/zookeeper/data"
+		                logFolderPath "/home/gestor/apache/Services/zookeeper/logs"
+		                scriptFolderPath "/home/gestor/apache/Services/zookeeper/scripts"
+					}
+					assignedPartition {
+						StreamDataPartition {
+							host MyNode
+							key "dddd"
+						}					
+					}
+					ownedMeters {
+						StreamRateMeter MeterStreamRate {
+							id sdd
+							monitoringPort "3333"
+							monitoringTime 333
+							metric rate
+							deploymentConfig NodeDeploymentConf "conf" {
+								isRunning false
+								artifactLocator "/home/gestor/apache/Services/zookeeper/bin"
+				                codeFolderPath "/home/gestor/apache/Services/zookeeper/code"
+				                configFolderPath "/home/gestor/apache/Services/zookeeper/config"
+				                dataFolderPath "/home/gestor/apache/Services/zookeeper/data"
+				                logFolderPath "/home/gestor/apache/Services/zookeeper/logs"
+				                scriptFolderPath "/home/gestor/apache/Services/zookeeper/scripts"
+							}
+							monitoringServer prometheus
+						}
+					}	
+					schemaFile "ddd"
+				}
+			}
+			ownedTaskExecutors {
+				TaskExecutor taskexecutorrr {
+					id taskexe
+					deploymentConfig NodeDeploymentConf "conf" {
+						isRunning false
+						artifactLocator "/home/gestor/apache/Services/zookeeper/bin"
+		                codeFolderPath "/home/gestor/apache/Services/zookeeper/code"
+		                configFolderPath "/home/gestor/apache/Services/zookeeper/config"
+		                dataFolderPath "/home/gestor/apache/Services/zookeeper/data"
+		                logFolderPath "/home/gestor/apache/Services/zookeeper/logs"
+		                scriptFolderPath "/home/gestor/apache/Services/zookeeper/scripts"
+					}	
+					executedTasks ( supertask )
+					ownedMeters {
+						TaskProcessingAmountMeter taskprocmter {
+							id jkddk
+							metric taskprocessingAMount
+							monitoringPort "2222"
+							monitoringTime 222
+							deploymentConfig NodeDeploymentConf "conf" {
+								isRunning false
+								artifactLocator "/home/gestor/apache/Services/zookeeper/bin"
+				                codeFolderPath "/home/gestor/apache/Services/zookeeper/code"
+				                configFolderPath "/home/gestor/apache/Services/zookeeper/config"
+				                dataFolderPath "/home/gestor/apache/Services/zookeeper/data"
+				                logFolderPath "/home/gestor/apache/Services/zookeeper/logs"
+				                scriptFolderPath "/home/gestor/apache/Services/zookeeper/scripts"
+							}
+							monitoringServer prometheus							
+						}
+					}
+				}					
+			}
+		},
+		
+		WorkflowLatency workflowlatency {
+			id workflowlatency
+			target workflow
+		},
+
+		ZookeeperService PollutionZkpr {
+			id PollutionZkpr
+			serverId 0
+			clientPort "2181"
+			tickTime 2000
+			leaderServers true
+			peerPort "2888"
+			leaderPort "3888"
+			initLimit 5
+			syncLimit 3
+			host MyProcessingNodeCluster
+			deploymentConfig NodeDeploymentConf "zkService.sh" {
+				isRunning false
+				artifactLocator "/home/gestor/apache/Services/zookeeper/bin"
+                codeFolderPath "/home/gestor/apache/Services/zookeeper/code"
+                configFolderPath "/home/gestor/apache/Services/zookeeper/config"
+                dataFolderPath "/home/gestor/apache/Services/zookeeper/data"
+                logFolderPath "/home/gestor/apache/Services/zookeeper/logs"
+                scriptFolderPath "/home/gestor/apache/Services/zookeeper/scripts"
+			}			
+		},
+
+		ProcessingNodeMemory nodememory {
+			id nodememory
+			target MyNode
+		},
+				
+		ProcessingNodeUtilization nodeutilization {
+			id utilization
+			target MyNode 
+		},
+			
+		PrometheusService prometheus {
+			id prometheus
+			host cluster
+			deploymentConfig KubernetesDeploymentConf kubernetes {
+				replicas 1
+				args "some args"
+				command "ls -a"
+				externalIP "200.0.0.1"
+				imagePullPolicy "pull"
+				imageTag "tag"
+				ports {
+					Port {
+						published "no"
+						target "target"
+					}
+				}
+				restartPolicy "always"
+				serviceType CLUSTER_IP
+				volumes {
+					Volume {
+						source "that"
+						target "this"
+						accessMode READONLYMANY
+						type BIND
+					}
+				}			
+			}	
+			exportersData { 
+				ExporterData data {
+					artifact "dd"
+				}
+			}
+			monitorizedMeters ( "MyNode.meter1" )
+		},
+		
+		SchedulableSet set {
+			id set
+			workflows ( workflow )
+		},
+		
+				
+		SparkService sparkSer {
+			id sparkSer
+			host MyProcessingNodeCluster
+			driverCores 2
+			driverMemory 2333
+			driverSuperviser false
+			executorMemory 23333
+			logCallerContext "context"
+			logConf false
+			load set
+			master MyProcessingNodeCluster
+			windowSize 23
+			deploymentConfig NodeDeploymentConf conf {
+				isRunning false
+				artifactLocator "/home/gestor/apache/Services/zookeeper/bin"
+                codeFolderPath "/home/gestor/apache/Services/zookeeper/code"
+                configFolderPath "/home/gestor/apache/Services/zookeeper/config"
+                dataFolderPath "/home/gestor/apache/Services/zookeeper/data"
+                logFolderPath "/home/gestor/apache/Services/zookeeper/logs"
+                scriptFolderPath "/home/gestor/apache/Services/zookeeper/scripts"
+			}		
+			driverMaxResultSize "3333"
+			extraListener "listener"
+			localDir "valid/Path"
+			submitDeployMode "deployMode"
+			workflows ( workflow )
+		},
+		
+		StormService PollutionStorm {
+			id PollutionStorm
+			host MyProcessingNodeCluster
+			zookeeperConnect PollutionZkpr
+			deploymentConfig NodeDeploymentConf conf {
+				isRunning false
+				artifactLocator "/home/gestor/apache/Services/zookeeper/bin"
+                codeFolderPath "/home/gestor/apache/Services/zookeeper/code"
+                configFolderPath "/home/gestor/apache/Services/zookeeper/config"
+                dataFolderPath "/home/gestor/apache/Services/zookeeper/data"
+                logFolderPath "/home/gestor/apache/Services/zookeeper/logs"
+                scriptFolderPath "/home/gestor/apache/Services/zookeeper/scripts"
+			}
+			nimbus StormNimbus PollutionStormNimbus {
+				id PollutionStormNimbus
+				deploymentConfig NodeDeploymentConf "storm" {
+					isRunning false
+					artifactLocator "/home/gestor/apache/Services/storm/bin"
+	                codeFolderPath "/home/gestor/apache/Services/storm/code"
+	                configFolderPath "/home/gestor/apache/Services/storm/config"
+	                dataFolderPath "/home/gestor/apache/Services/storm/data"
+	                logFolderPath "/home/gestor/apache/Services/storm/logs"
+	                scriptFolderPath "/home/gestor/apache/Services/storm/scripts"
+				}
+				host cluster
+			}
+			supervisor StormSupervisor PollutioStormSupervisor {
+				id PollutionStormSupervisor
+				deploymentConfig NodeDeploymentConf "storm" {
+					isRunning false
+					artifactLocator "/home/gestor/apache/services/storm/bin"
+					codeFolderPath "/home/gestor/apache/services/storm/code"
+		            configFolderPath "/home/gestor/apache/services/storm/config"
+		            dataFolderPath "/home/gestor/apache/services/storm/data"
+		            logFolderPath "/home/gestor/apache/services/storm/logs"		
+		            scriptFolderPath "/home/gestor/apache/services/storm/scripts"			
+				}
+				host cluster 
+				supervisorSlotPorts { "6700", "6701", "6702", "6703" }
+			}
+			localDir "dldlld"
+			ui StormUI PollutionStormUI {
+				id PollutionStormUI
+				uiPort "8080"
+				deploymentConfig NodeDeploymentConf "storm" {
+					isRunning false
+					arguments { "arg" , "arg2" }
+					artifactLocator "/home/gestor/apache/services/storm/bin"
+					codeFolderPath "/home/gestor/apache/services/storm/code"
+		            configFolderPath "/home/gestor/apache/services/storm/config"
+		            dataFolderPath "/home/gestor/apache/services/storm/data"
+		            logFolderPath "/home/gestor/apache/services/storm/logs"		
+		            scriptFolderPath "/home/gestor/apache/services/storm/scripts"						
+				}
+				host cluster
+			}
+			workflows ( workflow )
+		},
+		
+		StreamDataRate rate {
+			id rate
+			target "workflow.ddd"
+		},
+		
+		SwarmCluster swarm {
+			id swarm
+			ip "33.3.3.3"
+			port "9865"
+			user "julio"
+		},
+		
+		TaskProcessingAmount taskprocessingAMount {
+			id taskprocessingamount
+			target "workflow.supertask"		
+			histogramBuckectNum 2
+			expectedMaxTPA 2
+			expectedMinTPA 2
+			linearBucketDistribution false
+		},
+		
+		AWSVirtualProcessingNode MyAWSNode {
+			id "id"
+			ip "200.0.0.1"
+			speedFactor 0.2
+			userName "Julio"
+			externalIP "200.0.0.8"
+			keyPair "{key:value, key2:value2}"
+			AMI "AMI"
+			codeFiles ( 
+				ArtifactDescriptor {
+					fileName "file"
+					filePath "/path"
+					localPath "/path"
+				}
+			)
+			concurrencyLevel 2
+			configData "key=value"
+			configFiles ( 
+				DeploymentFileDescriptor {
+					fileContent "content"
+					fileName "file"
+					filePath "/path"
+					elementType AVRO_SERVICE
+					owner MyAWSNode				
+				}
+			)
+			connectedTo ( network1 )
+			instanceType "type1"
+			launchingScripts ( 
+				DeploymentFileDescriptor {
+					fileContent "content"
+					fileName "file"
+					filePath "/path"
+					elementType AVRO_SERVICE
+					owner MyAWSNode	
+				}
+			)
+			memorySize 256
+			os "Linux"
+			ownedMeters { 
+				CommunicationMeter meterC {
+					id meterC
+					metric networkUt
+					monitoringPort "3333"
+					monitoringTime 3222
+					deploymentConfig NomadDeploymentConf imageTag1 {
+						image Ubuntu			
+						priority 1
+						region "EU-West"
+						dataCenter "Berlin"
+						replicas 1
+						args "ddd"
+						command "dddd"
+						constraints DeploymentConstraints {
+						}
+						env "key2=value" 
+						imagePullPolicy "ed"
+						
+						ports {
+							Port {
+								published "no"
+								target "target"
+							}
+						}
+						restartPolicy "dd"
+						volumes {
+							Volume {
+								source "dd"
+								target "dd"
+								accessMode READONLYMANY
+								type BIND
+							}
+						}						
+					}
+					monitoringServer prometheus
+				}
+			}
+			securityGroup "seguridad"
+			subNet "subNet"
+			vpc "vpc"
+		}		
+	}
+	
+	authenticationFiles { "ddd" = "ddd" }
+		
+}

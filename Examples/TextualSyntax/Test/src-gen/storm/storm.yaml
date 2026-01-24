@@ -4,19 +4,19 @@
 storm.local.dir: "storm-local"
 
 # UI configuration
-ui.port: 2018
+      ui.port: 8080
 
 storm.zookeeper.servers:
-- "172.31.16.49"
+- "127.0.0.1"
 
-storm.zookeeper.port: 2018
+storm.zookeeper.port: 2181
 
 # Supervisor configuration
 supervisor.slots.ports:
-        - 6700
-        - 6701
-        - 6702
-        - 6703
+- 6700
+- 6701
+- 6702
+- 6703
 
 # Nimbus configuration
-nimbus.seeds: ["172.31.16.47", "172.31.16.51"]
+nimbus.seeds: ["127.0.0.1"]

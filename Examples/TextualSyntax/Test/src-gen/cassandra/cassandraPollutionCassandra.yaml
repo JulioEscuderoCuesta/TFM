@@ -2,15 +2,15 @@
 # contributor license agreements.
 
 # Model-specific configurations
-cluster_name: CassandraCluster
+cluster_name: MainCluster
 num_tokens: 256
 auto_bootstrap: false
-endpoint_snitch: SimpleSnitch
+endpoint_snitch: GossipingPropertyFileSnitch
 
 # Network configuration
-storage_port: 2018
-ssl_storage_port: 2318
-rpc_port: 2011
+storage_port: 7000
+ssl_storage_port: 7001
+rpc_port: 9160
 
 # Data directories
 data_file_directories:
@@ -18,9 +18,9 @@ data_file_directories:
 
 # Seed provider configuration
 seed_provider:
-- class_name: org.apache.cassandra.locator.SimpleSeedProvider
+- class_name: SimpleSeedProvider
   parameters:
-  - seeds: ""
+  - seeds: "127.0.0.1"
 
 # Performance settings
 concurrent_reads: 32

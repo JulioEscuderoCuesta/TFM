@@ -2,8 +2,8 @@
 <?eclipse version="3.0"?>
 <plugin>
   <extension point="org.eclipse.sirius.componentization">
-    <component class="Rai4.design.Activator"
-               id="Rai4.design"
+    <component class="Rai4VisualSyntax.Activator"
+               id="Rai4VisualSyntax"
 	       name="Rai4">
     </component>
   </extension>
