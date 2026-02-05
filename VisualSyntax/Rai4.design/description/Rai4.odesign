@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="Rai4" version="12.0.0.2017041100">
-  <ownedViewpoints name="Rai4">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:properties="http://www.eclipse.org/sirius/properties/1.0.0" xmlns:properties-ext-widgets-reference="http://www.eclipse.org/sirius/properties/1.0.0/ext/widgets/reference" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="Rai4" version="12.0.0.2017041100">
+  <ownedViewpoints name="Rai4" modelFileExtension="pasys">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Rai4 diagram" domainClass="ComputationalSystem" enablePopupBars="true">
       <metamodel href="www.unican.es/istr/pasys#/"/>
       <defaultLayer name="Computational System Description">
@@ -252,14 +252,6 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="ProcessingNodeMemory&amp;Utilization_NodeResourceMeter" sourceMapping="//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Rai4%20diagram']/@defaultLayer/@nodeMappings[name='Processing%20Node%20Utilization'] //@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Rai4%20diagram']/@defaultLayer/@nodeMappings[name='Processing%20Node%20Memory']" targetFinderExpression="aql:self.meter">
-          <style sizeComputationExpression="2">
-            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
-            <centerLabelStyleDescription labelSize="12">
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            </centerLabelStyleDescription>
-          </style>
-        </edgeMappings>
         <edgeMappings name="ProcessingNodeMemory&amp;Utilization_ProcessingNode" sourceMapping="//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Rai4%20diagram']/@defaultLayer/@nodeMappings[name='Processing%20Node%20Utilization'] //@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Rai4%20diagram']/@defaultLayer/@nodeMappings[name='Processing%20Node%20Memory']" targetMapping="//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Rai4%20diagram']/@defaultLayer/@nodeMappings[name='Physical%20Processing%20Node'] //@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Rai4%20diagram']/@defaultLayer/@nodeMappings[name='AWS%20Virtual%20Processing%20Node']" targetFinderExpression="aql:self.target">
           <style sizeComputationExpression="2">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
@@ -284,7 +276,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="Service(Cassandra&amp;Storm)_ZookeeperService" sourceMapping="//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Rai4%20diagram']/@defaultLayer/@nodeMappings[name='Kafka%20Service'] //@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Rai4%20diagram']/@defaultLayer/@nodeMappings[name='Storm%20Service']" targetMapping="//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Rai4%20diagram']/@defaultLayer/@nodeMappings[name='Zookeeper%20Service']" targetFinderExpression="aql:self.zookeeperConnect">
+        <edgeMappings name="Service(Kafka&amp;Storm)_ZookeeperService" sourceMapping="//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Rai4%20diagram']/@defaultLayer/@nodeMappings[name='Kafka%20Service'] //@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Rai4%20diagram']/@defaultLayer/@nodeMappings[name='Storm%20Service']" targetMapping="//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Rai4%20diagram']/@defaultLayer/@nodeMappings[name='Zookeeper%20Service']" targetFinderExpression="aql:self.zookeeperConnect">
           <style sizeComputationExpression="2">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription labelSize="12">
@@ -300,7 +292,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="StreamRateMeter_StreamData" targetMapping="//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Rai4%20diagram']/@defaultLayer/@nodeMappings[name='Kafka%20Workload%20Stream%20Data']" targetFinderExpression="aql:self.owner">
+        <edgeMappings name="StreamRateMeter_StreamData" sourceMapping="//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Stream%20Data%20Diagram']/@defaultLayer/@nodeMappings[name='Stream%20Rate%20Meter']" targetMapping="//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Rai4%20diagram']/@defaultLayer/@nodeMappings[name='Kafka%20Workload%20Stream%20Data']" targetFinderExpression="aql:self.owner">
           <style sizeComputationExpression="2">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription labelSize="12">
@@ -557,7 +549,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="Zookeeper Server" iconPath="/Rai4.design/icons/apache_zookeeper_image.png">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="Zookeeper Server" nodeMappings="//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Rai4%20diagram']/@defaultLayer/@nodeMappings[name='Zookeeper%20Service']" iconPath="/Rai4.design/icons/apache_zookeeper_image.png">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -658,7 +650,7 @@
             <sourceViewVariable name="sourceView"/>
             <targetViewVariable name="targetView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:SetValue" featureName="cqlSchemas" valueExpression="aql:target"/>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="seeds" valueExpression="aql:target"/>
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool:EdgeCreationDescription" name="NetworkUtilization_Network" edgeMappings="//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Rai4%20diagram']/@defaultLayer/@edgeMappings[name='NetworkUtilization_Network']">
@@ -694,16 +686,7 @@
             <sourceViewVariable name="sourceView"/>
             <targetViewVariable name="targetView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:SetValue" featureName="connectedTo" valueExpression="aql:target"/>
-            </initialOperation>
-          </ownedTools>
-          <ownedTools xsi:type="tool:EdgeCreationDescription" name="ProcessingNodeMemory&amp;Utilization_NodeResourceMeter" edgeMappings="//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Rai4%20diagram']/@defaultLayer/@edgeMappings[name='ProcessingNodeMemory%26Utilization_NodeResourceMeter']">
-            <sourceVariable name="source"/>
-            <targetVariable name="target"/>
-            <sourceViewVariable name="sourceView"/>
-            <targetViewVariable name="targetView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool_1:SetValue" featureName="connectedTo" valueExpression="aql:target"/>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="nodes" valueExpression="aql:target"/>
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool:EdgeCreationDescription" name="ProcessingNodeMemory&amp;Utilization_ProcessingNode" edgeMappings="//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Rai4%20diagram']/@defaultLayer/@edgeMappings[name='ProcessingNodeMemory%26Utilization_ProcessingNode']">
@@ -712,7 +695,7 @@
             <sourceViewVariable name="sourceView"/>
             <targetViewVariable name="targetView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:SetValue" featureName="connectedTo" valueExpression="aql:target"/>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="target" valueExpression="aql:target"/>
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool:EdgeCreationDescription" name="SchedulableSet_Workflow" edgeMappings="//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Rai4%20diagram']/@defaultLayer/@edgeMappings[name='SchedulableSet_Workflow']">
@@ -733,13 +716,13 @@
               <firstModelOperations xsi:type="tool_1:SetValue" featureName="workflows" valueExpression="aql:target"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:EdgeCreationDescription" name="Service(Cassandra&amp;Storm)_ZookeeperService" edgeMappings="//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Rai4%20diagram']/@defaultLayer/@edgeMappings[name='Service(Cassandra%26Storm)_ZookeeperService']">
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="Service(Kafka&amp;Storm)_ZookeeperService" edgeMappings="//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Rai4%20diagram']/@defaultLayer/@edgeMappings[name='Service(Kafka%26Storm)_ZookeeperService']">
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>
             <targetViewVariable name="targetView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:SetValue" featureName="connectedTo" valueExpression="aql:target"/>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="zookeeperConnect" valueExpression="aql:target"/>
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool:EdgeCreationDescription" name="StreamDataRate_StreamData" edgeMappings="//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Rai4%20diagram']/@defaultLayer/@edgeMappings[name='StreamDataRate_StreamData']">
@@ -748,7 +731,7 @@
             <sourceViewVariable name="sourceView"/>
             <targetViewVariable name="targetView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:SetValue" featureName="connectedTo" valueExpression="aql:target"/>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="target" valueExpression="aql:target"/>
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool:EdgeCreationDescription" name="StreamRateMeter_StreamData" edgeMappings="//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Rai4%20diagram']/@defaultLayer/@edgeMappings[name='StreamRateMeter_StreamData']">
@@ -757,7 +740,7 @@
             <sourceViewVariable name="sourceView"/>
             <targetViewVariable name="targetView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:SetValue" featureName="connectedTo" valueExpression="aql:target"/>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="owner" valueExpression="aql:target"/>
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool:EdgeCreationDescription" name="Workflow_SchedulingServer" edgeMappings="//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Rai4%20diagram']/@defaultLayer/@edgeMappings[name='Workflow_SchedulingService']">
@@ -775,7 +758,7 @@
             <sourceViewVariable name="sourceView"/>
             <targetViewVariable name="targetView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:SetValue" featureName="scheduler" valueExpression="aql:target"/>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="target" valueExpression="aql:target"/>
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool:EdgeCreationDescription" name="WorkloadStreamData_CommunicationService" edgeMappings="//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Rai4%20diagram']/@defaultLayer/@edgeMappings[name='WorkloadStreamData_CommunicationService']">
@@ -792,7 +775,7 @@
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Cassandra Service Diagram" titleExpression="aql:'Cassandra Service: ' + self.name" domainClass="pasys::CassandraService" enablePopupBars="true">
       <defaultLayer name="Cassandra Service Description">
-        <nodeMappings name="Artifact Descriptor" domainClass="pasys::ArtifactDescriptor">
+        <nodeMappings name="Artifact Descriptor" semanticCandidatesExpression="aql:self.cqlSchemas" domainClass="pasys::ArtifactDescriptor">
           <style xsi:type="style:SquareDescription" labelSize="10" labelExpression="feature:fileName" iconPath="/Rai4.design/icons/artifact_descriptor_image.png" labelPosition="node" resizeKind="NSEW" width="24" height="10">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
             <labelFormat>bold</labelFormat>
@@ -800,7 +783,7 @@
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
           </style>
         </nodeMappings>
-        <nodeMappings name="Data Center" doubleClickDescription="//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Cassandra%20Service%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Data%20Center']" domainClass="pasys::DataCenter">
+        <nodeMappings name="Data Center" semanticCandidatesExpression="aql:self.dataCenters" doubleClickDescription="//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Cassandra%20Service%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Data%20Center']" domainClass="pasys::DataCenter">
           <style xsi:type="style:SquareDescription" labelSize="10" iconPath="/Rai4.design/icons/data_center_image.png" labelPosition="node" resizeKind="NSEW" width="24" height="10">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
             <labelFormat>bold</labelFormat>
@@ -808,7 +791,7 @@
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
           </style>
         </nodeMappings>
-        <nodeMappings name="Deployment File Descriptor" domainClass="pasys::DeploymentFileDescriptor">
+        <nodeMappings name="Deployment File Descriptor" semanticCandidatesExpression="aql:self.cqlSchemas" domainClass="pasys::DeploymentFileDescriptor">
           <style xsi:type="style:SquareDescription" labelSize="10" labelExpression="feature:fileName" iconPath="/Rai4.design/icons/deployment_file_descriptor.png" labelPosition="node" resizeKind="NSEW" width="24" height="10">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
             <labelFormat>bold</labelFormat>
@@ -929,12 +912,17 @@
               <firstModelOperations xsi:type="tool:Navigation" createIfNotExistent="true" diagramDescription="//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Orchestration%20Deployment%20Conf%20Diagram']"/>
             </initialOperation>
           </ownedTools>
+          <ownedTools xsi:type="tool:DoubleClickDescription" name="Node Deployment Conf">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <initialOperation/>
+          </ownedTools>
         </toolSections>
       </defaultLayer>
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Data Center Diagram" titleExpression="aql:'Data Center:  ' + self.name" domainClass="pasys::DataCenter" enablePopupBars="true">
       <defaultLayer name="Data Center Description">
-        <nodeMappings name="Rack" domainClass="pasys::Rack">
+        <nodeMappings name="Rack" semanticCandidatesExpression="aql:self.racks" domainClass="pasys::Rack">
           <style xsi:type="style:SquareDescription" labelSize="10" iconPath="/Rai4.design/icons/rack_image.png" labelPosition="node" resizeKind="NSEW" width="24" height="10">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
             <labelFormat>bold</labelFormat>
@@ -948,7 +936,7 @@
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="pasys::Rack" referenceName="racks">
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="fileName" valueExpression="aql:'new Rack'"/>
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'new Rack'"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -1128,7 +1116,7 @@
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="pasys::NomadDeploymentConf" referenceName="deploymentConfig">
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="imageTag" valueExpression="aql:'New Nomad Deployment Conf"/>
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="imageTag" valueExpression="aql:'New Nomad Deployment Conf'"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -1319,14 +1307,14 @@
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Orchestration Deployment Conf Diagram" titleExpression="aql:'Orchestration Deployment Conf: ' + self.imageTag" domainClass="pasys::OrchestratorDeploymentConf" enablePopupBars="true">
       <defaultLayer name="Orchestration Deployment Conf Description">
         <nodeMappings name="Deployment Constraints" semanticCandidatesExpression="aql:self.constraints" domainClass="pasys::DeploymentConstraints">
-          <style xsi:type="style:SquareDescription" labelSize="10" labelExpression="feature:labels" iconPath="/Rai4.design/icons/deployment_constraints.png" labelPosition="node" resizeKind="NSEW" width="24" height="10">
+          <style xsi:type="style:SquareDescription" labelSize="10" labelExpression="feature:labels" iconPath="/Rai4.design/icons/deployment_constraints_image.png" labelPosition="node" resizeKind="NSEW" width="24" height="10">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
             <labelFormat>bold</labelFormat>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
           </style>
         </nodeMappings>
-        <nodeMappings name="Port" semanticCandidatesExpression="aql:self.Ports" domainClass="pasys::Port">
+        <nodeMappings name="Port" semanticCandidatesExpression="aql:self.ports" domainClass="pasys::Port">
           <style xsi:type="style:SquareDescription" labelSize="10" showIcon="false" labelExpression="feature:target" iconPath="/Rai4.design/icons/port_image.png" labelPosition="node" resizeKind="NSEW" width="24" height="10">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
             <labelFormat>bold</labelFormat>
@@ -1343,25 +1331,25 @@
           </style>
         </nodeMappings>
         <toolSections name="Create Deployment Configuration Elements">
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="Deployment Constraints" nodeMappings="//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Orchestration%20Deployment%20Conf%20Diagram']/@defaultLayer/@nodeMappings[name='Deployment%20Constraints']" iconPath="/Rai4.design/icons/deployment_constraints.png">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="Deployment Constraints" nodeMappings="//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Orchestration%20Deployment%20Conf%20Diagram']/@defaultLayer/@nodeMappings[name='Deployment%20Constraints']" iconPath="/Rai4.design/icons/deployment_constraints_image.png">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="pasys::DeploymentConstraints" referenceName="constraints"/>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="pasys::DeploymentConstraints" referenceName="constraints" variableName="New Deployment Constraint"/>
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool:NodeCreationDescription" name="Port" nodeMappings="//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Orchestration%20Deployment%20Conf%20Diagram']/@defaultLayer/@nodeMappings[name='Port']" iconPath="/Rai4.design/icons/port_image.png">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="pasys::Port" referenceName="ports"/>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="pasys::Port" referenceName="ports" variableName="New Port"/>
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool:NodeCreationDescription" name="Volume" nodeMappings="//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Orchestration%20Deployment%20Conf%20Diagram']/@defaultLayer/@nodeMappings[name='Volume']" iconPath="/Rai4.design/icons/volume_image.png">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="pasys::Volume" referenceName="volumes" variableName="New Artifact Descriptor">
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="pasys::Volume" referenceName="volumes" variableName="New Volume">
                 <subModelOperations xsi:type="tool_1:SetValue" featureName="VOLUME" valueExpression="aql:self.type"/>
               </firstModelOperations>
             </initialOperation>
@@ -1371,7 +1359,7 @@
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Processing Node Diagram" titleExpression="aql:'Processing Node:  ' + self.name" domainClass="pasys::ProcessingNode" enablePopupBars="true">
       <defaultLayer name="Processing Node Description">
-        <nodeMappings name="Communication Meter" domainClass="pasys::CommunicationMeter">
+        <nodeMappings name="Communication Meter" semanticCandidatesExpression="aql:self.ownedMeters" domainClass="pasys::CommunicationMeter">
           <style xsi:type="style:SquareDescription" labelSize="10" iconPath="/Rai4.design/icons/communication_meter_image.png" labelPosition="node" resizeKind="NSEW" width="24" height="10">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
             <labelFormat>bold</labelFormat>
@@ -1411,7 +1399,7 @@
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Prometheus Service Diagram" titleExpression="aql:'Prometheus Service: ' + self.name" domainClass="pasys::PrometheusService" enablePopupBars="true">
       <defaultLayer name="Prometheus Service Description">
-        <nodeMappings name="Exporter Data" domainClass="pasys::ExporterData">
+        <nodeMappings name="Exporter Data" semanticCandidatesExpression="aql:self.exportersData" domainClass="pasys::ExporterData">
           <style xsi:type="style:SquareDescription" labelSize="10" iconPath="/Rai4.design/icons/exporter_data_image.png" labelPosition="node" resizeKind="NSEW" width="24" height="10">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
             <labelFormat>bold</labelFormat>
@@ -1475,7 +1463,7 @@
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="pasys::NodeDeploymentConf" referenceName="deploymentConfig">
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="artifactName" valueExpression="aql:'New Node Deployment Conf'"/>
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="artifactNames" valueExpression="aql:'New Node Deployment Conf'"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -1492,7 +1480,7 @@
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="pasys::SwarmDeploymentConf" referenceName="deploymentConfig">
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="pasys::SwarmDeploymentConf">
                 <subModelOperations xsi:type="tool_1:SetValue" featureName="imageTag" valueExpression="aql:'new Swarm Deployment Configuration'"/>
               </firstModelOperations>
             </initialOperation>
@@ -1556,7 +1544,7 @@
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="pasys::NodeDeploymentConf" referenceName="deploymentConfig">
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="imageTag" valueExpression="aql:'New Node Deployment Conf'"/>
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="artifactName" valueExpression="aql:'New Node Deployment Conf'"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -1617,7 +1605,7 @@
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
           </style>
         </nodeMappings>
-        <nodeMappings name="Storm Nimbus" domainClass="pasys::StormNimbus">
+        <nodeMappings name="Storm Nimbus" semanticCandidatesExpression="aql:self.nimbus" doubleClickDescription="//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Storm%20Service%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Storm%20Nimbus']" domainClass="pasys::StormNimbus">
           <style xsi:type="style:SquareDescription" labelSize="10" iconPath="/Rai4.design/icons/storm_nimbus_image.png" labelPosition="node" resizeKind="NSEW" width="24" height="10">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
             <labelFormat>bold</labelFormat>
@@ -1625,7 +1613,7 @@
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
           </style>
         </nodeMappings>
-        <nodeMappings name="Storm Supervisor" domainClass="pasys::StormSupervisor">
+        <nodeMappings name="Storm Supervisor" semanticCandidatesExpression="aql:self.supervisor" doubleClickDescription="//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Storm%20Service%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Storm%20Supervisor']" domainClass="pasys::StormSupervisor">
           <style xsi:type="style:SquareDescription" labelSize="10" iconPath="/Rai4.design/icons/storm_supervisor_image.png" labelPosition="node" resizeKind="NSEW" width="24" height="10">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
             <labelFormat>bold</labelFormat>
@@ -1633,7 +1621,7 @@
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
           </style>
         </nodeMappings>
-        <nodeMappings name="Storm UI" domainClass="pasys::StormUI">
+        <nodeMappings name="Storm UI" semanticCandidatesExpression="aql:self.ui" doubleClickDescription="//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Storm%20Service%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Storm%20UI']" domainClass="pasys::StormUI">
           <style xsi:type="style:SquareDescription" labelSize="10" iconPath="/Rai4.design/icons/storm_ui_image.png" labelPosition="node" resizeKind="NSEW" width="24" height="10">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
             <labelFormat>bold</labelFormat>
@@ -1650,7 +1638,7 @@
           </style>
         </nodeMappings>
         <toolSections name="Create Storm Service Elements">
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="Kubernetes Deployment Conf" nodeMappings="//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Kafka%20Service%20Diagram']/@defaultLayer/@nodeMappings[name='Kubernetes%20Deployment%20Conf']" iconPath="/Rai4.design/icons/deployment_config_image.png">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="Kubernetes Deployment Conf" nodeMappings="//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Storm%20Service%20Diagram']/@defaultLayer/@nodeMappings[name='Kubernetes%20Deployment%20Conf']" iconPath="/Rai4.design/icons/deployment_config_image.png">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -1659,21 +1647,21 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="Node Deployment Conf" nodeMappings="//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Kafka%20Service%20Diagram']/@defaultLayer/@nodeMappings[name='Node%20Deployment%20Conf']" iconPath="/Rai4.design/icons/deployment_config_image.png">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="Node Deployment Conf" nodeMappings="//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Storm%20Service%20Diagram']/@defaultLayer/@nodeMappings[name='Node%20Deployment%20Conf']" iconPath="/Rai4.design/icons/deployment_config_image.png">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="pasys::NodeDeploymentConf" referenceName="deploymentConfig">
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="imageTag" valueExpression="aql:'New Node Deployment Conf'"/>
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="artifactName" valueExpression="aql:'New Node Deployment Conf'"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="Nomad Deployment Conf" nodeMappings="//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Kafka%20Service%20Diagram']/@defaultLayer/@nodeMappings[name='Nomad%20Deployment%20Conf']" iconPath="/Rai4.design/icons/deployment_config_image.png">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="Nomad Deployment Conf" nodeMappings="//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Storm%20Service%20Diagram']/@defaultLayer/@nodeMappings[name='Nomad%20Deployment%20Conf']" iconPath="/Rai4.design/icons/deployment_config_image.png">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="pasys::NomadDeploymentConf" referenceName="deploymentConfig">
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="imageTag" valueExpression="aql:'New Nomad Deployment Conf"/>
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="imageTag" valueExpression="aql:'New Nomad Deployment Conf'"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -1682,7 +1670,7 @@
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="pasys::StormNimbus" referenceName="nimbus">
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="fileName" valueExpression="aql:'new Nomad Cluster'"/>
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'new Storm Nimbus'"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -1691,7 +1679,7 @@
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="pasys::StormSupervisor" referenceName="supervisor">
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="fileName" valueExpression="aql:'new Nomad Cluster'"/>
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'new Storm Supervisor'"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -1700,19 +1688,16 @@
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="pasys::StormUI" referenceName="ui">
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="fileName" valueExpression="aql:'new Nomad Cluster'"/>
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'new Storm UI'"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="Swarm Deployment Conf" nodeMappings="//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Kafka%20Service%20Diagram']/@defaultLayer/@nodeMappings[name='Swarm%20Deployment%20Conf']" iconPath="/Rai4.design/icons/deployment_config_image.png">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="Swarm Deployment Conf" nodeMappings="//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Storm%20Service%20Diagram']/@defaultLayer/@nodeMappings[name='Swarm%20Deployment%20Conf']" iconPath="/Rai4.design/icons/deployment_config_image.png">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="pasys::SwarmDeploymentConf" referenceName="deploymentConfig">
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'new Swarm Cluster'"/>
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="pasys::SwarmDeploymentConf" referenceName="deploymentConfig">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="imageTag" valueExpression="aql:'new Swarm Deployment Conf'"/>
-                </subModelOperations>
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="imageTag" valueExpression="aql:'new Swarm Deployment Conf'"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -1721,6 +1706,27 @@
             <elementView name="elementView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:Navigation" createIfNotExistent="true" diagramDescription="//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Orchestration%20Deployment%20Conf%20Diagram']"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DoubleClickDescription" name="Storm Nimbus" mappings="//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Storm%20Service%20Diagram']/@defaultLayer/@nodeMappings[name='Storm%20Nimbus']">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:Navigation" createIfNotExistent="true" diagramDescription="//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Storm%20Nimbus']"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DoubleClickDescription" name="Storm Supervisor" mappings="//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Storm%20Service%20Diagram']/@defaultLayer/@nodeMappings[name='Storm%20Supervisor']">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:Navigation" createIfNotExistent="true" diagramDescription="//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Storm%20Supervisor']"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DoubleClickDescription" name="Storm UI" mappings="//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Storm%20Service%20Diagram']/@defaultLayer/@nodeMappings[name='Storm%20UI']">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:Navigation" createIfNotExistent="true" diagramDescription="//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Storm%20UI']"/>
             </initialOperation>
           </ownedTools>
         </toolSections>
@@ -1760,7 +1766,7 @@
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
           </style>
         </nodeMappings>
-        <nodeMappings name="Task Processing Amount Meter" domainClass="pasys::TaskProcessingAmountMeter">
+        <nodeMappings name="Task Processing Amount Meter" semanticCandidatesExpression="aql:self.ownedMeters" domainClass="pasys::TaskProcessingAmountMeter">
           <style xsi:type="style:SquareDescription" labelSize="10" iconPath="/Rai4.design/icons/task_processing_amount_meter_image.png" labelPosition="node" resizeKind="NSEW" width="24" height="10">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
             <labelFormat>bold</labelFormat>
@@ -1979,7 +1985,7 @@
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="pasys::NodeDeploymentConf" referenceName="deploymentConfig">
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="imageTag" valueExpression="aql:'New Node Deployment Conf'"/>
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="artifactName" valueExpression="aql:'New Node Deployment Conf'"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -2142,7 +2148,7 @@
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="pasys::NodeDeploymentConf" referenceName="deploymentConfig">
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="imageTag" valueExpression="aql:'New Node Deployment Conf'"/>
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="artifactName" valueExpression="aql:'New Node Deployment Conf'"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -2177,6 +2183,270 @@
         </toolSections>
       </defaultLayer>
     </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Storm Nimbus" titleExpression="aql:'Storm Nimbus:  ' + self.name" domainClass="pasys::StormNimbus" enablePopupBars="true">
+      <defaultLayer name="Storm Nimbus Description">
+        <nodeMappings name="Node Deployment Conf" semanticCandidatesExpression="aql:self.deploymentConfig" domainClass="pasys::NodeDeploymentConf">
+          <style xsi:type="style:SquareDescription" labelSize="10" labelExpression="feature:artifactName" iconPath="/Rai4.design/icons/deployment_config_image.png" labelPosition="node" resizeKind="NSEW" width="24" height="10">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <labelFormat>bold</labelFormat>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings name="Nomad Deployment Conf" semanticCandidatesExpression="aql:self.deploymentConfig" doubleClickDescription="//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Storm%20Nimbus']/@defaultLayer/@toolSections.0/@ownedTools[name='Orchestration%20Deployment%20Conf']" domainClass="pasys::NomadDeploymentConf">
+          <style xsi:type="style:SquareDescription" labelSize="10" labelExpression="feature:imageTag" iconPath="/Rai4.design/icons/deployment_config_image.png" labelPosition="node" resizeKind="NSEW" width="24" height="10">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <labelFormat>bold</labelFormat>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings name="Kubernetes Deployment Conf" semanticCandidatesExpression="aql:self.deploymentConfig" doubleClickDescription="//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Storm%20Nimbus']/@defaultLayer/@toolSections.0/@ownedTools[name='Orchestration%20Deployment%20Conf']" domainClass="pasys::KubernetesDeploymentConf">
+          <style xsi:type="style:SquareDescription" labelSize="10" labelExpression="feature:imageTag" iconPath="/Rai4.design/icons/deployment_config_image.png" labelPosition="node" resizeKind="NSEW" width="24" height="10">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <labelFormat>bold</labelFormat>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings name="Swarm Deployment Conf" semanticCandidatesExpression="aql:self.deploymentConfig" doubleClickDescription="//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Storm%20Nimbus']/@defaultLayer/@toolSections.0/@ownedTools[name='Orchestration%20Deployment%20Conf']" domainClass="pasys::SwarmDeploymentConf">
+          <style xsi:type="style:SquareDescription" labelSize="10" labelExpression="feature:imageTag" iconPath="/Rai4.design/icons/deployment_config_image.png" labelPosition="node" resizeKind="NSEW" width="24" height="10">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <labelFormat>bold</labelFormat>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+          </style>
+        </nodeMappings>
+        <toolSections name="Create Storm Nimbus Elements">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="Node Deployment Conf" nodeMappings="//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Storm%20Nimbus']/@defaultLayer/@nodeMappings[name='Node%20Deployment%20Conf']" iconPath="/Rai4.design/icons/deployment_config_image.png">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="pasys::NodeDeploymentConf" referenceName="deploymentConfig">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="artifactName" valueExpression="aql:'New Node Deployment Conf'"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="Kubernetes Deployment Conf" nodeMappings="//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Storm%20Nimbus']/@defaultLayer/@nodeMappings[name='Kubernetes%20Deployment%20Conf']" iconPath="/Rai4.design/icons/deployment_config_image.png">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="pasys::KubernetesDeploymentConf" referenceName="deploymentConfig">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="imageTag" valueExpression="aql:'New Kubernetes Deployment Conf'"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="Nomad Deployment Conf" nodeMappings="//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Storm%20Nimbus']/@defaultLayer/@nodeMappings[name='Nomad%20Deployment%20Conf']" iconPath="/Rai4.design/icons/deployment_config_image.png">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="pasys::NomadDeploymentConf" referenceName="deploymentConfig">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="imageTag" valueExpression="aql:'New Nomad Deployment Conf"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="Swarm Deployment Conf" nodeMappings="//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Storm%20Nimbus']/@defaultLayer/@nodeMappings[name='Nomad%20Deployment%20Conf']" iconPath="/Rai4.design/icons/deployment_config_image.png">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="pasys::SwarmDeploymentConf" referenceName="deploymentConfig">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'new Swarm Cluster'"/>
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="pasys::SwarmDeploymentConf" referenceName="deploymentConfig">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="imageTag" valueExpression="aql:'new Swarm Deployment Conf'"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DoubleClickDescription" name="Orchestration Deployment Conf" mappings="//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Storm%20Nimbus']/@defaultLayer/@nodeMappings[name='Kubernetes%20Deployment%20Conf'] //@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Storm%20Nimbus']/@defaultLayer/@nodeMappings[name='Nomad%20Deployment%20Conf'] //@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Storm%20Nimbus']/@defaultLayer/@nodeMappings[name='Swarm%20Deployment%20Conf']">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:Navigation" createIfNotExistent="true" diagramDescription="//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Orchestration%20Deployment%20Conf%20Diagram']"/>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </defaultLayer>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Storm Supervisor" titleExpression="aql:'Storm Nimbus:  ' + self.name" domainClass="pasys::StormSupervisor" enablePopupBars="true">
+      <defaultLayer name="Storm Supervisor Description">
+        <nodeMappings name="Node Deployment Conf" semanticCandidatesExpression="aql:self.deploymentConfig" domainClass="pasys::NodeDeploymentConf">
+          <style xsi:type="style:SquareDescription" labelSize="10" labelExpression="feature:artifactName" iconPath="/Rai4.design/icons/deployment_config_image.png" labelPosition="node" resizeKind="NSEW" width="24" height="10">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <labelFormat>bold</labelFormat>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings name="Nomad Deployment Conf" semanticCandidatesExpression="aql:self.deploymentConfig" doubleClickDescription="//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Storm%20Supervisor']/@defaultLayer/@toolSections.0/@ownedTools[name='Orchestration%20Deployment%20Conf']" domainClass="pasys::NomadDeploymentConf">
+          <style xsi:type="style:SquareDescription" labelSize="10" labelExpression="feature:imageTag" iconPath="/Rai4.design/icons/deployment_config_image.png" labelPosition="node" resizeKind="NSEW" width="24" height="10">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <labelFormat>bold</labelFormat>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings name="Kubernetes Deployment Conf" semanticCandidatesExpression="aql:self.deploymentConfig" doubleClickDescription="//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Storm%20Supervisor']/@defaultLayer/@toolSections.0/@ownedTools[name='Orchestration%20Deployment%20Conf']" domainClass="pasys::KubernetesDeploymentConf">
+          <style xsi:type="style:SquareDescription" labelSize="10" labelExpression="feature:imageTag" iconPath="/Rai4.design/icons/deployment_config_image.png" labelPosition="node" resizeKind="NSEW" width="24" height="10">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <labelFormat>bold</labelFormat>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings name="Swarm Deployment Conf" semanticCandidatesExpression="aql:self.deploymentConfig" doubleClickDescription="//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Storm%20Supervisor']/@defaultLayer/@toolSections.0/@ownedTools[name='Orchestration%20Deployment%20Conf']" domainClass="pasys::SwarmDeploymentConf">
+          <style xsi:type="style:SquareDescription" labelSize="10" labelExpression="feature:imageTag" iconPath="/Rai4.design/icons/deployment_config_image.png" labelPosition="node" resizeKind="NSEW" width="24" height="10">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <labelFormat>bold</labelFormat>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+          </style>
+        </nodeMappings>
+        <toolSections name="Create Storm Supervisor Elements">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="Node Deployment Conf" nodeMappings="//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Storm%20Supervisor']/@defaultLayer/@nodeMappings[name='Node%20Deployment%20Conf']" iconPath="/Rai4.design/icons/deployment_config_image.png">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="pasys::NodeDeploymentConf" referenceName="deploymentConfig">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="artifactName" valueExpression="aql:'New Node Deployment Conf'"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="Kubernetes Deployment Conf" nodeMappings="//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Storm%20Supervisor']/@defaultLayer/@nodeMappings[name='Kubernetes%20Deployment%20Conf']" iconPath="/Rai4.design/icons/deployment_config_image.png">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="pasys::KubernetesDeploymentConf" referenceName="deploymentConfig">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="imageTag" valueExpression="aql:'New Kubernetes Deployment Conf'"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="Nomad Deployment Conf" nodeMappings="//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Storm%20Supervisor']/@defaultLayer/@nodeMappings[name='Nomad%20Deployment%20Conf']" iconPath="/Rai4.design/icons/deployment_config_image.png">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="pasys::NomadDeploymentConf" referenceName="deploymentConfig">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="imageTag" valueExpression="aql:'New Nomad Deployment Conf"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="Swarm Deployment Conf" nodeMappings="//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Storm%20Supervisor']/@defaultLayer/@nodeMappings[name='Swarm%20Deployment%20Conf']" iconPath="/Rai4.design/icons/deployment_config_image.png">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="pasys::SwarmDeploymentConf" referenceName="deploymentConfig">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'new Swarm Cluster'"/>
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="pasys::SwarmDeploymentConf" referenceName="deploymentConfig">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="imageTag" valueExpression="aql:'new Swarm Deployment Conf'"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DoubleClickDescription" name="Orchestration Deployment Conf" mappings="//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Storm%20Supervisor']/@defaultLayer/@nodeMappings[name='Nomad%20Deployment%20Conf'] //@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Storm%20Supervisor']/@defaultLayer/@nodeMappings[name='Kubernetes%20Deployment%20Conf'] //@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Storm%20Supervisor']/@defaultLayer/@nodeMappings[name='Swarm%20Deployment%20Conf']">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:Navigation" createIfNotExistent="true" diagramDescription="//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Orchestration%20Deployment%20Conf%20Diagram']"/>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </defaultLayer>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Storm UI" titleExpression="aql:'Storm Nimbus:  ' + self.name" domainClass="pasys::StormUI" enablePopupBars="true">
+      <defaultLayer name="Storm UI Description">
+        <nodeMappings name="Node Deployment Conf" semanticCandidatesExpression="aql:self.deploymentConfig" domainClass="pasys::NodeDeploymentConf">
+          <style xsi:type="style:SquareDescription" labelSize="10" labelExpression="feature:artifactName" iconPath="/Rai4.design/icons/deployment_config_image.png" labelPosition="node" resizeKind="NSEW" width="24" height="10">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <labelFormat>bold</labelFormat>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings name="Nomad Deployment Conf" semanticCandidatesExpression="aql:self.deploymentConfig" doubleClickDescription="//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Storm%20UI']/@defaultLayer/@toolSections.0/@ownedTools[name='Orchestration%20Deployment%20Conf']" domainClass="pasys::NomadDeploymentConf">
+          <style xsi:type="style:SquareDescription" labelSize="10" labelExpression="feature:imageTag" iconPath="/Rai4.design/icons/deployment_config_image.png" labelPosition="node" resizeKind="NSEW" width="24" height="10">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <labelFormat>bold</labelFormat>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings name="Kubernetes Deployment Conf" semanticCandidatesExpression="aql:self.deploymentConfig" doubleClickDescription="//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Storm%20UI']/@defaultLayer/@toolSections.0/@ownedTools[name='Orchestration%20Deployment%20Conf']" domainClass="pasys::KubernetesDeploymentConf">
+          <style xsi:type="style:SquareDescription" labelSize="10" labelExpression="feature:imageTag" iconPath="/Rai4.design/icons/deployment_config_image.png" labelPosition="node" resizeKind="NSEW" width="24" height="10">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <labelFormat>bold</labelFormat>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings name="Swarm Deployment Conf" semanticCandidatesExpression="aql:self.deploymentConfig" doubleClickDescription="//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Storm%20UI']/@defaultLayer/@toolSections.0/@ownedTools[name='Orchestration%20Deployment%20Conf']" domainClass="pasys::SwarmDeploymentConf">
+          <style xsi:type="style:SquareDescription" labelSize="10" labelExpression="feature:imageTag" iconPath="/Rai4.design/icons/deployment_config_image.png" labelPosition="node" resizeKind="NSEW" width="24" height="10">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <labelFormat>bold</labelFormat>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+          </style>
+        </nodeMappings>
+        <toolSections name="Create Storm UI Elements">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="Node Deployment Conf" nodeMappings="//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Storm%20UI']/@defaultLayer/@nodeMappings[name='Node%20Deployment%20Conf']" iconPath="/Rai4.design/icons/deployment_config_image.png">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="pasys::NodeDeploymentConf" referenceName="deploymentConfig">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="artifactName" valueExpression="aql:'New Node Deployment Conf'"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="Kubernetes Deployment Conf" nodeMappings="//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Storm%20UI']/@defaultLayer/@nodeMappings[name='Kubernetes%20Deployment%20Conf']" iconPath="/Rai4.design/icons/deployment_config_image.png">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="pasys::KubernetesDeploymentConf" referenceName="deploymentConfig">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="imageTag" valueExpression="aql:'New Kubernetes Deployment Conf'"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="Nomad Deployment Conf" nodeMappings="//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Storm%20UI']/@defaultLayer/@nodeMappings[name='Nomad%20Deployment%20Conf']" iconPath="/Rai4.design/icons/deployment_config_image.png">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="pasys::NomadDeploymentConf" referenceName="deploymentConfig">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="imageTag" valueExpression="aql:'New Nomad Deployment Conf"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="Swarm Deployment Conf" nodeMappings="//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Storm%20UI']/@defaultLayer/@nodeMappings[name='Swarm%20Deployment%20Conf']" iconPath="/Rai4.design/icons/deployment_config_image.png">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="pasys::SwarmDeploymentConf" referenceName="deploymentConfig">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'new Swarm Cluster'"/>
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="pasys::SwarmDeploymentConf" referenceName="deploymentConfig">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="imageTag" valueExpression="aql:'new Swarm Deployment Conf'"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DoubleClickDescription" name="Orchestration Deployment Conf" mappings="//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Storm%20UI']/@defaultLayer/@nodeMappings[name='Kubernetes%20Deployment%20Conf'] //@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Storm%20UI']/@defaultLayer/@nodeMappings[name='Nomad%20Deployment%20Conf'] //@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Storm%20UI']/@defaultLayer/@nodeMappings[name='Swarm%20Deployment%20Conf']">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:Navigation" createIfNotExistent="true" diagramDescription="//@ownedViewpoints[name='Rai4']/@ownedRepresentations[name='Orchestration%20Deployment%20Conf%20Diagram']"/>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </defaultLayer>
+    </ownedRepresentations>
     <ownedJavaExtensions qualifiedClassName="Rai4.design.Services"/>
   </ownedViewpoints>
+  <extensions xsi:type="properties:ViewExtensionDescription" name="Properties">
+    <categories name="Task Properties">
+      <pages name="TaskPage" labelExpression="Task" domainClass="pasys::T" semanticCandidateExpression="var:self"/>
+      <groups name="TaskAttributesGroup" labelExpression="Attributes" domainClass="pasys::Task" semanticCandidateExpression="var:self">
+        <controls xsi:type="properties-ext-widgets-reference:ExtReferenceDescription" name="Trigger Stream Data" labelExpression="Trigger Stream Data" helpExpression="Select the Kafka Workload Stream Data" isEnabledExpression="aql:true" referenceNameExpression="aql:'triggerStreamData'" referenceOwnerExpression="aql:selft">
+          <onClickOperation>
+            <firstModelOperations xsi:type="tool_1:SetValue" featureName="triggerStreamData" valueExpression="var:newValue"/>
+          </onClickOperation>
+        </controls>
+      </groups>
+    </categories>
+  </extensions>
 </description:Group>
