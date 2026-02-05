@@ -27,7 +27,7 @@ public interface ProcessingNodeMemory extends Metric {
 	 * @return the value of the '<em>Target</em>' reference.
 	 * @see #setTarget(ProcessingNode)
 	 * @see es.unican.istr.pasys.pasys.PasysPackage#getProcessingNodeMemory_Target()
-	 * @model required="true"
+	 * @model
 	 * @generated
 	 */
 	ProcessingNode getTarget();

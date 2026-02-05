@@ -13,7 +13,6 @@ import es.unican.istr.pasys.pasys.ProcessingNodeUtilization;
 import es.unican.istr.pasys.pasys.deploymentTools.DeploymentToolsUtils;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
@@ -26,8 +25,8 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link PASYS_Metamodel.pasys.impl.NodeResourceMeterImpl#getUMetric <em>UMetric</em>}</li>
- *   <li>{@link PASYS_Metamodel.pasys.impl.NodeResourceMeterImpl#getMMetric <em>MMetric</em>}</li>
+ *   <li>{@link es.unican.istr.pasys.pasys.impl.NodeResourceMeterImpl#getUMetric <em>UMetric</em>}</li>
+ *   <li>{@link es.unican.istr.pasys.pasys.impl.NodeResourceMeterImpl#getMMetric <em>MMetric</em>}</li>
  * </ul>
  *
  * @generated
@@ -94,17 +93,16 @@ public class NodeResourceMeterImpl extends NodeHostedMeterImpl implements NodeRe
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetUMetric(ProcessingNodeUtilization newUMetric, NotificationChain msgs) {
+	@Override
+	public void setUMetric(ProcessingNodeUtilization newUMetric) {
 		ProcessingNodeUtilization oldUMetric = uMetric;
 		uMetric = newUMetric;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, PasysPackage.NODE_RESOURCE_METER__UMETRIC, oldUMetric, newUMetric);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, PasysPackage.NODE_RESOURCE_METER__UMETRIC, oldUMetric, uMetric));
 	}
 
 	/**
@@ -150,72 +148,17 @@ public class NodeResourceMeterImpl extends NodeHostedMeterImpl implements NodeRe
 	public ProcessingNodeMemory basicGetMMetric() {
 		return mMetric;
 	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetMMetric(ProcessingNodeMemory newMMetric, NotificationChain msgs) {
-		ProcessingNodeMemory oldMMetric = mMetric;
-		mMetric = newMMetric;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, PasysPackage.NODE_RESOURCE_METER__MMETRIC, oldMMetric, newMMetric);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	/*@Override
-	public void setMMetric(ProcessingNodeMemory newMMetric) {
-		if (newMMetric != mMetric) {
-			NotificationChain msgs = null;
-			if (mMetric != null)
-				msgs = ((InternalEObject)mMetric).eInverseRemove(this, PasysPackage.PROCESSING_NODE_MEMORY__METER, ProcessingNodeMemory.class, msgs);
-			if (newMMetric != null)
-				msgs = ((InternalEObject)newMMetric).eInverseAdd(this, PasysPackage.PROCESSING_NODE_MEMORY__METER, ProcessingNodeMemory.class, msgs);
-			msgs = basicSetMMetric(newMMetric, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PasysPackage.NODE_RESOURCE_METER__MMETRIC, newMMetric, newMMetric));
-	}*/
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	/*@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case PasysPackage.NODE_RESOURCE_METER__UMETRIC:
-				if (uMetric != null)
-					msgs = ((InternalEObject)uMetric).eInverseRemove(this, PasysPackage.PROCESSING_NODE_UTILIZATION__METER, ProcessingNodeUtilization.class, msgs);
-				return basicSetUMetric((ProcessingNodeUtilization)otherEnd, msgs);
-			case PasysPackage.NODE_RESOURCE_METER__MMETRIC:
-				if (mMetric != null)
-					msgs = ((InternalEObject)mMetric).eInverseRemove(this, PasysPackage.PROCESSING_NODE_MEMORY__METER, ProcessingNodeMemory.class, msgs);
-				return basicSetMMetric((ProcessingNodeMemory)otherEnd, msgs);
-		}
-		return super.eInverseAdd(otherEnd, featureID, msgs);
-	}*/
-
+	
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case PasysPackage.NODE_RESOURCE_METER__UMETRIC:
-				return basicSetUMetric(null, msgs);
-			case PasysPackage.NODE_RESOURCE_METER__MMETRIC:
-				return basicSetMMetric(null, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
+	public void setMMetric(ProcessingNodeMemory newMMetric) {
+		ProcessingNodeMemory oldMMetric = mMetric;
+		mMetric = newMMetric;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, PasysPackage.NODE_RESOURCE_METER__MMETRIC, oldMMetric, mMetric));
 	}
 
 	/**
@@ -338,7 +281,7 @@ public class NodeResourceMeterImpl extends NodeHostedMeterImpl implements NodeRe
 		return super.eIsSet(featureID);
 	}
 
-	@Override
+	/*@Override
 	public void setUMetric(ProcessingNodeUtilization value) {
 		// TODO Auto-generated method stub
 		
@@ -348,6 +291,6 @@ public class NodeResourceMeterImpl extends NodeHostedMeterImpl implements NodeRe
 	public void setMMetric(ProcessingNodeMemory value) {
 		// TODO Auto-generated method stub
 		
-	}
+	}*/
 
 } // NodeResourceMeterImpl

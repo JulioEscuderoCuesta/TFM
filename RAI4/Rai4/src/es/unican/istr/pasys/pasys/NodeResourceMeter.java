@@ -28,7 +28,7 @@ public interface NodeResourceMeter extends NodeHostedMeter {
 	 * @return the value of the '<em>UMetric</em>' reference.
 	 * @see #setUMetric(ProcessingNodeUtilization)
 	 * @see es.unican.istr.pasys.pasys.PasysPackage#getNodeResourceMeter_UMetric()
-	 * @model
+	 * @model required="true"
 	 * @generated
 	 */
 	ProcessingNodeUtilization getUMetric();
@@ -50,7 +50,7 @@ public interface NodeResourceMeter extends NodeHostedMeter {
 	 * @return the value of the '<em>MMetric</em>' reference.
 	 * @see #setMMetric(ProcessingNodeMemory)
 	 * @see es.unican.istr.pasys.pasys.PasysPackage#getNodeResourceMeter_MMetric()
-	 * @model
+	 * @model required="true"
 	 * @generated
 	 */
 	ProcessingNodeMemory getMMetric();

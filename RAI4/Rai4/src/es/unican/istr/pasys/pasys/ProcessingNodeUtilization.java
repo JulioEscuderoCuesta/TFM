@@ -27,7 +27,7 @@ public interface ProcessingNodeUtilization extends Metric {
 	 * @return the value of the '<em>Target</em>' reference.
 	 * @see #setTarget(ProcessingNode)
 	 * @see es.unican.istr.pasys.pasys.PasysPackage#getProcessingNodeUtilization_Target()
-	 * @model required="true"
+	 * @model
 	 * @generated
 	 */
 	ProcessingNode getTarget();

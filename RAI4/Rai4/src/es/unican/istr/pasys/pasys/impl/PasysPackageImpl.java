@@ -4820,10 +4820,10 @@ public class PasysPackageImpl extends EPackageImpl implements PasysPackage {
 		initEClass(metricEClass, Metric.class, "Metric", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(processingNodeUtilizationEClass, ProcessingNodeUtilization.class, "ProcessingNodeUtilization", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getProcessingNodeUtilization_Target(), this.getProcessingNode(), null, "target", null, 1, 1, ProcessingNodeUtilization.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getProcessingNodeUtilization_Target(), this.getProcessingNode(), null, "target", null, 0, 1, ProcessingNodeUtilization.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(processingNodeMemoryEClass, ProcessingNodeMemory.class, "ProcessingNodeMemory", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getProcessingNodeMemory_Target(), this.getProcessingNode(), null, "target", null, 1, 1, ProcessingNodeMemory.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getProcessingNodeMemory_Target(), this.getProcessingNode(), null, "target", null, 0, 1, ProcessingNodeMemory.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(networkUtilizationEClass, NetworkUtilization.class, "NetworkUtilization", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getNetworkUtilization_Target(), this.getNetwork(), null, "target", null, 1, 1, NetworkUtilization.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -4854,8 +4854,8 @@ public class PasysPackageImpl extends EPackageImpl implements PasysPackage {
 		initEReference(getNodeHostedMeter_Owner(), this.getProcessingNode(), this.getProcessingNode_OwnedMeters(), "owner", null, 1, 1, NodeHostedMeter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(nodeResourceMeterEClass, NodeResourceMeter.class, "NodeResourceMeter", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getNodeResourceMeter_UMetric(), this.getProcessingNodeUtilization(), null, "uMetric", null, 0, 1, NodeResourceMeter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getNodeResourceMeter_MMetric(), this.getProcessingNodeMemory(), null, "mMetric", null, 0, 1, NodeResourceMeter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getNodeResourceMeter_UMetric(), this.getProcessingNodeUtilization(), null, "uMetric", null, 1, 1, NodeResourceMeter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getNodeResourceMeter_MMetric(), this.getProcessingNodeMemory(), null, "mMetric", null, 1, 1, NodeResourceMeter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(communicationMeterEClass, CommunicationMeter.class, "CommunicationMeter", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getCommunicationMeter_Metric(), this.getNetworkUtilization(), null, "metric", null, 1, 1, CommunicationMeter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

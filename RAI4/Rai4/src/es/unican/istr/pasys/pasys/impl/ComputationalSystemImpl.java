@@ -2,6 +2,9 @@
  */
 package es.unican.istr.pasys.pasys.impl;
 
+import es.unican.istr.pasys.pasys.ComputationalSystem;
+import es.unican.istr.pasys.pasys.PasysPackage;
+import es.unican.istr.pasys.pasys.SystemElement;
 import es.unican.istr.pasys.pasys.*;
 import es.unican.istr.pasys.pasys.deploymentTools.DeploymentToolsUtils;
 import java.io.File;

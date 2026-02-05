@@ -373,11 +373,11 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Metric" abstract="true" eSuperTypes="#//SystemElement"/>
   <eClassifiers xsi:type="ecore:EClass" name="ProcessingNodeUtilization" eSuperTypes="#//Metric">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="target" lowerBound="1"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="target" lowerBound="0"
         eType="#//ProcessingNode"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ProcessingNodeMemory" eSuperTypes="#//Metric">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="target" lowerBound="1"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="target" lowerBound="0"
         eType="#//ProcessingNode"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="NetworkUtilization" eSuperTypes="#//Metric">
@@ -421,8 +421,10 @@
         eOpposite="#//ProcessingNode/ownedMeters"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="NodeResourceMeter" eSuperTypes="#//NodeHostedMeter">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="uMetric" eType="#//ProcessingNodeUtilization"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="mMetric" eType="#//ProcessingNodeMemory"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="uMetric" lowerBound="1"
+        eType="#//ProcessingNodeUtilization"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="mMetric" lowerBound="1"
+        eType="#//ProcessingNodeMemory"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="CommunicationMeter" eSuperTypes="#//NodeHostedMeter">
     <eStructuralFeatures xsi:type="ecore:EReference" name="metric" lowerBound="1"
