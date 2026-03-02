@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rai4:ComputationalSystem xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:rai4="www.unican.es/istr/rai4">
+  <ownedElements xsi:type="rai4:PhysicalProcessingNode" name="NimbusNode" id="NimbusNode"/>
+  <ownedElements xsi:type="rai4:PhysicalProcessingNode" name="CassandraNode" id="CassandraNode"/>
+  <ownedElements xsi:type="rai4:PhysicalProcessingNode" name="KafkaNode" id="KafkaNode"/>
+  <ownedElements xsi:type="rai4:PhysicalProcessingNode" name="SupervisorNode" id="SupervisorNode"/>
+  <ownedElements xsi:type="rai4:PhysicalProcessingNode" name="ZkNode" id="ZkNode"/>
+  <ownedElements xsi:type="rai4:ProcessingNodeCluster" name="NimbusCluster" id="NimbusCluster"/>
+  <ownedElements xsi:type="rai4:ProcessingNodeCluster" name="KafkaCluster" id="KafkaCluster"/>
+  <ownedElements xsi:type="rai4:ProcessingNodeCluster" name="ZkCluster" id="ZkCluster"/>
+  <ownedElements xsi:type="rai4:ProcessingNodeCluster" name="SupervisorCluster" id="SupervisorCluster"/>
+  <ownedElements xsi:type="rai4:ProcessingNodeCluster" name="CassandraCluster" id="CassandraCluster"/>
+  <ownedElements xsi:type="rai4:ProcessingNodeCluster" name="StormCluster" id="StormCluster"/>
+  <ownedElements xsi:type="rai4:KafkaService" zookeeperConnect="//@ownedElements.16">
+    <deploymentConfig xsi:type="rai4:KubernetesDeploymentConf" imageTag="New Kubernetes Deployment Conf">
+      <volumes/>
+      <ports/>
+      <ports/>
+      <ports/>
+      <constraints/>
+    </deploymentConfig>
+  </ownedElements>
+  <ownedElements xsi:type="rai4:CassandraService" name="PollutionCassandra" id="PollutionCassandra" host="//@ownedElements.9" seeds="//@ownedElements.9">
+    <deploymentConfig xsi:type="rai4:NodeDeploymentConf" artifactLocator="/home/gestor/apache/services/cassandra/bin" artifactName="cassandra" configFolderPath="/home/gestor/apache/services/cassandra/config" scriptFolderPath="/home/gestor/apache/services/cassandra/script" dataFolderPath="/home/gestor/apache/services/cassandra/data" logFolderPath="/home/gestor/apache/services/cassandra/logs" codeFolderPath=""/>
+    <cqlSchemas xsi:type="rai4:ArtifactDescriptor" filePath="/home/gestor/apache/apps/pollution/workflows/data" fileName="cassandra_schema.sql"/>
+    <dataCenters name="PollutionCluster" id="PollutionCluster">
+      <racks name="PollutionCluster" id="PollutionCluster" nodes="//@ownedElements.9"/>
+      <racks name="new Rack"/>
+    </dataCenters>
+  </ownedElements>
+  <ownedElements xsi:type="rai4:KafkaWorkloadStreamData" holder="//@ownedElements.11"/>
+  <ownedElements xsi:type="rai4:StormService" name="PollutionStorm" workflows="//@ownedElements.15">
+    <deploymentConfig xsi:type="rai4:NomadDeploymentConf" imageTag="New Nomad Deployment Conf">
+      <volumes/>
+      <ports/>
+    </deploymentConfig>
+    <nimbus name="new Storm Nimbus"/>
+    <supervisor name="new Storm Supervisor"/>
+    <ui name="new Storm UI"/>
+  </ownedElements>
+  <ownedElements xsi:type="rai4:Workflow" name="PollutionProcess" id="PollutionProcess" rootTask="//@ownedElements.15/@ownedTasks.0" scheduler="//@ownedElements.14">
+    <deploymentConfig xsi:type="rai4:NodeDeploymentConf" artifactName="New Node Deployment Conf"/>
+    <ownedTasks name="new Task" triggerStreamData="//@ownedElements.13"/>
+  </ownedElements>
+  <ownedElements xsi:type="rai4:ZookeeperService" name="PollutionZkpr" id="PollutionZkpr" host="//@ownedElements.7">
+    <deploymentConfig xsi:type="rai4:NodeDeploymentConf" artifactLocator="" artifactName="zkService.sh"/>
+  </ownedElements>
+</rai4:ComputationalSystem>

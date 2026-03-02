@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rai4:ComputationalSystem xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:rai4="www.unican.es/istr/rai4">
+  <ownedElements xsi:type="rai4:PhysicalProcessingNode" name="NimbusNode"/>
+  <ownedElements xsi:type="rai4:PhysicalProcessingNode" name="CassandraNode" os=""/>
+  <ownedElements xsi:type="rai4:ProcessingNodeCluster" name="StormCluster" nodes="//@ownedElements.0 //@ownedElements.3"/>
+  <ownedElements xsi:type="rai4:PhysicalProcessingNode" name="SupervisorNode"/>
+  <ownedElements xsi:type="rai4:ProcessingNodeCluster" name="CassandraCluster" nodes="//@ownedElements.1"/>
+  <ownedElements xsi:type="rai4:ProcessingNodeCluster" name="SupervisorCluster" nodes="//@ownedElements.3"/>
+  <ownedElements xsi:type="rai4:ProcessingNodeCluster" name="NimbusCluster" nodes="//@ownedElements.0"/>
+  <ownedElements xsi:type="rai4:ZookeeperService" name="PollutionZookeeper" host="//@ownedElements.13">
+    <deploymentConfig xsi:type="rai4:NomadDeploymentConf" image="zookeeper" region="region1" dataCenter="dataCenter1"/>
+  </ownedElements>
+  <ownedElements xsi:type="rai4:CassandraService" name="PollutionCassandra" host="//@ownedElements.4" seeds="//@ownedElements.4">
+    <deploymentConfig xsi:type="rai4:NodeDeploymentConf" artifactName="New Node Deployment Conf"/>
+    <cqlSchemas xsi:type="rai4:ArtifactDescriptor" fileName="new Artifact Descriptor"/>
+    <dataCenters name="new Data Center">
+      <racks name="new Rack"/>
+    </dataCenters>
+  </ownedElements>
+  <ownedElements xsi:type="rai4:KafkaService" name="PollutionKafka" host="//@ownedElements.13" zookeeperConnect="//@ownedElements.7">
+    <deploymentConfig xsi:type="rai4:NomadDeploymentConf" image="nomad-kafka" region="region2" dataCenter="dataCenter2"/>
+  </ownedElements>
+  <ownedElements xsi:type="rai4:KafkaWorkloadStreamData" name="Pollution" holder="//@ownedElements.9">
+    <deploymentConfig xsi:type="rai4:NomadDeploymentConf"/>
+  </ownedElements>
+  <ownedElements xsi:type="rai4:Workflow" name="PollutionProcess" id="PollutionProcess" rootTask="//@ownedElements.11/@ownedTasks.0" scheduler="//@ownedElements.12">
+    <deploymentConfig xsi:type="rai4:NodeDeploymentConf" artifactName="New Node Deployment Conf"/>
+    <ownedTasks name="MainTask" id="MainTask" implementingClassName="es.unican.dintenr.santanderPollution.SantanderPollutionTopology" triggerStreamData="//@ownedElements.10"/>
+  </ownedElements>
+  <ownedElements xsi:type="rai4:StormService" name="PollutionStorm" host="//@ownedElements.2" workflows="//@ownedElements.11" zookeeperConnect="//@ownedElements.7">
+    <deploymentConfig xsi:type="rai4:NodeDeploymentConf" artifactName="New Node Deployment Conf"/>
+    <nimbus name="new Storm Nimbus"/>
+    <supervisor name="new Storm Supervisor"/>
+    <ui name="new Storm UI"/>
+  </ownedElements>
+  <ownedElements xsi:type="rai4:NomadCluster" name="NomadCluster" id="NomadCluster" ip="111.111.111.111" port="8000"/>
+</rai4:ComputationalSystem>

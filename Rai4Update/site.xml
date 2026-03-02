@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <feature url="features/Rai4Feature_1.0.0.202603021840.jar" id="Rai4Feature" version="1.0.0.202603021840">
+      <category name="Rai4Plugin"/>
+   </feature>
+   <category-def name="Rai4Plugin" label="Rai4Plugin"/>
+</site>

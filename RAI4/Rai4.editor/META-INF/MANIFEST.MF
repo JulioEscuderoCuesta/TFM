@@ -5,11 +5,11 @@ Bundle-SymbolicName: Rai4.editor;singleton:=true
 Automatic-Module-Name: Rai4.editor
 Bundle-Version: 1.0.0.qualifier
 Bundle-ClassPath: .
-Bundle-Activator: es.unican.istr.pasys.pasys.presentation.PasysEditorPlugin$Implementation
+Bundle-Activator: es.unican.istr.rai4.presentation.Rai4EditorPlugin$Implementation
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-17
-Export-Package: es.unican.istr.pasys.pasys.presentation
+Export-Package: es.unican.istr.rai4.presentation
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.core.resources;visibility:=reexport,
  Rai4.edit;visibility:=reexport,

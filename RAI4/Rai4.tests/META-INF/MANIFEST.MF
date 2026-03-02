@@ -8,7 +8,7 @@ Bundle-ClassPath: .
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-17
-Export-Package: es.unican.istr.pasys.pasys.tests
+Export-Package: es.unican.istr.rai4.tests
 Require-Bundle: org.eclipse.core.runtime,
  Rai4;visibility:=reexport,
  org.eclipse.emf.ecore.xmi;visibility:=reexport,

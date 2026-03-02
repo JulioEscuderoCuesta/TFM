@@ -7,10 +7,10 @@
 <plugin>
 
    <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
-      <!-- @generated pasys -->
+      <!-- @generated rai4 -->
       <factory
-            uri="www.unican.es/istr/pasys"
-            class="es.unican.istr.pasys.pasys.provider.PasysItemProviderAdapterFactory"
+            uri="www.unican.es/istr/rai4"
+            class="es.unican.istr.rai4.provider.Rai4ItemProviderAdapterFactory"
             supportedTypes=
               "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
                org.eclipse.emf.edit.provider.IStructuredItemContentProvider

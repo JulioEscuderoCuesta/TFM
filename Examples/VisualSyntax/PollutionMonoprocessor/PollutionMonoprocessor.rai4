@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rai4:ComputationalSystem xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:rai4="www.unican.es/istr/rai4">
+  <ownedElements xsi:type="rai4:CassandraService" name="New Cassandra Service" id="PollutionKafka" host="//@ownedElements.5">
+    <deploymentConfig xsi:type="rai4:NodeDeploymentConf" artifactName="New Node Deployment Conf"/>
+    <cqlSchemas xsi:type="rai4:ArtifactDescriptor" fileName="new Artifact Descriptor"/>
+    <dataCenters name="new Data Center">
+      <racks name="PollutionCluster" id="PollutionClusterRack"/>
+    </dataCenters>
+  </ownedElements>
+  <ownedElements xsi:type="rai4:KafkaService" name="New Kafka Service" host="//@ownedElements.5"/>
+  <ownedElements xsi:type="rai4:KafkaWorkloadStreamData" holder="//@ownedElements.1"/>
+  <ownedElements xsi:type="rai4:StormService" name="New Storm Service" host="//@ownedElements.5" workflows="//@ownedElements.4"/>
+  <ownedElements xsi:type="rai4:Workflow" name="new Workflow" scheduler="//@ownedElements.3"/>
+  <ownedElements xsi:type="rai4:ProcessingNodeCluster" name="New Processing Node Cluster"/>
+  <ownedElements xsi:type="rai4:PhysicalProcessingNode" name="new Physical Processing Node"/>
+</rai4:ComputationalSystem>

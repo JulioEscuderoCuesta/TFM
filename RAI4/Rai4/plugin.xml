@@ -6,15 +6,12 @@
 
 <plugin>
 
-
-
-
    <extension point="org.eclipse.emf.ecore.generated_package">
-      <!-- @generated pasys -->
+      <!-- @generated rai4 -->
       <package
-            uri="www.unican.es/istr/pasys"
-            class="es.unican.istr.pasys.pasys.PasysPackage"
-            genModel="model/pasys.genmodel"/>
+            uri="www.unican.es/istr/rai4"
+            class="es.unican.istr.rai4.Rai4Package"
+            genModel="model/rai4.genmodel"/>
    </extension>
 
 </plugin>

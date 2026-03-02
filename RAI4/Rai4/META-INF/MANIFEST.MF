@@ -8,9 +8,9 @@ Bundle-ClassPath: .
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-17
-Export-Package: es.unican.istr.pasys.pasys,
- es.unican.istr.pasys.pasys.impl,
- es.unican.istr.pasys.pasys.util
+Export-Package: es.unican.istr.rai4,
+ es.unican.istr.rai4.impl,
+ es.unican.istr.rai4.util
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore;visibility:=reexport
 Bundle-ActivationPolicy: lazy
